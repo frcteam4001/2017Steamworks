@@ -23,8 +23,8 @@ public class ElectricalConstants {
 	public static final int GEARDROP_SWITCH_LEFT		= -1;  // to be set
 	public static final int GEARDROP_SWITCH_RIGHT		= -1;  // to be set
 	
-	public static final int GEARDROP_SOLENOID_LEFT		= -1;  // to be set
-	public static final int GEARDROP_SOLENOID_RIGHT		= -1;  // to be set
+	public static final int GEARDROP_FENCE_LEFT			= -1;  // to be set
+	public static final int GEARDROP_FENCE_RIGHT		= -1;  // to be set
 	
 	
 }
