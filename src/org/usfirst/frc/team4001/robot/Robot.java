@@ -8,8 +8,9 @@ import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
-import org.usfirst.frc.team4001.robot.commands.ExampleCommand;
+import org.usfirst.frc.team4001.robot.commands.*;
 import org.usfirst.frc.team4001.robot.subsystems.DriveTrain;
+import org.usfirst.frc.team4001.robot.subsystems.GearDrop_temp;
 import org.usfirst.frc.team4001.robot.subsystems.ExampleSubsystem;
 
 /**
@@ -28,6 +29,7 @@ public class Robot extends IterativeRobot {
 	SendableChooser<Command> chooser = new SendableChooser<>();
 	
 	public static DriveTrain drive;
+	public static GearDrop_temp geardrop;
 
 	/**
 	 * This function is run when the robot is first started up and should be
@@ -37,11 +39,13 @@ public class Robot extends IterativeRobot {
 	public void robotInit() {
 		oi = new OI();
 		drive = new DriveTrain();
+		geardrop = new GearDrop_temp();
 		chooser.addDefault("Default Auto", new ExampleCommand());
 		// chooser.addObject("My Auto", new MyAutoCommand());
 		SmartDashboard.putData("Auto mode", chooser);
+		SmartDashboard.putData("Gear Move to Position", new GearPIDTest());
 	}
-
+ 
 	/**
 	 * This function is called once each time the robot enters Disabled mode.
 	 * You can use it to reset any subsystem information you want to clear when
