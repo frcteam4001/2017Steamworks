@@ -6,8 +6,10 @@ import org.usfirst.frc.team4001.robot.commands.ArcadeDrive;
 
 import com.ctre.*;
 import edu.wpi.first.wpilibj.AnalogInput;
+import edu.wpi.first.wpilibj.AnalogPotentiometer;
 import edu.wpi.first.wpilibj.RobotDrive;
 import edu.wpi.first.wpilibj.command.Subsystem;
+import edu.wpi.first.wpilibj.interfaces.Potentiometer;
 
 /**
  *
@@ -23,6 +25,7 @@ public class DriveTrain extends Subsystem {
 	// ultrasonic sensors
 	private final AnalogInput ultrasonic_left = new AnalogInput(ElectricalConstants.DRIVETRAIN_ULTRASONIC_LEFT);
 	private final AnalogInput ultrasonic_right = new AnalogInput(ElectricalConstants.DRIVETRAIN_ULTRASONIC_RIGHT);
+	//private final Potentiometer pot = new AnalogPotentiometer(1,10,0);
 	
 	private final RobotDrive drive = new RobotDrive(frontLeftMotor, rearLeftMotor,frontRightMotor , rearRightMotor);
 	

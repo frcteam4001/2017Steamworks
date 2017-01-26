@@ -10,7 +10,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 import org.usfirst.frc.team4001.robot.commands.*;
 import org.usfirst.frc.team4001.robot.subsystems.DriveTrain;
-import org.usfirst.frc.team4001.robot.subsystems.GearDrop_temp;
+import org.usfirst.frc.team4001.robot.subsystems.GearDrop;
 import org.usfirst.frc.team4001.robot.subsystems.ExampleSubsystem;
 
 /**
@@ -29,7 +29,7 @@ public class Robot extends IterativeRobot {
 	SendableChooser<Command> chooser = new SendableChooser<>();
 	
 	public static DriveTrain drive;
-	public static GearDrop_temp geardrop;
+	public static GearDrop geardrop;
 
 	/**
 	 * This function is run when the robot is first started up and should be
@@ -39,11 +39,15 @@ public class Robot extends IterativeRobot {
 	public void robotInit() {
 		oi = new OI();
 		drive = new DriveTrain();
-		geardrop = new GearDrop_temp();
+		geardrop = new GearDrop();
+
 		chooser.addDefault("Default Auto", new ExampleCommand());
 		// chooser.addObject("My Auto", new MyAutoCommand());
 		SmartDashboard.putData("Auto mode", chooser);
 		SmartDashboard.putData("Gear Move to Position", new GearPIDTest());
+		SmartDashboard.putData("Open Left Gear Holder", new GearHolderLeftFullOpen());
+		SmartDashboard.putData("Open Right Gear Holder", new GearHolderRightFullOpen());
+		SmartDashboard.putData("Open Holders", new GearHolderFullOpen());
 	}
  
 	/**
