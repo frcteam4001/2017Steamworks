@@ -85,8 +85,18 @@ public class GearDrop extends Subsystem {
 	 */
 	public void resetEncoders(){
 		// 
-		gear_drop_motor_left.setEncPosition(0);
-		gear_drop_motor_right.setEncPosition(0);
+		TalonControlMode previous_leftmode = gear_drop_motor_left.getControlMode();
+		TalonControlMode previous_rightmode = gear_drop_motor_right.getControlMode();
+		
+		gear_drop_motor_left.changeControlMode(TalonControlMode.Position);
+		gear_drop_motor_left.setPosition(0);
+		
+		gear_drop_motor_right.changeControlMode(TalonControlMode.Position);
+		gear_drop_motor_right.setPosition(0);
+		
+		gear_drop_motor_left.changeControlMode(previous_leftmode);
+		gear_drop_motor_right.changeControlMode(previous_rightmode);
+
 	}
 	
 	
@@ -100,7 +110,7 @@ public class GearDrop extends Subsystem {
 	/* 
 	 * Return encoder position of the right holder motor 
 	 */
-	public int getRingHolderEncPosition(){
+	public int getRightHolderEncPosition(){
 		return gear_drop_motor_right.getEncPosition();
 	}
 	

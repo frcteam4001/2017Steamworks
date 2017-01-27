@@ -47,7 +47,9 @@ public class Robot extends IterativeRobot {
 		SmartDashboard.putData("Gear Move to Position", new GearPIDTest());
 		//SmartDashboard.putData("Open Left Gear Holder", new GearHolderLeftFullOpen());
 		//SmartDashboard.putData("Open Right Gear Holder", new GearHolderRightFullOpen());
-		SmartDashboard.putData("Open Holders", new GearHoldersFullOpen(true));
+		SmartDashboard.putData("Open Holders", new GearHoldersFullOpen());
+		
+
 		
 	}
  
@@ -116,6 +118,8 @@ public class Robot extends IterativeRobot {
 	 */
 	@Override
 	public void teleopPeriodic() {
+		SmartDashboard.putNumber("Right Motor Position", geardrop.getRightHolderEncPosition());
+		SmartDashboard.putNumber("Left Motor Position", geardrop.getLeftHolderEncPosition());
 		Scheduler.getInstance().run();
 	}
 
