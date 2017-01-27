@@ -35,10 +35,11 @@ public class GearDrop extends Subsystem {
    		gear_drop_motor_left.configNominalOutputVoltage(+0f, -0f);
    		gear_drop_motor_left.configPeakOutputVoltage(+12f, -12f);    	
    		gear_drop_motor_left.setAllowableClosedLoopErr(0);
-   		gear_drop_motor_left.reverseSensor(false);
+   		
    	}
 	
 	public void pid_positionPrep(){
+		gear_drop_motor_left.reverseSensor(false);
 		gear_drop_motor_left.setProfile(0);
 		gear_drop_motor_left.setF(0.0);
 		gear_drop_motor_left.setP(0.85);
@@ -48,34 +49,68 @@ public class GearDrop extends Subsystem {
 		gear_drop_motor_left.setPosition(0);
 	 }
 	    
-	    public void moveToPosition(int position){
-	    	gear_drop_motor_left.set(position);
-	    }
-	  
-	    
-	    public Boolean positionReached(){
-	    	return gear_drop_motor_left.getClosedLoopError() == 0;
-	    }
-	  
-	    
-	    public void openLeftHolder(){
-	    	gear_drop_motor_left.set(0.5);
-	    }
-	    
-	    public void openRightHolder(){
-	    	gear_drop_motor_right.set(-0.5);
-	    }
-	    
-	    public void stopLeft(){
-	    	gear_drop_motor_left.set(0);
-	    }
-	    
-	    
-	    public void stopRight(){
-	    	gear_drop_motor_right.set(0);
-	    }
+    public void moveToPosition(int position){
+    	gear_drop_motor_left.set(position);
+    }
+  
+    
+    public Boolean positionReached(){
+    	return gear_drop_motor_left.getClosedLoopError() == 0;
+    }
+  
+    
+    public void openLeftHolder(double power){
+    	gear_drop_motor_left.set(power);
+    }
+    
+    public void openRightHolder(double power){
+    	gear_drop_motor_right.set(-1*power);
+    }
+    
+    
+    public void stopLeftHolder(){
+    	//gear_drop_motor_left.set(0);
+    	gear_drop_motor_left.disableControl();
+    }
+    
+    
+    public void stopRightHolder(){
+    	//gear_drop_motor_right.set(0);
+    	gear_drop_motor_right.disableControl();
+    }
+    
+    
+    /* 
+	 * Reset the encoder values to 0, used to calibrate
+	 */
+	public void resetEncoders(){
+		// 
+		gear_drop_motor_left.setEncPosition(0);
+		gear_drop_motor_right.setEncPosition(0);
+	}
 	
 	
+	/* 
+	 * Return encoder position of the left holder motor
+	 */
+	public int getLeftHolderEncPosition(){
+		return gear_drop_motor_left.getEncPosition();
+	}
+	
+	/* 
+	 * Return encoder position of the right holder motor 
+	 */
+	public int getRingHolderEncPosition(){
+		return gear_drop_motor_right.getEncPosition();
+	}
+	
+	/* 
+	 * Changes gear holder motors to PercentVbus modes
+	 */
+	public void enablePowerMode(){
+		gear_drop_motor_left.changeControlMode(TalonControlMode.PercentVbus);
+		gear_drop_motor_right.changeControlMode(TalonControlMode.PercentVbus);
+	}
 	
    	
 	public void receive(){

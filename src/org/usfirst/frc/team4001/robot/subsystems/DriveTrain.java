@@ -2,7 +2,7 @@ package org.usfirst.frc.team4001.robot.subsystems;
 
 
 import org.usfirst.frc.team4001.robot.ElectricalConstants;
-import org.usfirst.frc.team4001.robot.commands.ArcadeDrive;
+//import org.usfirst.frc.team4001.robot.commands.ArcadeDrive;
 
 import com.ctre.*;
 import edu.wpi.first.wpilibj.AnalogInput;
@@ -33,7 +33,8 @@ public class DriveTrain extends Subsystem {
     public void initDefaultCommand() {
         // Set the default command for a subsystem here.
         //setDefaultCommand(new MySpecialCommand());
-    	setDefaultCommand(new ArcadeDrive());
+    	
+    	//setDefaultCommand(new ArcadeDrive());
     }
     
     

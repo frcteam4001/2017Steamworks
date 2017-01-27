@@ -45,9 +45,10 @@ public class Robot extends IterativeRobot {
 		// chooser.addObject("My Auto", new MyAutoCommand());
 		SmartDashboard.putData("Auto mode", chooser);
 		SmartDashboard.putData("Gear Move to Position", new GearPIDTest());
-		SmartDashboard.putData("Open Left Gear Holder", new GearHolderLeftFullOpen());
-		SmartDashboard.putData("Open Right Gear Holder", new GearHolderRightFullOpen());
-		SmartDashboard.putData("Open Holders", new GearHolderFullOpen());
+		//SmartDashboard.putData("Open Left Gear Holder", new GearHolderLeftFullOpen());
+		//SmartDashboard.putData("Open Right Gear Holder", new GearHolderRightFullOpen());
+		SmartDashboard.putData("Open Holders", new GearHoldersFullOpen(true));
+		
 	}
  
 	/**
