@@ -1,6 +1,7 @@
 package org.usfirst.frc.team4001.robot.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
+import org.usfirst.frc.team4001.robot.*;
 
 /**
  *
@@ -10,10 +11,12 @@ public class GearDrop_ResetEncoders extends Command {
     public GearDrop_ResetEncoders() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
+    	requires(Robot.geardrop);
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
+    	Robot.geardrop.resetEncoders();
     }
 
     // Called repeatedly when this Command is scheduled to run
