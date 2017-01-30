@@ -49,8 +49,27 @@ public class GearDrop extends Subsystem {
 		gear_drop_motor_left.setPosition(0);
 	 }
 	    
-    public void moveToPosition(int position){
+    public void moveLeftToPosition(int position){
     	gear_drop_motor_left.set(position);
+    }
+    
+    public void pid_initRightPosition(double p, double i, double d, double f, int closedLoopError, boolean resetEncoder){
+    	gear_drop_motor_right.setProfile(0);
+		gear_drop_motor_right.setF(f);
+		gear_drop_motor_right.setP(p);
+		gear_drop_motor_right.setI(i);
+		gear_drop_motor_right.setD(d);
+		gear_drop_motor_right.changeControlMode(TalonControlMode.Position);
+		if(resetEncoder && rightswitchpressed() ){
+			gear_drop_motor_right.setPosition(0);
+		}
+		
+		gear_drop_motor_right.setAllowableClosedLoopErr(closedLoopError);
+    	
+    }
+    
+    public void pid_moveRightToPosition(int position){
+    	gear_drop_motor_right.set(position);
     }
   
     
