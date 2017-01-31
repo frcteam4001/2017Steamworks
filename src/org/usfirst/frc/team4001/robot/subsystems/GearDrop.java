@@ -23,6 +23,8 @@ public class GearDrop extends Subsystem {
 	
 	public double directionCalibration;
 	
+	private boolean holderPairing;
+	
 	public GearDrop(){
    		//Initialize components
    		gear_drop_motor_left = new CANTalon(ElectricalConstants.GEARDROP_MOTOR_LEFT);
@@ -38,20 +40,7 @@ public class GearDrop extends Subsystem {
    		
    	}
 	
-	public void pid_positionPrep(){
-		gear_drop_motor_left.reverseSensor(false);
-		gear_drop_motor_left.setProfile(0);
-		gear_drop_motor_left.setF(0.0);
-		gear_drop_motor_left.setP(0.85);
-		gear_drop_motor_left.setI(0.0); 
-		gear_drop_motor_left.setD(0.3);
-		gear_drop_motor_left.changeControlMode(TalonControlMode.Position);
-		gear_drop_motor_left.setPosition(0);
-	 }
-	    
-    public void moveLeftToPosition(int position){
-    	gear_drop_motor_left.set(position);
-    }
+	   
     
     public void pid_initRightPosition(double p, double i, double d, double f, int closedLoopError, boolean resetEncoder){
     	gear_drop_motor_right.setProfile(0);
@@ -60,6 +49,7 @@ public class GearDrop extends Subsystem {
 		gear_drop_motor_right.setI(i);
 		gear_drop_motor_right.setD(d);
 		gear_drop_motor_right.changeControlMode(TalonControlMode.Position);
+		
 		if(resetEncoder && rightswitchpressed() ){
 			gear_drop_motor_right.setPosition(0);
 		}
@@ -68,13 +58,25 @@ public class GearDrop extends Subsystem {
     	
     }
     
+    
+    public boolean get_HoldersPaired(){
+    	return this.gear_drop_motor_left.getControlMode() == CANTalon.TalonControlMode.Follower;	
+    }
+    
+    public void pairHolders(){
+    	gear_drop_motor_left.changeControlMode(CANTalon.TalonControlMode.Follower);
+    	gear_drop_motor_left.set(this.gear_drop_motor_right.getDeviceID());
+    }
+    
+   
+    
     public void pid_moveRightToPosition(int position){
     	gear_drop_motor_right.set(position);
     }
   
     
-    public Boolean positionReached(){
-    	return gear_drop_motor_left.getClosedLoopError() == 0;
+    public Boolean pid_rightPositionReached(){
+    	return gear_drop_motor_right.getClosedLoopError() == 0;
     }
   
     
@@ -82,20 +84,19 @@ public class GearDrop extends Subsystem {
     	gear_drop_motor_left.set(power);
     }
     
+    
     public void openRightHolder(double power){
     	gear_drop_motor_right.set(-1*power);
     }
     
     
     public void stopLeftHolder(){
-    	//gear_drop_motor_left.set(0);
-    	gear_drop_motor_left.disableControl();
+    	gear_drop_motor_left.set(0);
     }
     
     
     public void stopRightHolder(){
-    	//gear_drop_motor_right.set(0);
-    	gear_drop_motor_right.disableControl();
+    	gear_drop_motor_right.set(0);
     }
     
     
