@@ -54,5 +54,13 @@ public class ElectricalConstants {
 	public static final boolean rightDriveTrainEncoderReverse = false;
 	 */
 	
-
+	//***************************************************************************
+		//****************************** DRIVE ENCODERS *****************************
+		//***************************************************************************
+		
+		public static final int LEFT_DRIVE_ENCODER_A                            = 9;
+		public static final int LEFT_DRIVE_ENCODER_B                            = 8;
+		
+		public static final int RIGHT_DRIVE_ENCODER_A                           = 1;
+		public static final int RIGHT_DRIVE_ENCODER_B                           = 0;
 }
