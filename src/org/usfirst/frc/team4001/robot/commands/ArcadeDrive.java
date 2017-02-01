@@ -25,8 +25,7 @@ public class ArcadeDrive extends Command {
     	double moveForward = Robot.oi.game_controller.getLeftY();
     	double turn = Robot.oi.game_controller.getRightX();
     	Robot.drive.arcadeDrive(moveForward, turn);
-    	System.out.println("left: " + Double.toString(Robot.drive.getLeftEncoderDist()));
-    	System.out.println("Right: " + Double.toString(Robot.drive.getRightEncoderDist()));
+    	System.out.println(Robot.drive.getYaw());
     }
 
     // Make this return true when this Command no longer needs to run execute()
