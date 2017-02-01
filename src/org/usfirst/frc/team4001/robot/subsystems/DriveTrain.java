@@ -50,13 +50,13 @@ public class DriveTrain extends Subsystem {
 	public DriveTrain() {
 		//initialize motors
 		frontLeftMotor = new CANTalon(ElectricalConstants.DRIVETRAIN_FRONT_LEFT);
-		frontLeftMotor.setInverted(true);
+		frontLeftMotor.setInverted(ElectricalConstants.DRIVETRAIN_FRONT_LEFT_REVERSE);
 		frontRightMotor = new CANTalon(ElectricalConstants.DRIVETRAIN_FRONT_RIGHT);
-		frontRightMotor.setInverted(true);
+		frontRightMotor.setInverted(ElectricalConstants.DRIVETRAIN_FRONT_RIGHT_REVERSE);
 		rearLeftMotor = new CANTalon(ElectricalConstants.DRIVETRAIN_REAR_LEFT);
-		rearLeftMotor.setInverted(true);
+		rearLeftMotor.setInverted(ElectricalConstants.DRIVETRAIN_REAR_LEFT_REVERSE);
 		rearRightMotor = new CANTalon(ElectricalConstants.DRIVETRAIN_REAR_RIGHT);
-		rearRightMotor.setInverted(true);
+		rearRightMotor.setInverted(ElectricalConstants.DRIVETRAIN_REAR_RIGHT_REVERSE);
 		
 		//initialize Drive Train
 		drive = new RobotDrive(frontLeftMotor, rearLeftMotor,frontRightMotor , rearRightMotor);

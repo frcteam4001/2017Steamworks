@@ -39,19 +39,23 @@ public class ElectricalConstants {
 	public static final int DRIVETRAIN_ULTRASONIC_LEFT			= 0;  // ANALOG
 	public static final int DRIVETRAIN_ULTRASONIC_RIGHT 		= 1;  // ANALOG
 	
+	public static final boolean DRIVETRAIN_FRONT_LEFT_REVERSE	= true;
+	public static final boolean DRIVETRAIN_FRONT_RIGHT_REVERSE	= true;
+	public static final boolean DRIVETRAIN_REAR_LEFT_REVERSE	= true;
+	public static final boolean DRIVETRAIN_REAR_RIGHT_REVERSE	= true;
 	
 	//***************************************************************************
 	//************************* GEARDROP ENCODER CONSTANTS *************************
 	//***************************************************************************
 	
 	//this needs to be set accordingly for distance calculations
-	public static final int driveWheelRadius = 3;//wheel radius in inches
-	public static final int drivePulsePerRotation = 1024; //encoder pulse per rotation
-	public static final double driveGearRatio = 1/1; //ratio between wheel and encoder
-	public static final double driveEncoderPulsePerRot = drivePulsePerRotation*driveGearRatio; //pulse per rotation * gear ratio
-	public static final double driveEncoderDistPerTick =(Math.PI*2*driveWheelRadius)/driveEncoderPulsePerRot;
-	public static final boolean leftDriveTrainEncoderReverse = true;
-	public static final boolean rightDriveTrainEncoderReverse = false;
+	public static final int driveWheelRadius		 			= 3;//wheel radius in inches
+	public static final int drivePulsePerRotation 				= 1024; //encoder pulse per rotation
+	public static final double driveGearRatio 					= 1/1; //ratio between wheel and encoder
+	public static final double driveEncoderPulsePerRot 			= drivePulsePerRotation*driveGearRatio; //pulse per rotation * gear ratio
+	public static final double driveEncoderDistPerTick 			=(Math.PI*2*driveWheelRadius)/driveEncoderPulsePerRot;
+	public static final boolean leftDriveTrainEncoderReverse 	= true;
+	public static final boolean rightDriveTrainEncoderReverse 	= false;
 	
 	
 	//***************************************************************************
