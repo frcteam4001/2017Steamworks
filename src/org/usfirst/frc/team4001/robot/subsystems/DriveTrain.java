@@ -14,6 +14,7 @@ import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.RobotDrive;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.interfaces.Potentiometer;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  *
@@ -82,6 +83,11 @@ public class DriveTrain extends Subsystem {
 		//initialize PID controllers
 		drivePID = new PIDController(NumberConstants.pDrive, NumberConstants.iDrive, NumberConstants.dDrive);
 		gyroPID = new PIDController(NumberConstants.pGyro, NumberConstants.iGyro, NumberConstants.dGyro);
+		
+		
+		SmartDashboard.putNumber("left encoder", leftDriveEncoder.getDistance());
+		SmartDashboard.putNumber("right encoder", rightDriveEncoder.getDistance());
+		
 	}
 	
 	

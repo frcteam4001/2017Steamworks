@@ -58,9 +58,9 @@ public class ElectricalConstants {
 	//****************************** DRIVE ENCODERS *****************************
 	//***************************************************************************
 	
-	public static final int LEFT_DRIVE_ENCODER_A                            = 9;
-	public static final int LEFT_DRIVE_ENCODER_B                            = 8;
+	public static final int LEFT_DRIVE_ENCODER_A                            = 8;
+	public static final int LEFT_DRIVE_ENCODER_B                            = 9;
 	
-	public static final int RIGHT_DRIVE_ENCODER_A                           = 1;
-	public static final int RIGHT_DRIVE_ENCODER_B                           = 0;
+	public static final int RIGHT_DRIVE_ENCODER_A                           = 6;
+	public static final int RIGHT_DRIVE_ENCODER_B                           = 7;
 }
