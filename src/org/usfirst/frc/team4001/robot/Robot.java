@@ -49,7 +49,9 @@ public class Robot extends IterativeRobot {
 		SmartDashboard.putData("Open Holders", new GearHoldersFullOpen());
 		SmartDashboard.putData("Close Holders", new GearCloseHolders());
 		SmartDashboard.putData("ResetEncoders", new GearDrop_ResetEncoders());
-		SmartDashboard.putData("SlideTest", new GearSlideToPosition());
+		
+
+		SmartDashboard.putData("SlideTest", new GearSlideToPosition(8000));
 
 		
 	}

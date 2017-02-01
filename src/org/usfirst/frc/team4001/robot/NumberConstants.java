@@ -43,5 +43,5 @@ public class NumberConstants {
 	public static final double iGyro 									 = 0.00;
 	public static final double dGyro 									 = 0.00;
 
->>>>>>> a6fe46aef6036bded389e203731a3630c6da31bc
+
 }

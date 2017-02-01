@@ -8,11 +8,21 @@ import org.usfirst.frc.team4001.robot.*;
  *
  */
 public class GearSlideToPosition extends Command {
+	
+	private int pulsePosition;
+	
 
     public GearSlideToPosition() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     	requires(Robot.geardrop);
+    }
+    
+    public GearSlideToPosition(int inPosition) {
+        // Use requires() here to declare subsystem dependencies
+        // eg. requires(chassis);
+    	requires(Robot.geardrop);
+    	this.pulsePosition = inPosition;
     }
 
     // Called just before this Command runs the first time
@@ -23,7 +33,7 @@ public class GearSlideToPosition extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Robot.geardrop.pid_moveRightToPosition(8000);
+    	Robot.geardrop.pid_moveRightToPosition(pulsePosition);
     }
 
     // Make this return true when this Command no longer needs to run execute()
