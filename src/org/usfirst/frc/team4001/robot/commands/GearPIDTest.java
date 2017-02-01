@@ -18,13 +18,13 @@ public class GearPIDTest extends Command {
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	Robot.geardrop.pid_positionPrep();
+    	//Robot.geardrop.pid_positionPrep();
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
     	System.out.println("exec movetoposition");
-    	Robot.geardrop.moveToPosition(-6000);
+    	//Robot.geardrop.moveToPosition(-6000);
     }
 
     // Make this return true when this Command no longer needs to run execute()

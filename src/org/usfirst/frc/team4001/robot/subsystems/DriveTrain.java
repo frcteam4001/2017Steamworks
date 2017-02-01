@@ -50,9 +50,13 @@ public class DriveTrain extends Subsystem {
 	public DriveTrain() {
 		//initialize motors
 		frontLeftMotor = new CANTalon(ElectricalConstants.DRIVETRAIN_FRONT_LEFT);
+		frontLeftMotor.setInverted(true);
 		frontRightMotor = new CANTalon(ElectricalConstants.DRIVETRAIN_FRONT_RIGHT);
+		frontRightMotor.setInverted(true);
 		rearLeftMotor = new CANTalon(ElectricalConstants.DRIVETRAIN_REAR_LEFT);
+		rearLeftMotor.setInverted(true);
 		rearRightMotor = new CANTalon(ElectricalConstants.DRIVETRAIN_REAR_RIGHT);
+		rearRightMotor.setInverted(true);
 		
 		//initialize Drive Train
 		drive = new RobotDrive(frontLeftMotor, rearLeftMotor,frontRightMotor , rearRightMotor);
@@ -61,15 +65,14 @@ public class DriveTrain extends Subsystem {
 		leftDriveEncoder = new Encoder(ElectricalConstants.LEFT_DRIVE_ENCODER_A,
 				ElectricalConstants.LEFT_DRIVE_ENCODER_B, ElectricalConstants.leftDriveTrainEncoderReverse,
 				Encoder.EncodingType.k4X);
-
+		leftDriveEncoder.setReverseDirection(ElectricalConstants.leftDriveTrainEncoderReverse);
 		leftDriveEncoder.setDistancePerPulse(ElectricalConstants.driveEncoderDistPerTick);
 
 		rightDriveEncoder = new Encoder(ElectricalConstants.RIGHT_DRIVE_ENCODER_A,
 				ElectricalConstants.RIGHT_DRIVE_ENCODER_B, ElectricalConstants.rightDriveTrainEncoderReverse,
 				Encoder.EncodingType.k4X);
-
 		rightDriveEncoder.setDistancePerPulse(ElectricalConstants.driveEncoderDistPerTick);
-		
+		rightDriveEncoder.setReverseDirection(ElectricalConstants.rightDriveTrainEncoderReverse);
 		
 		//initialize ultrasonic sensors
 		ultrasonic_left = new AnalogInput(ElectricalConstants.DRIVETRAIN_ULTRASONIC_LEFT);
@@ -85,8 +88,7 @@ public class DriveTrain extends Subsystem {
 		gyroPID = new PIDController(NumberConstants.pGyro, NumberConstants.iGyro, NumberConstants.dGyro);
 		
 		
-		SmartDashboard.putNumber("left encoder", leftDriveEncoder.getDistance());
-		SmartDashboard.putNumber("right encoder", rightDriveEncoder.getDistance());
+		
 		
 	}
 	

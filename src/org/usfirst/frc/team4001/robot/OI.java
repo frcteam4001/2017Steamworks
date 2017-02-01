@@ -44,6 +44,6 @@ public class OI {
 	
 	
 	public OI(){
-		game_controller = new Gamepad(0);
+		game_controller = new Gamepad(3);
 	}
 }

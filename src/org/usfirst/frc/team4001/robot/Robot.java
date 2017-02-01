@@ -121,8 +121,12 @@ public class Robot extends IterativeRobot {
 	 */
 	@Override
 	public void teleopPeriodic() {
-		SmartDashboard.putNumber("Right Motor Position", geardrop.getRightHolderEncPosition());
-		SmartDashboard.putNumber("Left Motor Position", geardrop.getLeftHolderEncPosition());
+		SmartDashboard.putNumber("Right Gear Motor Position", geardrop.getRightHolderEncPosition());
+		SmartDashboard.putNumber("Left Gear Motor Position", geardrop.getLeftHolderEncPosition());
+		SmartDashboard.putNumber("Left Drive Encoder", drive.getLeftEncoderDist());
+		SmartDashboard.putNumber("Right Drive Encoder", drive.getRightEncoderDist());
+		SmartDashboard.putNumber("Left Encoder Rate", drive.getLeftEncoderRate());
+		SmartDashboard.putNumber("Right Encoder Rate", drive.getRightEncoderRate());
 		Scheduler.getInstance().run();
 	}
 

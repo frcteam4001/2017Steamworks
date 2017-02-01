@@ -45,12 +45,12 @@ public class ElectricalConstants {
 	//***************************************************************************
 	
 	//this needs to be set accordingly for distance calculations
-	public static final int driveWheelRadius = 4;//wheel radius in inches
-	public static final int drivePulsePerRotation = 128; //encoder pulse per rotation
+	public static final int driveWheelRadius = 3;//wheel radius in inches
+	public static final int drivePulsePerRotation = 1024; //encoder pulse per rotation
 	public static final double driveGearRatio = 1/1; //ratio between wheel and encoder
 	public static final double driveEncoderPulsePerRot = drivePulsePerRotation*driveGearRatio; //pulse per rotation * gear ratio
 	public static final double driveEncoderDistPerTick =(Math.PI*2*driveWheelRadius)/driveEncoderPulsePerRot;
-	public static final boolean leftDriveTrainEncoderReverse = false;
+	public static final boolean leftDriveTrainEncoderReverse = true;
 	public static final boolean rightDriveTrainEncoderReverse = false;
 	
 	
