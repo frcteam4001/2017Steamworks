@@ -40,8 +40,7 @@ public class GearDrop extends Subsystem {
    		
    	}
 	
-	   
-    
+
     public void pid_initRightPosition(double p, double i, double d, double f, int closedLoopError, boolean resetEncoder){
     	gear_drop_motor_right.setProfile(0);
 		gear_drop_motor_right.setF(f);
@@ -72,6 +71,7 @@ public class GearDrop extends Subsystem {
     
     public void pid_moveRightToPosition(int position){
     	gear_drop_motor_right.set(position);
+
     }
   
     

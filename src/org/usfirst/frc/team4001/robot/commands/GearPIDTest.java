@@ -1,16 +1,16 @@
 package org.usfirst.frc.team4001.robot.commands;
 
-import org.usfirst.frc.team4001.robot.Robot;
-
 import edu.wpi.first.wpilibj.command.Command;
-import org.usfirst.frc.team4001.robot.*;
+import org.usfirst.frc.team4001.robot.Robot;
 
 /**
  *
  */
-public class GearDrop_ResetEncoders extends Command {
+public class GearPIDTest extends Command {
+	
+	
 
-    public GearDrop_ResetEncoders() {
+    public GearPIDTest() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     	requires(Robot.geardrop);
@@ -18,16 +18,19 @@ public class GearDrop_ResetEncoders extends Command {
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	Robot.geardrop.resetEncoders();
+    	Robot.geardrop.pid_positionPrep();
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
+    	System.out.println("exec movetoposition");
+    	Robot.geardrop.moveToPosition(-6000);
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return false;
+        //return Robot.geardrop.positionReached();
+    	return Robot.geardrop.leftswitchpressed();
     }
 
     // Called once after isFinished returns true

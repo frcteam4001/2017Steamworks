@@ -2,11 +2,15 @@ package org.usfirst.frc.team4001.robot.subsystems;
 
 
 import org.usfirst.frc.team4001.robot.ElectricalConstants;
-//import org.usfirst.frc.team4001.robot.commands.ArcadeDrive;
-
+import com.team4001.lib.util.PIDController;
+import org.usfirst.frc.team4001.robot.commands.ArcadeDrive;
+import edu.wpi.first.wpilibj.ADXRS450_Gyro;
 import com.ctre.*;
+import org.usfirst.frc.team4001.robot.NumberConstants;
+
 import edu.wpi.first.wpilibj.AnalogInput;
 import edu.wpi.first.wpilibj.AnalogPotentiometer;
+import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.RobotDrive;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.interfaces.Potentiometer;
@@ -16,25 +20,79 @@ import edu.wpi.first.wpilibj.interfaces.Potentiometer;
  */
 public class DriveTrain extends Subsystem {
     
-    // motors
-	private final CANTalon frontLeftMotor = new CANTalon(ElectricalConstants.DRIVETRAIN_FRONT_LEFT);
-	private final CANTalon frontRightMotor = new CANTalon(ElectricalConstants.DRIVETRAIN_FRONT_RIGHT);
-	private final CANTalon rearLeftMotor = new CANTalon(ElectricalConstants.DRIVETRAIN_REAR_LEFT);
-	private final CANTalon rearRightMotor = new CANTalon(ElectricalConstants.DRIVETRAIN_REAR_RIGHT);
+    //motors
+	private final CANTalon frontLeftMotor;
+	private final CANTalon frontRightMotor;
+	private final CANTalon rearLeftMotor;
+	private final CANTalon rearRightMotor;
+	
+	//drive train
+	private final RobotDrive drive;
+		
+	//encoders
+	private Encoder leftDriveEncoder;
+	private Encoder rightDriveEncoder;
 	
 	// ultrasonic sensors
-	private final AnalogInput ultrasonic_left = new AnalogInput(ElectricalConstants.DRIVETRAIN_ULTRASONIC_LEFT);
-	private final AnalogInput ultrasonic_right = new AnalogInput(ElectricalConstants.DRIVETRAIN_ULTRASONIC_RIGHT);
+	private final AnalogInput ultrasonic_left;
+	private final AnalogInput ultrasonic_right;
 	//private final Potentiometer pot = new AnalogPotentiometer(1,10,0);
 	
-	private final RobotDrive drive = new RobotDrive(frontLeftMotor, rearLeftMotor,frontRightMotor , rearRightMotor);
+	//Gyro
+	private final ADXRS450_Gyro gyro;
+	
+	//PID controllers
+	public PIDController drivePID;
+	public PIDController gyroPID;
+	
+	
+	public DriveTrain() {
+		//initialize motors
+		frontLeftMotor = new CANTalon(ElectricalConstants.DRIVETRAIN_FRONT_LEFT);
+		frontRightMotor = new CANTalon(ElectricalConstants.DRIVETRAIN_FRONT_RIGHT);
+		rearLeftMotor = new CANTalon(ElectricalConstants.DRIVETRAIN_REAR_LEFT);
+		rearRightMotor = new CANTalon(ElectricalConstants.DRIVETRAIN_REAR_RIGHT);
+		
+		//initialize Drive Train
+		drive = new RobotDrive(frontLeftMotor, rearLeftMotor,frontRightMotor , rearRightMotor);
+		
+		//initialize encoders
+		leftDriveEncoder = new Encoder(ElectricalConstants.LEFT_DRIVE_ENCODER_A,
+				ElectricalConstants.LEFT_DRIVE_ENCODER_B, ElectricalConstants.leftDriveTrainEncoderReverse,
+				Encoder.EncodingType.k4X);
+
+		leftDriveEncoder.setDistancePerPulse(ElectricalConstants.driveEncoderDistPerTick);
+
+		rightDriveEncoder = new Encoder(ElectricalConstants.RIGHT_DRIVE_ENCODER_A,
+				ElectricalConstants.RIGHT_DRIVE_ENCODER_B, ElectricalConstants.rightDriveTrainEncoderReverse,
+				Encoder.EncodingType.k4X);
+
+		rightDriveEncoder.setDistancePerPulse(ElectricalConstants.driveEncoderDistPerTick);
+		
+		
+		//initialize ultrasonic sensors
+		ultrasonic_left = new AnalogInput(ElectricalConstants.DRIVETRAIN_ULTRASONIC_LEFT);
+		ultrasonic_right = new AnalogInput(ElectricalConstants.DRIVETRAIN_ULTRASONIC_RIGHT);
+		//private final Potentiometer pot = new AnalogPotentiometer(1,10,0);
+		
+		//initialize gyro
+		gyro = new ADXRS450_Gyro();
+		gyro.calibrate();
+		
+		//initialize PID controllers
+		drivePID = new PIDController(NumberConstants.pDrive, NumberConstants.iDrive, NumberConstants.dDrive);
+		gyroPID = new PIDController(NumberConstants.pGyro, NumberConstants.iGyro, NumberConstants.dGyro);
+	}
+	
+	
+	
 	
 
     public void initDefaultCommand() {
         // Set the default command for a subsystem here.
         //setDefaultCommand(new MySpecialCommand());
     	
-    	//setDefaultCommand(new ArcadeDrive());
+    	setDefaultCommand(new ArcadeDrive());
     }
     
     
@@ -43,10 +101,186 @@ public class DriveTrain extends Subsystem {
 
     } 
     
+    public void hardStop() {
+    	drive.arcadeDrive(0, 0);
+    }
     
     
     
+    /**
+	 * Sends supplied power value to the left drive motors.
+	 *
+	 * @param power
+	 *            Power value sent to motors (-1.0 to 1.0)
+	 */
+	public void runLeftDrive(double power) {
+		frontLeftMotor.set(power);
+		rearLeftMotor.set(power);
+	}
+
+	/**
+	 * Sends supplied power value to the right drive motors.
+	 *
+	 * @param poewr
+	 *            Power value sent to motors (-1.0 to 1.0)
+	 */
+	public void runRightDrive(double power) {
+		frontRightMotor.set(power);
+		rearRightMotor.set(power);
+	}
+
+	/**
+	 * Gets the average distance between both encoders.
+	 *
+	 * @return Returns the average distance
+	 */
+	public double getAverageDistance() {
+		return (getLeftEncoderDist() + getRightEncoderDist()) / 2;
+	}
+
+	/**
+	 * Using both PID controllers (drive & gyro), the drivetrain will move to
+	 * target at given speed and angle
+	 *
+	 * @param setPoint
+	 *            The set point in inches
+	 * @param speed
+	 *            The speed (0.0 to 1.0)
+	 * @param setAngle
+	 *            The set angle in degrees
+	 * @param epsilon
+	 *            How close robot should be to target to consider reached
+	 */
+	public void driveStraight(double setPoint, double speed, double setAngle, double epsilon) {
+		double output = drivePID.calcPIDDrive(setPoint, getAverageDistance(), epsilon);
+		double angle = gyroPID.calcPID(setAngle, getYaw(), epsilon);
+
+		runLeftDrive((output + angle) * speed);
+		runRightDrive((-output + angle) * speed);
+	}
+
+	/**
+	 * Used to move robot without a drive PID controller at a given speed, while
+	 * at the angle given.
+	 *
+	 * @param setAngle
+	 *            The set angle in degrees
+	 * @param speed
+	 *            The speed (-1.0 - 1.0)
+	 */
+	public void driveAngle(double setAngle, double speed) {
+		double angle = gyroPID.calcPID(setAngle, getYaw(), 1);
+
+		runLeftDrive(speed + angle);
+		runRightDrive(-speed + angle);
+	}
+
+	/**
+	 * Using a PID controller, turns the robot to given angle with the given
+	 * speed.
+	 *
+	 * @param setAngle
+	 *            The set angle in degrees
+	 * @param speed
+	 *            The speed (0.0 - 1.0)
+	 * @param epsilon
+	 *            How close robot should be to target to consider reached
+	 */
+	public void turnDrive(double setAngle, double speed, double epsilon) {
+		double angle = gyroPID.calcPID(setAngle, getYaw(), epsilon);
+
+		runLeftDrive(angle * speed);
+		runRightDrive(angle * speed);
+	}
+	
+	
+	
     
+    /**
+	 * Resets the encoder AND gyro to zero.
+	 */
+	public void reset() {
+		resetEncoders();
+		resetGyro();
+	}
+	
+    
+    
+    //////////encoder methods
+    /**
+	 * This function returns the distance traveled from the left encoder in
+	 * inches.
+	 *
+	 * @return Returns distance traveled by encoder in inches
+	 */
+	public double getLeftEncoderDist() {
+		return leftDriveEncoder.getDistance();
+	}
+
+	/**
+	 * This function returns the distance traveled from the right encoder in
+	 * inches.
+	 *
+	 * @return Returns distance traveled by encoder in inches
+	 */
+	public double getRightEncoderDist() {
+		return rightDriveEncoder.getDistance();
+	}
+
+	/**
+	 * This function returns the raw value from the left encoder.
+	 *
+	 * @return Returns raw value from encoder
+	 */
+	public double getLeftEncoderRaw() {
+		return leftDriveEncoder.getRaw();
+	}
+
+	/**
+	 * This function returns the raw value from the right encoder.
+	 *
+	 * @return Returns raw value from encoder
+	 */
+	public double getRightEncoderRaw() {
+		return rightDriveEncoder.getRaw();
+	}
+
+	/**
+	 * This function returns the rate the left encoder is moving at in
+	 * inches/sec.
+	 *
+	 * @return Returns rate of encoder in inches/sec
+	 */
+	public double getLeftEncoderRate() {
+		return leftDriveEncoder.getRate();
+	}
+
+	/**
+	 * This function returns the rate the right encoder is moving at in
+	 * inches/sec.
+	 *
+	 * @return Returns rate of encoder in inches/sec
+	 */
+	public double getRightEncoderRate() {
+		return rightDriveEncoder.getRate();
+	}
+
+	/**
+	 * Resets both left and right encoders.
+	 */
+	public void resetEncoders() {
+		leftDriveEncoder.reset();
+		rightDriveEncoder.reset();
+	}
+    
+    ////////gyro methods
+	public double getYaw(){
+		return gyro.getAngle();
+	}
+	
+	public void resetGyro() {
+		gyro.reset();
+	}
     
 }
 

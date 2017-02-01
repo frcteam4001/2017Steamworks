@@ -44,7 +44,7 @@ public class ElectricalConstants {
 	//************************* GEARDROP ENCODER CONSTANTS *************************
 	//***************************************************************************
 	
-	/*  this needs to be set accordingly for distance calculations
+	//this needs to be set accordingly for distance calculations
 	public static final int driveWheelRadius = 4;//wheel radius in inches
 	public static final int drivePulsePerRotation = 128; //encoder pulse per rotation
 	public static final double driveGearRatio = 1/1; //ratio between wheel and encoder
@@ -52,7 +52,15 @@ public class ElectricalConstants {
 	public static final double driveEncoderDistPerTick =(Math.PI*2*driveWheelRadius)/driveEncoderPulsePerRot;
 	public static final boolean leftDriveTrainEncoderReverse = false;
 	public static final boolean rightDriveTrainEncoderReverse = false;
-	 */
 	
-
+	
+	//***************************************************************************
+	//****************************** DRIVE ENCODERS *****************************
+	//***************************************************************************
+	
+	public static final int LEFT_DRIVE_ENCODER_A                            = 9;
+	public static final int LEFT_DRIVE_ENCODER_B                            = 8;
+	
+	public static final int RIGHT_DRIVE_ENCODER_A                           = 1;
+	public static final int RIGHT_DRIVE_ENCODER_B                           = 0;
 }

@@ -1,8 +1,11 @@
 package org.usfirst.frc.team4001.robot;
 
 import edu.wpi.first.wpilibj.buttons.Button;
-
-import org.usfirst.frc.team4001.robot.commands.ExampleCommand;
+import org.usfirst.frc.team4001.robot.commands.*;
+import com.team4001.lib.util.*;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import edu.wpi.first.wpilibj.Joystick;
+import edu.wpi.first.wpilibj.buttons.JoystickButton;
 
 /**
  * This class is the glue that binds the controls on the physical operator
@@ -16,7 +19,7 @@ public class OI {
 	// number it is.
 	// Joystick stick = new Joystick(port);
 	// Button button = new JoystickButton(stick, buttonNumber);
-
+	
 	// There are a few additional built in buttons you can use. Additionally,
 	// by subclassing Button you can create custom triggers and bind those to
 	// commands the same as any other Button.
@@ -36,4 +39,11 @@ public class OI {
 	// Start the command when the button is released and let it run the command
 	// until it is finished as determined by it's isFinished method.
 	// button.whenReleased(new ExampleCommand());
+	
+	public Gamepad game_controller;
+	
+	
+	public OI(){
+		game_controller = new Gamepad(0);
+	}
 }

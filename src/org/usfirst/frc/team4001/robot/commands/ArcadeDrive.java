@@ -1,28 +1,28 @@
 package org.usfirst.frc.team4001.robot.commands;
 
-import org.usfirst.frc.team4001.robot.Robot;
-
 import edu.wpi.first.wpilibj.command.Command;
-import org.usfirst.frc.team4001.robot.*;
+import org.usfirst.frc.team4001.robot.Robot;
+import org.usfirst.frc.team4001.robot.OI;
 
 /**
  *
  */
-public class GearDrop_ResetEncoders extends Command {
+public class ArcadeDrive extends Command {
 
-    public GearDrop_ResetEncoders() {
+    public ArcadeDrive() {
         // Use requires() here to declare subsystem dependencies
-        // eg. requires(chassis);
-    	requires(Robot.geardrop);
+        requires(Robot.drive);
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	Robot.geardrop.resetEncoders();
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
+    	double moveForward = Robot.oi.game_controller.getLeftY();
+    	double turn = Robot.oi.game_controller.getRightX();
+    	Robot.drive.arcadeDrive(moveForward, turn);
     }
 
     // Make this return true when this Command no longer needs to run execute()
@@ -32,6 +32,7 @@ public class GearDrop_ResetEncoders extends Command {
 
     // Called once after isFinished returns true
     protected void end() {
+    	Robot.drive.hardStop();
     }
 
     // Called when another command which requires one or more of the same
