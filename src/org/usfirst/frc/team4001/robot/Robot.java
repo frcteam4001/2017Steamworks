@@ -8,10 +8,10 @@ import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
+import com.team4001.lib.util.NTInterface;
 import org.usfirst.frc.team4001.robot.commands.*;
 import org.usfirst.frc.team4001.robot.subsystems.DriveTrain;
 import org.usfirst.frc.team4001.robot.subsystems.GearDrop;
-import org.usfirst.frc.team4001.robot.subsystems.ExampleSubsystem;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -22,7 +22,6 @@ import org.usfirst.frc.team4001.robot.subsystems.ExampleSubsystem;
  */
 public class Robot extends IterativeRobot {
 
-	public static final ExampleSubsystem exampleSubsystem = new ExampleSubsystem();
 	public static OI oi;
 
 	Command autonomousCommand;
@@ -30,7 +29,10 @@ public class Robot extends IterativeRobot {
 	
 	public static DriveTrain drive;
 	public static GearDrop geardrop;
+	public static NTInterface networkTableCom;
 
+	
+	
 	/**
 	 * This function is run when the robot is first started up and should be
 	 * used for any initialization code.
@@ -40,8 +42,8 @@ public class Robot extends IterativeRobot {
 		oi = new OI();
 		drive = new DriveTrain();
 		geardrop = new GearDrop();
+		networkTableCom = new NTInterface();
 
-		chooser.addDefault("Default Auto", new ExampleCommand());
 		// chooser.addObject("My Auto", new MyAutoCommand());
 		SmartDashboard.putData("Auto mode", chooser);
 		//SmartDashboard.putData("Open Left Gear Holder", new GearHolderLeftFullOpen());
@@ -125,9 +127,10 @@ public class Robot extends IterativeRobot {
 		SmartDashboard.putNumber("Left Gear Motor Position", geardrop.getLeftHolderEncPosition());
 		SmartDashboard.putNumber("Left Drive Encoder", drive.getLeftEncoderDist());
 		SmartDashboard.putNumber("Right Drive Encoder", drive.getRightEncoderDist());
-		SmartDashboard.putNumber("Left Encoder Rate", drive.getLeftEncoderRate());
-		SmartDashboard.putNumber("Right Encoder Rate", drive.getRightEncoderRate());
 		SmartDashboard.putNumber("Gyro Angle", drive.getYaw());
+		
+		
+		
 		Scheduler.getInstance().run();
 	}
 
