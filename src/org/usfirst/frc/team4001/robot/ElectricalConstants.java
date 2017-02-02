@@ -67,4 +67,11 @@ public class ElectricalConstants {
 	
 	public static final int RIGHT_DRIVE_ENCODER_A                           = 6;
 	public static final int RIGHT_DRIVE_ENCODER_B                           = 7;
+	
+	//***************************************************************************
+	//****************************** CLIMBERS ***********************************
+	//***************************************************************************
+	
+	public static final int CLIMBER_MOTOR                                   = 420;
+	
 }
