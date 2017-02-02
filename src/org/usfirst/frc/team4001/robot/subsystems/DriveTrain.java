@@ -304,14 +304,47 @@ public class DriveTrain extends Subsystem {
 	}
 	
 	/////////ultrasonic methods
+	/**
+	 * Returns the reading of the left ultrasonic sensor in inches
+	 * @return Distance in inches
+	 */
 	public double getLeftUltrasonicDist() {
 		return ultrasonic_left.getValue();
 	}
 	
+	/**
+	 * Returns the reading of the right ultrasonic sensor in inches
+	 * @return Distance in inches
+	 */
 	public double getRightUltrasonicDist() {
 		return ultrasonic_right.getValue();
 	}
     
+	/**
+	 * Determines if both sensors are fixed on the same surface
+	 * @return true if both sensors are on the same surface, else false
+	 */
+	public boolean ultrasonicsOnSameSurface() {
+		if (Math.abs(getLeftUltrasonicDist() - getRightUltrasonicDist()) <= NumberConstants.max_ultrasonic_reading_difference) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+	
+	/**
+	 * Returns the angle at which the robot must turn when sensors are not pointing at the same 
+	 * surface based on the direction that it must turn to have the sensors pointing at the same 
+	 * surface.
+	 * @return angle
+	 */
+	public double getBlindTurnAngle(){
+		if (getLeftUltrasonicDist() > getRightUltrasonicDist()) {
+			return -1.0 * NumberConstants.blind_turn_angle;
+		} else {
+			return NumberConstants.blind_turn_angle;
+		}
+	}
 	
 }
 
