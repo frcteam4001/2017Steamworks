@@ -26,9 +26,10 @@ public class Align extends CommandGroup {
         // e.g. if Command1 requires chassis, and Command2 requires arm,
         // a CommandGroup containing them would require both the chassis and the
         // arm.
-    	while (!Robot.drive.ultrasonicsOnSameSurface()) {
-    		
-    	}
     	
+    	while (!Robot.drive.ultrasonicsOnSameSurface()) {
+    		new TurnCommand(Robot.drive.getBlindTurnAngle(), 0.5, 1);
+    	}
+    	new TurnCommand(Robot.drive.getTurnAngle(), 0.5, 1);
     }
 }

@@ -212,20 +212,6 @@ public class DriveTrain extends Subsystem {
 		resetGyro();
 	}
 	
-	
-	/**
-	 * Calculates and returns the angle, in degrees, at which the robot must turn so it is alligned with the surface in front of it
-	 * @return angle in degrees 
-	 */
-    public double getOffset() {
-    	if (getRightUltrasonicDist() == getLeftUltrasonicDist()) {
-    		return 0.0;
-    	} else {
-    		double angleWithSurface = Math.toDegrees(Math.atan((NumberConstants.distance_between_sensors) / (getRightUltrasonicDist() - getLeftUltrasonicDist())));
-    		double turnAngle = Math.signum(angleWithSurface) * (90.0 - Math.abs(angleWithSurface));
-    		return turnAngle;
-    	}
-    }
     
     //////////encoder methods
     /**
@@ -346,5 +332,20 @@ public class DriveTrain extends Subsystem {
 		}
 	}
 	
+	/**
+	 * Calculates and returns the angle, in degrees, at which the robot must turn so it is 
+	 * alligned with the surface in front of it. Assumes both ultrasoncis are pointing at the 
+	 * same surface.
+	 * @return angle in degrees 
+	 */
+    public double getTurnAngle() {
+    	if (getRightUltrasonicDist() == getLeftUltrasonicDist()) {
+    		return 0.0;
+    	} else {
+    		double angleWithSurface = Math.toDegrees(Math.atan((NumberConstants.distance_between_sensors) / (getRightUltrasonicDist() - getLeftUltrasonicDist())));
+    		double turnAngle = Math.signum(angleWithSurface) * (90.0 - Math.abs(angleWithSurface));
+    		return turnAngle;
+    	}
+    }
 }
 
