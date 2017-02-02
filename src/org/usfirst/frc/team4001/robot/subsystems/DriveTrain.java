@@ -218,7 +218,13 @@ public class DriveTrain extends Subsystem {
 	 * @return angle in degrees 
 	 */
     public double getOffset() {
-    	return Math.toDegrees(Math.atan((NumberConstants.distance_between_sensors) / (getRightUltrasonicDist() - getLeftUltrasonicDist())));
+    	if (getRightUltrasonicDist() == getLeftUltrasonicDist()) {
+    		return 0.0;
+    	} else {
+    		double angleWithSurface = Math.toDegrees(Math.atan((NumberConstants.distance_between_sensors) / (getRightUltrasonicDist() - getLeftUltrasonicDist())));
+    		double turnAngle = Math.signum(angleWithSurface) * (90.0 - Math.abs(angleWithSurface));
+    		return turnAngle;
+    	}
     }
     
     //////////encoder methods
