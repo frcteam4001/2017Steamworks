@@ -9,6 +9,9 @@ import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 import com.team4001.lib.util.NTInterface;
+import com.team4001.lib.util.NTInterface.Subsystem;
+import com.team4001.lib.util.NTInterface.Key;
+
 import org.usfirst.frc.team4001.robot.commands.*;
 import org.usfirst.frc.team4001.robot.subsystems.DriveTrain;
 import org.usfirst.frc.team4001.robot.subsystems.GearDrop;
@@ -30,7 +33,7 @@ public class Robot extends IterativeRobot {
 	public static DriveTrain drive;
 	public static GearDrop geardrop;
 	public static NTInterface networkTableCom;
-
+	public static double gearZone;
 	
 	
 	/**
@@ -129,8 +132,17 @@ public class Robot extends IterativeRobot {
 		SmartDashboard.putNumber("Right Drive Encoder", drive.getRightEncoderDist());
 		SmartDashboard.putNumber("Gyro Angle", drive.getYaw());
 		
+		networkTableCom.putNumber(Subsystem.DriveTrain, Key.RightDriveEncoder, drive.getRightEncoderDist());
+		networkTableCom.putNumber(Subsystem.DriveTrain, Key.LeftDriveEncoder, drive.getLeftEncoderDist());
+		networkTableCom.putNumber(Subsystem.DriveTrain, Key.GyroAngle, drive.getYaw());
+		networkTableCom.putNumber(Subsystem.DriveTrain, Key.LeftUltrasonicDistance, drive.getLeftUltrasonicDist());
+		networkTableCom.putNumber(Subsystem.DriveTrain, Key.RightUltrasonicDistance, drive.getRightUltrasonicDist());
 		
+		networkTableCom.putNumber(Subsystem.GearDrop, Key.RightGearMotorPosition, geardrop.getRightHolderEncPosition()/1.0);
+		networkTableCom.putNumber(Subsystem.GearDrop, Key.LeftGearMotorPosition, geardrop.getLeftHolderEncPosition()/1.0);
 		
+		gearZone = networkTableCom.getNumber(Subsystem.GearZone, Key.GearZone);
+		System.out.println("gear zone: " + Double.toString(gearZone));
 		Scheduler.getInstance().run();
 	}
 

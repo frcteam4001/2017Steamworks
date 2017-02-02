@@ -7,7 +7,7 @@ import edu.wpi.first.wpilibj.networktables.*;
 public class NTInterface {
 	
 	public enum Subsystem {
-		DriveTrain, GearDrop
+		DriveTrain, GearDrop, GearZone
 	}
 	
 	public enum Key {
@@ -20,7 +20,10 @@ public class NTInterface {
 		RightDriveEncoder("Right Drive Encoder"),
 		GyroAngle("Gyro Angle"),
 		LeftUltrasonicDistance("Left Ultrasonic Distance"), 
-		RightUltrasonicDistance("Right Ultrasonic Distance")
+		RightUltrasonicDistance("Right Ultrasonic Distance"),
+		
+		//GearZone valid keys
+		GearZone("zone")
 		;
 		
 		
