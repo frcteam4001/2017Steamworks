@@ -83,6 +83,7 @@ public class DriveTrain extends Subsystem {
 		gyro = new ADXRS450_Gyro();
 		gyro.calibrate();
 		
+		
 		//initialize PID controllers
 		drivePID = new PIDController(NumberConstants.pDrive, NumberConstants.iDrive, NumberConstants.dDrive);
 		gyroPID = new PIDController(NumberConstants.pGyro, NumberConstants.iGyro, NumberConstants.dGyro);
@@ -326,9 +327,9 @@ public class DriveTrain extends Subsystem {
 	 */
 	public double getBlindTurnAngle(){
 		if (getLeftUltrasonicDist() > getRightUltrasonicDist()) {
-			return -1.0 * NumberConstants.blind_turn_angle;
-		} else {
 			return NumberConstants.blind_turn_angle;
+		} else {
+			return -1.0 * NumberConstants.blind_turn_angle;
 		}
 	}
 	
@@ -342,7 +343,7 @@ public class DriveTrain extends Subsystem {
     	if (getRightUltrasonicDist() == getLeftUltrasonicDist()) {
     		return 0.0;
     	} else {
-    		double angleWithSurface = Math.toDegrees(Math.atan((NumberConstants.distance_between_sensors) / (getRightUltrasonicDist() - getLeftUltrasonicDist())));
+    		double angleWithSurface = Math.toDegrees(Math.atan((NumberConstants.distance_between_sensors) / (getLeftUltrasonicDist() - getRightUltrasonicDist())));
     		double turnAngle = Math.signum(angleWithSurface) * (90.0 - Math.abs(angleWithSurface));
     		return turnAngle;
     	}

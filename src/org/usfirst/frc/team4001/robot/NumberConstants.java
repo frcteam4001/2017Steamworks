@@ -47,7 +47,7 @@ public class NumberConstants {
     //************************* ULTRASONIC CALCULATIONS ************************
     //**************************************************************************
 	
-	public static final double distance_between_sensors					 = 10; //inches
+	public static final double distance_between_sensors					 = 28; //inches
 	
 	//The maximum reading difference, in inches, for the sensors to be considered fixed on the
 	//surface. If the difference is greater, the sensors are fixed on different surfaces
