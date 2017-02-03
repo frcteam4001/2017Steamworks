@@ -9,9 +9,11 @@ import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 import com.team4001.lib.util.NTInterface;
+import com.team4001.lib.util.NTInterface.Subsystem;
+import com.team4001.lib.util.NTInterface.Key;
+
 import org.usfirst.frc.team4001.robot.commands.*;
-import org.usfirst.frc.team4001.robot.subsystems.DriveTrain;
-import org.usfirst.frc.team4001.robot.subsystems.GearDrop;
+import org.usfirst.frc.team4001.robot.subsystems.*;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -29,8 +31,9 @@ public class Robot extends IterativeRobot {
 	
 	public static DriveTrain drive;
 	public static GearDrop geardrop;
+	public static Climber climber;
 	public static NTInterface networkTableCom;
-
+	public static double gearZone;
 	
 	
 	/**
@@ -42,6 +45,7 @@ public class Robot extends IterativeRobot {
 		oi = new OI();
 		drive = new DriveTrain();
 		geardrop = new GearDrop();
+		climber = new Climber();
 		networkTableCom = new NTInterface();
 
 		// chooser.addObject("My Auto", new MyAutoCommand());
@@ -129,8 +133,22 @@ public class Robot extends IterativeRobot {
 		SmartDashboard.putNumber("Right Drive Encoder", drive.getRightEncoderDist());
 		SmartDashboard.putNumber("Gyro Angle", drive.getYaw());
 		
+
 		System.out.println("left: " + Double.toString(drive.getLeftUltrasonicDist()));
 		System.out.println("right: " + Double.toString(drive.getRightUltrasonicDist()));
+
+		networkTableCom.putNumber(Subsystem.DriveTrain, Key.RightDriveEncoder, drive.getRightEncoderDist());
+		networkTableCom.putNumber(Subsystem.DriveTrain, Key.LeftDriveEncoder, drive.getLeftEncoderDist());
+		networkTableCom.putNumber(Subsystem.DriveTrain, Key.GyroAngle, drive.getYaw());
+		networkTableCom.putNumber(Subsystem.DriveTrain, Key.LeftUltrasonicDistance, drive.getLeftUltrasonicDist());
+		networkTableCom.putNumber(Subsystem.DriveTrain, Key.RightUltrasonicDistance, drive.getRightUltrasonicDist());
+		
+		networkTableCom.putNumber(Subsystem.GearDrop, Key.RightGearMotorPosition, geardrop.getRightHolderEncPosition()/1.0);
+		networkTableCom.putNumber(Subsystem.GearDrop, Key.LeftGearMotorPosition, geardrop.getLeftHolderEncPosition()/1.0);
+		
+		gearZone = networkTableCom.getNumber(Subsystem.GearZone, Key.GearZone);
+		System.out.println("gear zone: " + Double.toString(gearZone));
+
 		
 		Scheduler.getInstance().run();
 	}

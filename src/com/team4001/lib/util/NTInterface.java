@@ -7,7 +7,7 @@ import edu.wpi.first.wpilibj.networktables.*;
 public class NTInterface {
 	
 	public enum Subsystem {
-		DriveTrain, GearDrop
+		DriveTrain, GearDrop, GearZone
 	}
 	
 	public enum Key {
@@ -20,7 +20,10 @@ public class NTInterface {
 		RightDriveEncoder("Right Drive Encoder"),
 		GyroAngle("Gyro Angle"),
 		LeftUltrasonicDistance("Left Ultrasonic Distance"), 
-		RightUltrasonicDistance("Right Ultrasonic Distance")
+		RightUltrasonicDistance("Right Ultrasonic Distance"),
+		
+		//GearZone valid keys
+		GearZone("zone")
 		;
 		
 		
@@ -46,6 +49,7 @@ public class NTInterface {
 	//Declare all the tables
 	NetworkTable driveTrain;
 	NetworkTable gearDrop;
+	NetworkTable GearZone;
 	
 	public NTInterface() {
 		//Initialize the connection
@@ -55,10 +59,14 @@ public class NTInterface {
 		
 		//Initialize the tables
 		driveTrain = NetworkTable.getTable("DriveTrain");
+		gearDrop = NetworkTable.getTable("Gear Drop");
+		GearZone = NetworkTable.getTable("GearZone");
 	}
 	
 	/**
-	Publishes a number to a key on a table.
+	Publishes a number to a key on a table. To use this method, import NTInterface.Key and
+	NTInterface.Subsystem and pass the parameters in the form of "Subsystem.Foo" and "Key.Foo".
+	WARNING: This method does NOT check if the key is from the correct subsystem!
 	@param subsystem
 		the name of the subsystem which would be the the name of the table
 	@param key
@@ -78,7 +86,9 @@ public class NTInterface {
 	}
 	
 	/**
-	Publishes a boolean to a key on a table.
+	Publishes a boolean to a key on a table. To use this method, import NTInterface.Key and
+	NTInterface.Subsystem and pass the parameters in the form of "Subsystem.Foo" and "Key.Foo".
+	WARNING: This method does NOT check if the key is from the correct subsystem!
 	@param subsystem
 		the name of the subsystem which would be the the name of the table
 	@param key
@@ -98,7 +108,9 @@ public class NTInterface {
 	}
 	
 	/**
-	Returns a number from a key on a table.
+	Returns a number from a key on a table. To use this method, import NTInterface.Key and
+	NTInterface.Subsystem and pass the parameters in the form of "Subsystem.Foo" and "Key.Foo".
+	WARNING: This method does NOT check if the key is from the correct subsystem!
 	@param subsystem
 		the name of the subsystem which would be the the name of the table
 	@param key
@@ -111,12 +123,16 @@ public class NTInterface {
 				return driveTrain.getNumber(key.toString(), -20000);
 			case GearDrop:
 				return gearDrop.getNumber(key.toString(), -20000);
+			case GearZone:
+				return GearZone.getNumber(key.toString(), -20000);
 		}
 		return -30000;
 	}
 	
 	/**
-	Returns a boolean from a key on a table.
+	Returns a boolean from a key on a table. To use this method, import NTInterface.Key and
+	NTInterface.Subsystem and pass the parameters in the form of "Subsystem.Foo" and "Key.Foo".
+	WARNING: This method does NOT check if the key is from the correct subsystem!
 	@param subsystem
 		the name of the subsystem which would be the the name of the table
 	@param key
@@ -129,6 +145,8 @@ public class NTInterface {
 				return driveTrain.getBoolean(key.toString(), false);
 			case GearDrop:
 				return gearDrop.getBoolean(key.toString(), false);
+			case GearZone:
+				return GearZone.getBoolean(key.toString(), false);
 		}
 		return false;
 	}
