@@ -129,7 +129,8 @@ public class Robot extends IterativeRobot {
 		SmartDashboard.putNumber("Right Drive Encoder", drive.getRightEncoderDist());
 		SmartDashboard.putNumber("Gyro Angle", drive.getYaw());
 		
-		
+		System.out.println("left: " + Double.toString(drive.getLeftUltrasonicDist()));
+		System.out.println("right: " + Double.toString(drive.getRightUltrasonicDist()));
 		
 		Scheduler.getInstance().run();
 	}
