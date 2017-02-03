@@ -64,7 +64,9 @@ public class NTInterface {
 	}
 	
 	/**
-	Publishes a number to a key on a table.
+	Publishes a number to a key on a table. To use this method, import NTInterface.Key and
+	NTInterface.Subsystem and pass the parameters in the form of "Subsystem.Foo" and "Key.Foo".
+	WARNING: This method does NOT check if the key is from the correct subsystem!
 	@param subsystem
 		the name of the subsystem which would be the the name of the table
 	@param key
@@ -84,7 +86,9 @@ public class NTInterface {
 	}
 	
 	/**
-	Publishes a boolean to a key on a table.
+	Publishes a boolean to a key on a table. To use this method, import NTInterface.Key and
+	NTInterface.Subsystem and pass the parameters in the form of "Subsystem.Foo" and "Key.Foo".
+	WARNING: This method does NOT check if the key is from the correct subsystem!
 	@param subsystem
 		the name of the subsystem which would be the the name of the table
 	@param key
@@ -104,7 +108,9 @@ public class NTInterface {
 	}
 	
 	/**
-	Returns a number from a key on a table.
+	Returns a number from a key on a table. To use this method, import NTInterface.Key and
+	NTInterface.Subsystem and pass the parameters in the form of "Subsystem.Foo" and "Key.Foo".
+	WARNING: This method does NOT check if the key is from the correct subsystem!
 	@param subsystem
 		the name of the subsystem which would be the the name of the table
 	@param key
@@ -124,7 +130,9 @@ public class NTInterface {
 	}
 	
 	/**
-	Returns a boolean from a key on a table.
+	Returns a boolean from a key on a table. To use this method, import NTInterface.Key and
+	NTInterface.Subsystem and pass the parameters in the form of "Subsystem.Foo" and "Key.Foo".
+	WARNING: This method does NOT check if the key is from the correct subsystem!
 	@param subsystem
 		the name of the subsystem which would be the the name of the table
 	@param key
@@ -137,6 +145,8 @@ public class NTInterface {
 				return driveTrain.getBoolean(key.toString(), false);
 			case GearDrop:
 				return gearDrop.getBoolean(key.toString(), false);
+			case GearZone:
+				return GearZone.getBoolean(key.toString(), false);
 		}
 		return false;
 	}
