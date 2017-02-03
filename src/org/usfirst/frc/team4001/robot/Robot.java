@@ -13,8 +13,7 @@ import com.team4001.lib.util.NTInterface.Subsystem;
 import com.team4001.lib.util.NTInterface.Key;
 
 import org.usfirst.frc.team4001.robot.commands.*;
-import org.usfirst.frc.team4001.robot.subsystems.DriveTrain;
-import org.usfirst.frc.team4001.robot.subsystems.GearDrop;
+import org.usfirst.frc.team4001.robot.subsystems.*;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -32,6 +31,7 @@ public class Robot extends IterativeRobot {
 	
 	public static DriveTrain drive;
 	public static GearDrop geardrop;
+	public static Climber climber;
 	public static NTInterface networkTableCom;
 	public static double gearZone;
 	
@@ -45,6 +45,7 @@ public class Robot extends IterativeRobot {
 		oi = new OI();
 		drive = new DriveTrain();
 		geardrop = new GearDrop();
+		climber = new Climber();
 		networkTableCom = new NTInterface();
 
 		// chooser.addObject("My Auto", new MyAutoCommand());

@@ -14,7 +14,11 @@ public class Climber extends Subsystem
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
 	
-	public CANTalon climbmotor = new CANTalon(ElectricalConstants.CLIMBER_MOTOR);
+	public CANTalon climbmotor; 
+	
+	public Climber() {
+		climbmotor = new CANTalon(ElectricalConstants.CLIMBER_MOTOR);
+	}
 	
     public void initDefaultCommand()
     {
