@@ -143,6 +143,7 @@ public class Robot extends IterativeRobot {
 		
 		gearZone = networkTableCom.getNumber(Subsystem.GearZone, Key.GearZone);
 		System.out.println("gear zone: " + Double.toString(gearZone));
+		
 		Scheduler.getInstance().run();
 	}
 

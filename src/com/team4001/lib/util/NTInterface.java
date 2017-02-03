@@ -49,6 +49,7 @@ public class NTInterface {
 	//Declare all the tables
 	NetworkTable driveTrain;
 	NetworkTable gearDrop;
+	NetworkTable GearZone;
 	
 	public NTInterface() {
 		//Initialize the connection
@@ -58,6 +59,8 @@ public class NTInterface {
 		
 		//Initialize the tables
 		driveTrain = NetworkTable.getTable("DriveTrain");
+		gearDrop = NetworkTable.getTable("Gear Drop");
+		GearZone = NetworkTable.getTable("GearZone");
 	}
 	
 	/**
@@ -114,6 +117,8 @@ public class NTInterface {
 				return driveTrain.getNumber(key.toString(), -20000);
 			case GearDrop:
 				return gearDrop.getNumber(key.toString(), -20000);
+			case GearZone:
+				return GearZone.getNumber(key.toString(), -20000);
 		}
 		return -30000;
 	}
