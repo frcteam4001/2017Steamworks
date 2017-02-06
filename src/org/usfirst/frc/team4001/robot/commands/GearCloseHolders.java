@@ -39,6 +39,8 @@ public class GearCloseHolders extends Command {
 
     // Called once after isFinished returns true
     protected void end() {
+    	Robot.geardrop.set_closed(true);
+
     }
 
     // Called when another command which requires one or more of the same
