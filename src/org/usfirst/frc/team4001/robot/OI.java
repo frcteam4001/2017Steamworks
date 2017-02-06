@@ -47,13 +47,15 @@ public class OI {
 	JoystickButton climbcon;
 	
 	public OI(){
-		game_controller = new Gamepad(3);
 		
+		game_controller = new Gamepad(3);
+		/*
 		//change button binding configuration later
 		climbexp = game_controller.getButtonX();
 		climbcon = game_controller.getButtonY();
 		
 		climbexp.whenPressed(new ClimbExpand());
 		climbcon.whenPressed(new ClimbContract());
+		*/
 	}
 }

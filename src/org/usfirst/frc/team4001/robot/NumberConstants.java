@@ -20,8 +20,9 @@ public class NumberConstants {
 	public static final double geardrop_holder_close_i					 = 0.0;
 	public static final double geardrop_holder_close_d					 = 0.3;
 	public static final double geardrop_holder_close_f					 = 0.0;
-	public static final int geardrop_holder_close_error					 = 0;
+	public static final int geardrop_holder_close_error					 = 10;
 	public static final int geardrop_holder_close_position				 = 15200; //pulses
+
 	
 	//placement zones in pulses
 	public static final int geardrop_zone1 								= 15200;	// far left position

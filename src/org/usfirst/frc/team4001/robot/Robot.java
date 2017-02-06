@@ -45,7 +45,7 @@ public class Robot extends IterativeRobot {
 		oi = new OI();
 		drive = new DriveTrain();
 		geardrop = new GearDrop();
-		climber = new Climber();
+		//climber = new Climber();
 		networkTableCom = new NTInterface();
 
 		// chooser.addObject("My Auto", new MyAutoCommand());
@@ -57,7 +57,8 @@ public class Robot extends IterativeRobot {
 		SmartDashboard.putData("ResetEncoders", new GearDrop_ResetEncoders());
 		
 
-		SmartDashboard.putData("SlideTest", new GearSlideToPosition(8000));
+		//SmartDashboard.putData("SlideTest", new GearSlideToPosition(8000));
+		SmartDashboard.putData("Slide To Zone", new GearSlidetoZone());
 
 		
 	}

@@ -1,6 +1,7 @@
 package org.usfirst.frc.team4001.robot.subsystems;
 
 import org.usfirst.frc.team4001.robot.ElectricalConstants;
+import org.usfirst.frc.team4001.robot.NumberConstants;
 
 import com.ctre.CANTalon;
 import com.ctre.CANTalon.FeedbackDevice;
@@ -86,7 +87,7 @@ public class GearDrop extends Subsystem {
   
     
     public Boolean pid_rightPositionReached(){
-    	return gear_drop_motor_right.getClosedLoopError() == 0;
+    	return Math.abs(gear_drop_motor_right.getClosedLoopError()) < NumberConstants.geardrop_holder_close_error;
     }
   
     
