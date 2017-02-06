@@ -67,6 +67,7 @@ public class GearHoldersFullOpen extends Command {
     		Robot.geardrop.resetEncoders();
  
     	}
+    	Robot.geardrop.set_closed(false);
     }
     
 

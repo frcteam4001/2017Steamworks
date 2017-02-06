@@ -72,6 +72,6 @@ public class ElectricalConstants {
 	//****************************** CLIMBERS ***********************************
 	//***************************************************************************
 	
-	public static final int CLIMBER_MOTOR                                   = 420;
+	public static final int CLIMBER_MOTOR                                   = 8;
 	
 }

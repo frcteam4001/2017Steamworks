@@ -24,6 +24,7 @@ public class GearDrop extends Subsystem {
 	public double directionCalibration;
 	
 	private boolean holderPairing;
+	private boolean closed;
 	
 	public GearDrop(){
    		//Initialize components
@@ -38,9 +39,19 @@ public class GearDrop extends Subsystem {
    		gear_drop_motor_left.configPeakOutputVoltage(+12f, -12f);    	
    		gear_drop_motor_left.setAllowableClosedLoopErr(0);
    		
+   		this.closed = false;
+   		
    	}
 	
-
+	public boolean get_closed (){
+		return this.closed;
+	}
+	
+	public void set_closed(boolean state){
+		this.closed = state;
+	}
+	
+	
     public void pid_initRightPosition(double p, double i, double d, double f, int closedLoopError, boolean resetEncoder){
     	gear_drop_motor_right.setProfile(0);
 		gear_drop_motor_right.setF(f);
@@ -71,7 +82,6 @@ public class GearDrop extends Subsystem {
     
     public void pid_moveRightToPosition(int position){
     	gear_drop_motor_right.set(position);
-
     }
   
     

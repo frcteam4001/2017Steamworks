@@ -15,13 +15,23 @@ public class NumberConstants {
 	
 	public static final double geardrop_openpower 						 = 0.5;
 	
-	// pid constants for gear holder close
+	// pid constants for gear holder
 	public static final double geardrop_holder_close_p					 = 0.9;
 	public static final double geardrop_holder_close_i					 = 0.0;
 	public static final double geardrop_holder_close_d					 = 0.3;
 	public static final double geardrop_holder_close_f					 = 0.0;
 	public static final int geardrop_holder_close_error					 = 0;
 	public static final int geardrop_holder_close_position				 = 15200; //pulses
+	
+	//placement zones in pulses
+	public static final int geardrop_zone1 								= 15200;	// far left position
+	public static final int geardrop_zone2								= 11400;
+	public static final int geardrop_zone3								= 7600;
+	public static final int geardrop_zone4								= 3800;
+	public static final int geardrop_zone5								= 0;		// the far right position
+	
+	
+	
 
 	//**************************************************************************
     //*************************** PID VALUES (DRIVE) ***************************
