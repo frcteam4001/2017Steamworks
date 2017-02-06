@@ -22,6 +22,9 @@ public class NumberConstants {
 	public static final double geardrop_holder_close_f					 = 0.0;
 	public static final int geardrop_holder_close_error					 = 0;
 	public static final int geardrop_holder_close_position				 = 15200; //pulses
+	
+	//The maximum reading from the IR sensor when a gear is in place
+	public static final int IRSensorTreshold							 = -1; 	
 
 	//**************************************************************************
     //*************************** PID VALUES (DRIVE) ***************************
