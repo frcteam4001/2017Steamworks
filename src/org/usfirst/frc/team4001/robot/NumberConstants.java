@@ -56,5 +56,9 @@ public class NumberConstants {
 	//The magnitude of the angle at which the robot must turn when sensors are not pointing at
 	//the same surface.
 	public static final double blind_turn_angle							 = 15; //degrees
+	
+	//The maximum difference between the two ultrasonic readings that would be considered
+	//"aligned"
+	public static final double aligned_tolerance						 = 2; //inches
 
 }

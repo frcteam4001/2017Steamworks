@@ -348,5 +348,16 @@ public class DriveTrain extends Subsystem {
     		return turnAngle;
     	}
     }
+    /**
+     * Determines if the robot is aligned with the surface in front of it.
+     * @return true if aligned
+     */
+    public boolean isAligned() {
+    	if (Math.abs(getLeftUltrasonicDist()-getRightUltrasonicDist()) <= NumberConstants.aligned_tolerance) {
+    		return true;
+    	} else {
+    		return false;
+    	}
+    }
 }
 
