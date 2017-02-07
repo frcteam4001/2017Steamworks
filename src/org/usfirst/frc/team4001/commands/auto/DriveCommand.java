@@ -33,6 +33,7 @@ public class DriveCommand extends Command {
 	 */
 	public DriveCommand(double setPoint, double speed, double angle, double timeOut) {
 		this(setPoint, speed, angle, timeOut, 1);
+		
 	}
 
 	/**
@@ -60,7 +61,7 @@ public class DriveCommand extends Command {
 
 	// Called just before this Command runs the first time
 	protected void initialize() {
-		Robot.drive.resetEncoders();
+		Robot.drive.reset();
 		setTimeout(timeOut);
 	}
 

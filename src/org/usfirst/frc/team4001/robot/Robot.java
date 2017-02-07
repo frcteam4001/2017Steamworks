@@ -12,6 +12,7 @@ import com.team4001.lib.util.NTInterface;
 import com.team4001.lib.util.NTInterface.Subsystem;
 import com.team4001.lib.util.NTInterface.Key;
 
+import org.usfirst.frc.team4001.commands.auto.*;
 import org.usfirst.frc.team4001.robot.commands.*;
 import org.usfirst.frc.team4001.robot.subsystems.*;
 
@@ -42,10 +43,11 @@ public class Robot extends IterativeRobot {
 	 */
 	@Override
 	public void robotInit() {
-		oi = new OI();
+		
 		drive = new DriveTrain();
 		geardrop = new GearDrop();
 		climber = new Climber();
+		oi = new OI();
 		networkTableCom = new NTInterface();
 
 		// chooser.addObject("My Auto", new MyAutoCommand());
@@ -55,10 +57,11 @@ public class Robot extends IterativeRobot {
 		SmartDashboard.putData("Open Holders", new GearHoldersFullOpen());
 		SmartDashboard.putData("Close Holders", new GearCloseHolders());
 		SmartDashboard.putData("ResetEncoders", new GearDrop_ResetEncoders());
-		
+		SmartDashboard.putData("Go Forward 12 inches", new DriveCommand(0, 0.5 , 90, 3, 0.5));
 
 		SmartDashboard.putData("SlideTest", new GearSlideToPosition(8000));
-
+		
+		
 		
 	}
  
@@ -91,7 +94,8 @@ public class Robot extends IterativeRobot {
 	@Override
 	public void autonomousInit() {
 		autonomousCommand = chooser.getSelected();
-
+		
+		
 		/*
 		 * String autoSelected = SmartDashboard.getString("Auto Selector",
 		 * "Default"); switch(autoSelected) { case "My Auto": autonomousCommand
@@ -110,6 +114,7 @@ public class Robot extends IterativeRobot {
 	@Override
 	public void autonomousPeriodic() {
 		Scheduler.getInstance().run();
+		
 	}
 
 	@Override
@@ -143,7 +148,9 @@ public class Robot extends IterativeRobot {
 		networkTableCom.putNumber(Subsystem.GearDrop, Key.LeftGearMotorPosition, geardrop.getLeftHolderEncPosition()/1.0);
 		
 		gearZone = networkTableCom.getNumber(Subsystem.GearZone, Key.GearZone);
-		System.out.println("gear zone: " + Double.toString(gearZone));
+		//System.out.println("gear zone: " + Double.toString(gearZone));
+		
+		
 		
 		Scheduler.getInstance().run();
 	}
