@@ -37,10 +37,9 @@ public class GearDrop extends Subsystem {
    		left_switch = new DigitalInput(ElectricalConstants.GEARDROP_SWITCH_LEFT);
    		//IRSensor = new AnalogInput(ElectricalConstants.GEARDROP_IR_SENSOR);
    			
-   		gear_drop_motor_left.setFeedbackDevice(FeedbackDevice.QuadEncoder);
-   		gear_drop_motor_left.configNominalOutputVoltage(+0f, -0f);
-   		gear_drop_motor_left.configPeakOutputVoltage(+12f, -12f);    	
-   		gear_drop_motor_left.setAllowableClosedLoopErr(0);
+   		gear_drop_motor_right.setFeedbackDevice(FeedbackDevice.QuadEncoder);
+   		gear_drop_motor_right.configNominalOutputVoltage(+0f, -0f);
+   		gear_drop_motor_right.configPeakOutputVoltage(+12f, -12f);    	
    		
    		this.closed = false;
    		
@@ -89,7 +88,7 @@ public class GearDrop extends Subsystem {
   
     
     public Boolean pid_rightPositionReached(){
-    	return gear_drop_motor_right.getClosedLoopError() == 0;
+    	return Math.abs(gear_drop_motor_right.getClosedLoopError()) < NumberConstants.geardrop_holder_close_error;
     }
   
     
