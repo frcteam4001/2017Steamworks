@@ -10,7 +10,7 @@ package org.usfirst.frc.team4001.robot;
 
 public class NumberConstants {
 	//**************************************************************************
-    //******************************** GEARDROP ********************************
+    //***************************** GEARDROP/Intake *****************************
     //**************************************************************************
 	
 	public static final double geardrop_openpower 						 = 0.5;
@@ -28,7 +28,8 @@ public class NumberConstants {
 	
 	//The distance to the airship from which the image must be captured
 	public static final double camera_capture_distance					 = 36; // inches
-
+	
+	public static final double distance_from_loading_station			 = 5; // inches
 	//**************************************************************************
     //*************************** PID VALUES (DRIVE) ***************************
     //**************************************************************************
