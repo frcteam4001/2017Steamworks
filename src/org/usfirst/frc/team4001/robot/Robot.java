@@ -154,6 +154,7 @@ public class Robot extends IterativeRobot {
 		networkTableCom.putNumber(Subsystem.GearDrop, Key.LeftGearMotorPosition, geardrop.getLeftHolderEncPosition()/1.0);
 		
 		gearZone = networkTableCom.getNumber(Subsystem.GearZone, Key.GearZone);
+		gearZone = 2.0;
 
 		//System.out.println("gear zone: " + Double.toString(gearZone));
 		
