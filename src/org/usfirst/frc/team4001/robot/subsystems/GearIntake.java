@@ -19,12 +19,9 @@ public class GearIntake extends Subsystem {
 	}
 	
 	public void curtainUp() {
-    	curtain_motor.set(0.8);
+    	curtain_motor.set(0.5);
     }
     
-    public void curtainDown() {
-    	curtain_motor.set(-0.8);
-    }
     
     public void stopCurtain() {
     	curtain_motor.set(0);
