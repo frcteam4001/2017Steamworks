@@ -179,8 +179,13 @@ public class GearDrop extends Subsystem {
         //setDefaultCommand(new MySpecialCommand());
     }	
     
+    /**
+     * Reades the IR sensor to determine if a gear is inside the robot
+     * @return True if a gear is inside
+     */
+    
     public boolean gearIsInside() {
-    	if (IRSensor.getValue() <= NumberConstants.IRSensorTreshold) {
+    	if (IRSensor.getValue() <= NumberConstants.IR_sensor_treshold) {
     		return true;
     	} else {
     		return false;

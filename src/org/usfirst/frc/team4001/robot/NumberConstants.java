@@ -24,7 +24,10 @@ public class NumberConstants {
 	public static final int geardrop_holder_close_position				 = 15200; //pulses
 	
 	//The maximum reading from the IR sensor when a gear is in place
-	public static final int IRSensorTreshold							 = -1; 	
+	public static final int IR_sensor_treshold							 = -1; 	// to be set
+	
+	//The distance to the airship from which the image must be captured
+	public static final double camera_capture_distance					 = 36; // inches
 
 	//**************************************************************************
     //*************************** PID VALUES (DRIVE) ***************************
