@@ -180,7 +180,7 @@ public class GearDrop extends Subsystem {
     }	
     
     /**
-     * Reades the IR sensor to determine if a gear is inside the robot
+     * Reads the IR sensor to determine if a gear is inside the robot
      * @return True if a gear is inside
      */
     

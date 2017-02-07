@@ -53,6 +53,7 @@ public class PlaceGear extends CommandGroup {
     	} else {
     		// set gear position
     		// go forward (how much?)
+    		
     		while (Robot.geardrop.gearIsInside()) {
     			// wait until the gear has been removed
     		}
