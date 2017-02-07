@@ -27,15 +27,16 @@ public class GearSlidetoZone extends Command {
         	Robot.geardrop.pid_initRightPosition(NumberConstants.geardrop_holder_close_p, NumberConstants.geardrop_holder_close_i, NumberConstants.geardrop_holder_close_d, NumberConstants.geardrop_holder_close_f, NumberConstants.geardrop_holder_close_error, false);       	
         	
         	switch((int) Robot.gearZone){
-        	case 1:	this.zonePosition = NumberConstants.geardrop_zone1;
-        			break;
-        	case 2:	this.zonePosition = NumberConstants.geardrop_zone2;
-        			break;
-        	case 3:	this.zonePosition = NumberConstants.geardrop_zone3;
-        			break;
-        	case 4:	this.zonePosition = NumberConstants.geardrop_zone4;
-        			break;
-        	case 5:	this.zonePosition = NumberConstants.geardrop_zone5;   
+        	
+	        	case 1:	this.zonePosition = NumberConstants.geardrop_zone1;
+	        			break;
+	        	case 2:	this.zonePosition = NumberConstants.geardrop_zone2;
+	        			break;
+	        	case 3:	this.zonePosition = NumberConstants.geardrop_zone3;
+	        			break;
+	        	case 4:	this.zonePosition = NumberConstants.geardrop_zone4;
+	        			break;
+	        	case 5:	this.zonePosition = NumberConstants.geardrop_zone5;   
         		 	break;
         	}
    

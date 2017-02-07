@@ -35,10 +35,9 @@ public class GearDrop extends Subsystem {
    		left_switch = new DigitalInput(ElectricalConstants.GEARDROP_SWITCH_LEFT);
    		gear_roller = new CANTalon(ElectricalConstants.GEARDROP_ROLLER);
    			
-   		gear_drop_motor_left.setFeedbackDevice(FeedbackDevice.QuadEncoder);
-   		gear_drop_motor_left.configNominalOutputVoltage(+0f, -0f);
-   		gear_drop_motor_left.configPeakOutputVoltage(+12f, -12f);    	
-   		gear_drop_motor_left.setAllowableClosedLoopErr(0);
+   		gear_drop_motor_right.setFeedbackDevice(FeedbackDevice.QuadEncoder);
+   		gear_drop_motor_right.configNominalOutputVoltage(+0f, -0f);
+   		gear_drop_motor_right.configPeakOutputVoltage(+12f, -12f);    	
    		
    		this.closed = false;
    		
