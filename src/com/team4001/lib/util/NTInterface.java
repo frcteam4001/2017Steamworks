@@ -57,9 +57,17 @@ public class NTInterface {
 		NetworkTable.setTeam(4001);
 		NetworkTable.initialize();
 		
+		//Wait for connection (is it needed? I don't know :|)
+		try {
+			Thread.sleep(1000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 		//Initialize the tables
 		driveTrain = NetworkTable.getTable("DriveTrain");
-		gearDrop = NetworkTable.getTable("Gear Drop");
+		gearDrop = NetworkTable.getTable("GearDrop");
 		GearZone = NetworkTable.getTable("GearZone");
 	}
 	

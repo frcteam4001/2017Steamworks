@@ -136,7 +136,6 @@ public class PIDController {
 		// Scale output to be between 1 and -1
 		if (output != 0.0)
 			output = output / Math.abs(output) * (1.0 - Math.pow(0.1, (Math.abs(output))));
-
 		return output;
 	}
 
@@ -153,7 +152,7 @@ public class PIDController {
 	 */
 	public double calcPIDDrive(double setPoint, double currentValue, double epsilon) {
 		error = setPoint - currentValue;
-
+		
 		if (Math.abs(error) <= epsilon) {
 			atTarget = true;
 		} else {
@@ -179,7 +178,7 @@ public class PIDController {
 		// Scale output to be between 1 and -1
 		if (output != 0.0)
 			output = output / Math.abs(output) * (1.0 - Math.pow(NumberConstants.Drive_Scale, (Math.abs(output))));
-
+		
 		return output;
 	}
 

@@ -27,6 +27,9 @@ public class ElectricalConstants {
 	public static final int GEARDROP_FENCE_RIGHT		= -1;  // to be set
 	public static final int GEARDROP_ROLLER 			= 5;   // CAN
 	
+	public static final int GEARDROP_CURTAIN_MOTOR		= -1; // to be set
+	
+	public static final int GEARDROP_IR_SENSOR			= -1; // to be set
 	
 	// ************************************************************************
 	// **************************  DRIVETRAIN  ********************************

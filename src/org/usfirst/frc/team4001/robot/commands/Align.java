@@ -28,8 +28,10 @@ public class Align extends CommandGroup {
         // arm.
     	
     	while (!Robot.drive.ultrasonicsOnSameSurface()) {
-    		new TurnCommand(Robot.drive.getBlindTurnAngle(), 0.5, 1);
+    		addSequential(new TurnCommand(Robot.drive.getBlindTurnAngle(), 0.5, 1));
     	}
-    	new TurnCommand(Robot.drive.getTurnAngle(), 0.5, 1);
+    	while (!Robot.drive.isAligned()) {
+    		addSequential(new TurnCommand(Robot.drive.getTurnAngle(), 0.5, 1));
+    	}
     }
 }

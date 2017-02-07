@@ -82,6 +82,7 @@ public class DriveTrain extends Subsystem {
 		//initialize gyro
 		gyro = new ADXRS450_Gyro();
 		gyro.calibrate();
+		gyro.reset();
 		
 		
 		//initialize PID controllers
@@ -163,9 +164,9 @@ public class DriveTrain extends Subsystem {
 	public void driveStraight(double setPoint, double speed, double setAngle, double epsilon) {
 		double output = drivePID.calcPIDDrive(setPoint, getAverageDistance(), epsilon);
 		double angle = gyroPID.calcPID(setAngle, getYaw(), epsilon);
-
-		runLeftDrive((output + angle) * speed);
-		runRightDrive((-output + angle) * speed);
+		
+		runLeftDrive(-(output + angle) * speed);
+		runRightDrive(-(-output + angle) * speed);
 	}
 
 	/**
@@ -348,5 +349,17 @@ public class DriveTrain extends Subsystem {
     		return turnAngle;
     	}
     }
+    /**
+     * Determines if the robot is aligned with the surface in front of it.
+     * @return true if aligned
+     */
+    public boolean isAligned() {
+    	if (Math.abs(getLeftUltrasonicDist()-getRightUltrasonicDist()) <= NumberConstants.aligned_tolerance) {
+    		return true;
+    	} else {
+    		return false;
+    	}
+    }
+    
 }
 

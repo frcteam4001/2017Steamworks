@@ -1,12 +1,14 @@
 package org.usfirst.frc.team4001.robot.subsystems;
 
 import org.usfirst.frc.team4001.robot.ElectricalConstants;
+import org.usfirst.frc.team4001.robot.NumberConstants;
 
 import com.ctre.CANTalon;
 import com.ctre.CANTalon.FeedbackDevice;
 import com.ctre.CANTalon.TalonControlMode;
 
 import edu.wpi.first.wpilibj.DigitalInput;
+import edu.wpi.first.wpilibj.AnalogInput;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
 /**
@@ -19,7 +21,8 @@ public class GearDrop extends Subsystem {
 	private CANTalon gear_drop_motor_right;
 	private DigitalInput right_switch;
 	private DigitalInput left_switch;
-	private CANTalon gear_roller;
+	
+	//private AnalogInput IRSensor;
 	
 	public double directionCalibration;
 	
@@ -32,7 +35,7 @@ public class GearDrop extends Subsystem {
    		gear_drop_motor_right = new CANTalon(ElectricalConstants.GEARDROP_MOTOR_RIGHT);
    		right_switch = new DigitalInput(ElectricalConstants.GEARDROP_SWITCH_RIGHT);
    		left_switch = new DigitalInput(ElectricalConstants.GEARDROP_SWITCH_LEFT);
-   		gear_roller = new CANTalon(ElectricalConstants.GEARDROP_ROLLER);
+   		//IRSensor = new AnalogInput(ElectricalConstants.GEARDROP_IR_SENSOR);
    			
    		gear_drop_motor_left.setFeedbackDevice(FeedbackDevice.QuadEncoder);
    		gear_drop_motor_left.configNominalOutputVoltage(+0f, -0f);
@@ -184,4 +187,19 @@ public class GearDrop extends Subsystem {
         // Set the default command for a subsystem here.
         //setDefaultCommand(new MySpecialCommand());
     }	
+    
+    /**
+     * Reads the IR sensor to determine if a gear is inside the robot
+     * @return True if a gear is inside
+     */
+    
+//    public boolean gearIsInside() {
+//    	if (IRSensor.getValue() <= NumberConstants.IR_sensor_treshold) {
+//    		return true;
+//    	} else {
+//    		return false;
+//    	}
+//    }
+    
+    
 }
