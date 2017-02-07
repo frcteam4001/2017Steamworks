@@ -33,6 +33,7 @@ public class Robot extends IterativeRobot {
 	public static DriveTrain drive;
 	public static GearDrop geardrop;
 	public static Climber climber;
+	public static GearIntake gearIntake;
 	public static NTInterface networkTableCom;
 	public static double gearZone;
 	
@@ -47,6 +48,7 @@ public class Robot extends IterativeRobot {
 		drive = new DriveTrain();
 		geardrop = new GearDrop();
 		climber = new Climber();
+		gearIntake = new GearIntake();
 		oi = new OI();
 		networkTableCom = new NTInterface();
 

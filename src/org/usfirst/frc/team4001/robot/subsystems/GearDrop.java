@@ -21,7 +21,7 @@ public class GearDrop extends Subsystem {
 	private CANTalon gear_drop_motor_right;
 	private DigitalInput right_switch;
 	private DigitalInput left_switch;
-	private CANTalon gear_roller;
+	
 	//private AnalogInput IRSensor;
 	
 	public double directionCalibration;
@@ -34,7 +34,6 @@ public class GearDrop extends Subsystem {
    		gear_drop_motor_right = new CANTalon(ElectricalConstants.GEARDROP_MOTOR_RIGHT);
    		right_switch = new DigitalInput(ElectricalConstants.GEARDROP_SWITCH_RIGHT);
    		left_switch = new DigitalInput(ElectricalConstants.GEARDROP_SWITCH_LEFT);
-   		gear_roller = new CANTalon(ElectricalConstants.GEARDROP_ROLLER);
    		//IRSensor = new AnalogInput(ElectricalConstants.GEARDROP_IR_SENSOR);
    			
    		gear_drop_motor_left.setFeedbackDevice(FeedbackDevice.QuadEncoder);
@@ -191,4 +190,6 @@ public class GearDrop extends Subsystem {
 //    		return false;
 //    	}
 //    }
+    
+    
 }
