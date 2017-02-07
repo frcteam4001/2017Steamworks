@@ -59,7 +59,7 @@ public class Robot extends IterativeRobot {
 		SmartDashboard.putData("Open Holders", new GearHoldersFullOpen());
 		SmartDashboard.putData("Close Holders", new GearCloseHolders());
 		SmartDashboard.putData("ResetEncoders", new GearDrop_ResetEncoders());
-		SmartDashboard.putData("Go Forward 12 inches", new DriveCommand(0, 0.5 , 90, 3, 0.5));
+		SmartDashboard.putData("Go Forward 7 inches", new DriveCommand(7, 1 , 0, 3, 0.3));
 
 		SmartDashboard.putData("SlideTest", new GearSlideToPosition(8000));
 		
@@ -141,19 +141,14 @@ public class Robot extends IterativeRobot {
 		SmartDashboard.putNumber("Gyro Angle", drive.getYaw());
 		
 
-		System.out.println("left: " + Double.toString(drive.getLeftUltrasonicDist()));
-		System.out.println("right: " + Double.toString(drive.getRightUltrasonicDist()));
-
 		networkTableCom.putNumber(Subsystem.DriveTrain, Key.RightDriveEncoder, drive.getRightEncoderDist());
 		networkTableCom.putNumber(Subsystem.DriveTrain, Key.LeftDriveEncoder, drive.getLeftEncoderDist());
 		networkTableCom.putNumber(Subsystem.DriveTrain, Key.GyroAngle, drive.getYaw());
-		networkTableCom.putNumber(Subsystem.DriveTrain, Key.LeftUltrasonicDistance, drive.getLeftUltrasonicDist());
-		networkTableCom.putNumber(Subsystem.DriveTrain, Key.RightUltrasonicDistance, drive.getRightUltrasonicDist());
-		
+				
 		networkTableCom.putNumber(Subsystem.GearDrop, Key.RightGearMotorPosition, geardrop.getRightHolderEncPosition()/1.0);
 		networkTableCom.putNumber(Subsystem.GearDrop, Key.LeftGearMotorPosition, geardrop.getLeftHolderEncPosition()/1.0);
 		
-		gearZone = networkTableCom.getNumber(Subsystem.GearZone, Key.GearZone);
+		//gearZone = networkTableCom.getNumber(Subsystem.GearZone, Key.GearZone);
 		gearZone = 2.0;
 
 		//System.out.println("gear zone: " + Double.toString(gearZone));
