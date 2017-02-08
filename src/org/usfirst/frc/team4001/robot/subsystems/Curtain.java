@@ -11,29 +11,22 @@ import com.ctre.CANTalon;
 public class GearIntake extends Subsystem {
 
 	private CANTalon gear_roller;
-	//private Spark curtain_motor;
+	private Spark curtain_motor;
 	
 	public GearIntake() {
 		gear_roller = new CANTalon(ElectricalConstants.GEARDROP_ROLLER);
-   	//	curtain_motor = new Spark(ElectricalConstants.GEARDROP_CURTAIN_MOTOR);
+   		curtain_motor = new Spark(ElectricalConstants.GEARDROP_CURTAIN_MOTOR);
 	}
 	
 	public void curtainUp() {
-    //	curtain_motor.set(0.5);
+    	curtain_motor.set(0.5);
     }
     
     
     public void stopCurtain() {
-    //	curtain_motor.set(0);
+    	curtain_motor.set(0);
     }
     
-    public void turnRoller() {
-    	gear_roller.set(0.8);
-    }
-    
-    public void stopRoller() {
-    	gear_roller.set(0);
-    }
     
     public void initDefaultCommand() {
         // Set the default command for a subsystem here.
