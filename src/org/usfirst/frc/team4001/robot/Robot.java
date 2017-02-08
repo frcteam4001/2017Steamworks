@@ -16,10 +16,14 @@ import com.team4001.lib.util.NTInterface;
 import com.team4001.lib.util.NTInterface.Subsystem;
 import com.team4001.lib.util.NTInterface.Key;
 
+<<<<<<< HEAD
 import org.opencv.core.Mat;
 import org.opencv.core.Point;
 import org.opencv.core.Scalar;
 import org.opencv.imgproc.Imgproc;
+=======
+import org.usfirst.frc.team4001.commands.auto.*;
+>>>>>>> branch 'master' of https://github.com/frcteam4001/2017Steamworks.git
 import org.usfirst.frc.team4001.robot.commands.*;
 import org.usfirst.frc.team4001.robot.subsystems.*;
 
@@ -40,6 +44,7 @@ public class Robot extends IterativeRobot {
 	public static DriveTrain drive;
 	public static GearDrop geardrop;
 	public static Climber climber;
+	public static GearIntake gearIntake;
 	public static NTInterface networkTableCom;
 	public static double gearZone;
 	
@@ -50,10 +55,15 @@ public class Robot extends IterativeRobot {
 	 */
 	@Override
 	public void robotInit() {
-		oi = new OI();
+		
 		drive = new DriveTrain();
 		geardrop = new GearDrop();
+
 		climber = new Climber();
+		gearIntake = new GearIntake();
+		oi = new OI();
+
+
 		networkTableCom = new NTInterface();
 
 		// chooser.addObject("My Auto", new MyAutoCommand());
@@ -63,14 +73,17 @@ public class Robot extends IterativeRobot {
 		SmartDashboard.putData("Open Holders", new GearHoldersFullOpen());
 		SmartDashboard.putData("Close Holders", new GearCloseHolders());
 		SmartDashboard.putData("ResetEncoders", new GearDrop_ResetEncoders());
-		
+		SmartDashboard.putData("Go Forward 7 inches", new DriveCommand(7, 1 , 0, 3, 0.3));
 
-		SmartDashboard.putData("SlideTest", new GearSlideToPosition(8000));
 		Thread visionThread = new Thread(() -> {
 			// Get the UsbCamera from CameraServer
 			UsbCamera camera = CameraServer.getInstance().startAutomaticCapture();
 			// Set the resolution
 			camera.setResolution(640, 480);
+			
+		//SmartDashboard.putData("SlideTest", new GearSlideToPosition(8000));
+		SmartDashboard.putData("Slide To Zone", new GearSlidetoZone());
+		
 
 			// Get a CvSink. This will capture Mats from the camera
 			CvSink cvSink = CameraServer.getInstance().getVideo();
@@ -102,6 +115,7 @@ public class Robot extends IterativeRobot {
 		visionThread.setDaemon(true);
 		visionThread.start();
 		
+
 	}
  
 	/**
@@ -133,7 +147,8 @@ public class Robot extends IterativeRobot {
 	@Override
 	public void autonomousInit() {
 		autonomousCommand = chooser.getSelected();
-
+		
+		
 		/*
 		 * String autoSelected = SmartDashboard.getString("Auto Selector",
 		 * "Default"); switch(autoSelected) { case "My Auto": autonomousCommand
@@ -152,6 +167,7 @@ public class Robot extends IterativeRobot {
 	@Override
 	public void autonomousPeriodic() {
 		Scheduler.getInstance().run();
+		
 	}
 
 	@Override
@@ -175,17 +191,19 @@ public class Robot extends IterativeRobot {
 		SmartDashboard.putNumber("Right Drive Encoder", drive.getRightEncoderDist());
 		SmartDashboard.putNumber("Gyro Angle", drive.getYaw());
 		
+
 		networkTableCom.putNumber(Subsystem.DriveTrain, Key.RightDriveEncoder, drive.getRightEncoderDist());
 		networkTableCom.putNumber(Subsystem.DriveTrain, Key.LeftDriveEncoder, drive.getLeftEncoderDist());
 		networkTableCom.putNumber(Subsystem.DriveTrain, Key.GyroAngle, drive.getYaw());
-		networkTableCom.putNumber(Subsystem.DriveTrain, Key.LeftUltrasonicDistance, drive.getLeftUltrasonicDist());
-		networkTableCom.putNumber(Subsystem.DriveTrain, Key.RightUltrasonicDistance, drive.getRightUltrasonicDist());
-		
+				
 		networkTableCom.putNumber(Subsystem.GearDrop, Key.RightGearMotorPosition, geardrop.getRightHolderEncPosition()/1.0);
 		networkTableCom.putNumber(Subsystem.GearDrop, Key.LeftGearMotorPosition, geardrop.getLeftHolderEncPosition()/1.0);
 		
-		gearZone = networkTableCom.getNumber(Subsystem.GearZone, Key.GearZone);
-		System.out.println("gear zone: " + Double.toString(gearZone));
+		//gearZone = networkTableCom.getNumber(Subsystem.GearZone, Key.GearZone);
+		gearZone = 2.0;
+
+		//System.out.println("gear zone: " + Double.toString(gearZone));
+		
 		
 		Scheduler.getInstance().run();
 	}

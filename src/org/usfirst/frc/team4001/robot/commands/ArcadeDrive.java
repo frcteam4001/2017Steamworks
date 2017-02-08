@@ -22,10 +22,10 @@ public class ArcadeDrive extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
+    	
     	double moveForward = Robot.oi.game_controller.getLeftY();
     	double turn = Robot.oi.game_controller.getRightX();
     	Robot.drive.arcadeDrive(moveForward, turn);
-    	System.out.println(Robot.drive.getYaw());
     }
 
     // Make this return true when this Command no longer needs to run execute()

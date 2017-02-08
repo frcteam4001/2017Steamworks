@@ -41,19 +41,23 @@ public class OI {
 	// button.whenReleased(new ExampleCommand());
 	
 	public Gamepad game_controller;
+	public Button goForward;
 	
 	//button for climbing command
 	JoystickButton climbexp;
 	JoystickButton climbcon;
 	
 	public OI(){
-		game_controller = new Gamepad(3);
-		
+
+		game_controller = new Gamepad(0);
+
+		/*
 		//change button binding configuration later
 		climbexp = game_controller.getButtonX();
 		climbcon = game_controller.getButtonY();
 		
 		climbexp.whenPressed(new ClimbExpand());
 		climbcon.whenPressed(new ClimbContract());
+		*/
 	}
 }
