@@ -182,6 +182,14 @@ public class GearDrop extends Subsystem {
 		return !right_switch.get();
 	}
 
+	public void turnRoller() {
+    		gear_roller.set(0.8);
+    	}
+    
+   	public void stopRoller() {
+    		gear_roller.set(0);
+    	}
+	
     public void initDefaultCommand() {
         // Set the default command for a subsystem here.
         //setDefaultCommand(new MySpecialCommand());
