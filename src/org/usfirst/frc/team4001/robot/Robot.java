@@ -100,7 +100,7 @@ public class Robot extends IterativeRobot {
 	@Override
 	public void autonomousInit() {
 		autonomousCommand = chooser.getSelected();
-		
+		String autoSelected = SmartDashboard.getString("Auto Selector");
 		
 		/*
 		 * String autoSelected = SmartDashboard.getString("Auto Selector",
@@ -108,6 +108,23 @@ public class Robot extends IterativeRobot {
 		 * = new MyAutoCommand(); break; case "Default Auto": default:
 		 * autonomousCommand = new ExampleCommand(); break; }
 		 */
+		switch(autoSelected){
+		
+		case "Drive Straight and Stop":
+			autonomousCommand = new DriveCommand(57.36, 0.5, 0, 8, 0.2);
+			break;
+		case "Drive Red Right to Gear":
+			autonomousCommand = new DriveRedRightToGear();
+			break;
+		case "Drive Left Red to Gear":
+			autonomousCommand = new DriveRedLeftToGear();
+			break;
+		default: 
+			autonomousCommand = new DriveCommand(57.36, 0.5, 0, 8, 0.2);
+			break;
+			
+		}
+		
 
 		// schedule the autonomous command (example)
 		if (autonomousCommand != null)
