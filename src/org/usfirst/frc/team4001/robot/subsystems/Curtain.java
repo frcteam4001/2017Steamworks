@@ -10,11 +10,9 @@ import com.ctre.CANTalon;
  */
 public class GearIntake extends Subsystem {
 
-	private CANTalon gear_roller;
 	private Spark curtain_motor;
 	
 	public GearIntake() {
-		gear_roller = new CANTalon(ElectricalConstants.GEARDROP_ROLLER);
    		curtain_motor = new Spark(ElectricalConstants.GEARDROP_CURTAIN_MOTOR);
 	}
 	
