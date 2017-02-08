@@ -8,7 +8,7 @@ import com.ctre.CANTalon;
 /**
  *
  */
-public class GearIntake extends Subsystem {
+public class Curtain extends Subsystem {
 
 	private Spark curtain_motor;
 	
