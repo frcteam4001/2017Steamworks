@@ -11,21 +11,25 @@ import com.ctre.CANTalon;
 public class Curtain extends Subsystem {
 
 	private Spark curtain_motor;
-	
+
 	public GearIntake() {
-   		curtain_motor = new Spark(ElectricalConstants.GEARDROP_CURTAIN_MOTOR);
+		curtain_motor = new Spark(ElectricalConstants.GEARDROP_CURTAIN_MOTOR);
 	}
-	
+
 	public void curtainUp() {
-    	curtain_motor.set(0.5);
-    }
-    
-    
-    public void stopCurtain() {
-    	curtain_motor.set(0);
-    }
-    
-    
+		curtain_motor.set(0.5);
+	}
+
+	public void curtainDown() {
+		curtain_motor.set(-0.5);
+	}
+
+
+	public void stopCurtain() {
+		curtain_motor.set(0);
+	}
+
+
     public void initDefaultCommand() {
         // Set the default command for a subsystem here.
         //setDefaultCommand(new MySpecialCommand());
