@@ -22,7 +22,7 @@ public class GearDrop extends Subsystem {
 	private DigitalInput right_switch;
 	private DigitalInput left_switch;
 	
-	//private AnalogInput IRSensor;
+	private AnalogInput IRSensor;
 	
 	public double directionCalibration;
 	
@@ -35,7 +35,7 @@ public class GearDrop extends Subsystem {
    		gear_drop_motor_right = new CANTalon(ElectricalConstants.GEARDROP_MOTOR_RIGHT);
    		right_switch = new DigitalInput(ElectricalConstants.GEARDROP_SWITCH_RIGHT);
    		left_switch = new DigitalInput(ElectricalConstants.GEARDROP_SWITCH_LEFT);
-   		//IRSensor = new AnalogInput(ElectricalConstants.GEARDROP_IR_SENSOR);
+   		IRSensor = new AnalogInput(ElectricalConstants.GEARDROP_IR_SENSOR);
    			
    		gear_drop_motor_right.setFeedbackDevice(FeedbackDevice.QuadEncoder);
    		gear_drop_motor_right.configNominalOutputVoltage(+0f, -0f);
@@ -192,13 +192,17 @@ public class GearDrop extends Subsystem {
      * @return True if a gear is inside
      */
     
-//    public boolean gearIsInside() {
-//    	if (IRSensor.getValue() <= NumberConstants.IR_sensor_treshold) {
-//    		return true;
-//    	} else {
-//    		return false;
-//    	}
-//    }
+    public boolean gearIsInside() {
+    	if (IRSensor.getValue() <= NumberConstants.IR_sensor_treshold) {
+    		return true;
+    	} else {
+    		return false;
+    	}
+    }
+    
+    public double getIR() {
+    	return IRSensor.getValue();
+    }
     
     
 }

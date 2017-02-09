@@ -143,7 +143,7 @@ public class Robot extends IterativeRobot {
 		SmartDashboard.putNumber("Left Drive Encoder", drive.getLeftEncoderDist());
 		SmartDashboard.putNumber("Right Drive Encoder", drive.getRightEncoderDist());
 		SmartDashboard.putNumber("Gyro Angle", drive.getYaw());
-		
+		SmartDashboard.putNumber("IR READING", geardrop.getIR());
 
 		networkTableCom.putNumber(Subsystem.DriveTrain, Key.RightDriveEncoder, drive.getRightEncoderDist());
 		networkTableCom.putNumber(Subsystem.DriveTrain, Key.LeftDriveEncoder, drive.getLeftEncoderDist());
