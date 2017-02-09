@@ -97,12 +97,16 @@ public class GearDrop extends Subsystem {
     }
     
     
-    public void openRightHolder(double power){
+    public void openRightHolder(double power)
+    {
+	this.unpairmotors();
     	gear_drop_motor_right.set(-1*power);
     }
     
     
-    public void stopLeftHolder(){
+    public void stopLeftHolder()
+    {
+	this.unpairmotors();
     	gear_drop_motor_left.set(0);
     }
     
@@ -185,7 +189,33 @@ public class GearDrop extends Subsystem {
     public void initDefaultCommand() {
         // Set the default command for a subsystem here.
         //setDefaultCommand(new MySpecialCommand());
-    }	
+    }
+	
+	//new methods
+    public void unpairmotors()
+    {
+    	//unfollow the motor(follow = 0)
+    	this.gear_drop_motor_left.set(0);
+    	
+    	this.gear_drop_motor_left.changeControlMode(TalonControlMode.PercentVbus);
+    	holderPairing = false;
+    }
+    
+    public void slideleftsync()
+    {
+    	if(holderPairing)
+    	{
+    		this.gear_drop_motor_right.set(0.5);
+    	}
+    }
+    
+    public void sliderightsync()
+    {
+    	if(holderPairing)
+    	{
+    		this.gear_drop_motor_right.set(-0.5);
+    	}
+    }
     
     /**
      * Reads the IR sensor to determine if a gear is inside the robot
