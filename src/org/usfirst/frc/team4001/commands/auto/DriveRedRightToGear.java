@@ -1,7 +1,4 @@
-package org.usfirst.frc.team4001.robot.commands;
-
-import org.usfirst.frc.team4001.commands.auto.DriveCommand;
-import org.usfirst.frc.team4001.commands.auto.TurnCommand;
+package org.usfirst.frc.team4001.commands.auto;
 
 import edu.wpi.first.wpilibj.command.CommandGroup;
 
