@@ -23,7 +23,7 @@ public class GearDrop extends Subsystem {
 	private DigitalInput left_switch;
 	private CANTalon gear_roller;
 	
-	//private AnalogInput IRSensor;
+	private AnalogInput IRSensor;
 	
 	public double directionCalibration;
 	
@@ -36,9 +36,10 @@ public class GearDrop extends Subsystem {
    		gear_drop_motor_right = new CANTalon(ElectricalConstants.GEARDROP_MOTOR_RIGHT);
    		right_switch = new DigitalInput(ElectricalConstants.GEARDROP_SWITCH_RIGHT);
    		left_switch = new DigitalInput(ElectricalConstants.GEARDROP_SWITCH_LEFT);
-   		//IRSensor = new AnalogInput(ElectricalConstants.GEARDROP_IR_SENSOR);
+
 		gear_roller = new CANTalon(ElectricalConstants.GEARDROP_ROLLER);
-   			
+   		IRSensor = new AnalogInput(ElectricalConstants.GEARDROP_IR_SENSOR);
+
    		gear_drop_motor_right.setFeedbackDevice(FeedbackDevice.QuadEncoder);
    		gear_drop_motor_right.configNominalOutputVoltage(+0f, -0f);
    		gear_drop_motor_right.configPeakOutputVoltage(+12f, -12f);    	
@@ -99,12 +100,16 @@ public class GearDrop extends Subsystem {
     }
     
     
-    public void openRightHolder(double power){
+    public void openRightHolder(double power)
+    {
+	this.unpairmotors();
     	gear_drop_motor_right.set(-1*power);
     }
     
     
-    public void stopLeftHolder(){
+    public void stopLeftHolder()
+    {
+	this.unpairmotors();
     	gear_drop_motor_left.set(0);
     }
     
@@ -195,20 +200,50 @@ public class GearDrop extends Subsystem {
     public void initDefaultCommand() {
         // Set the default command for a subsystem here.
         //setDefaultCommand(new MySpecialCommand());
-    }	
+    }
+	
+	//new methods
+    public void unpairmotors()
+    {
+    	//unfollow the motor(follow = 0)
+    	this.gear_drop_motor_left.set(0);
+    	
+    	this.gear_drop_motor_left.changeControlMode(TalonControlMode.PercentVbus);
+    	holderPairing = false;
+    }
+    
+    public void slideleftsync()
+    {
+    	if(holderPairing)
+    	{
+    		this.gear_drop_motor_right.set(0.5);
+    	}
+    }
+    
+    public void sliderightsync()
+    {
+    	if(holderPairing)
+    	{
+    		this.gear_drop_motor_right.set(-0.5);
+    	}
+    }
     
     /**
      * Reads the IR sensor to determine if a gear is inside the robot
      * @return True if a gear is inside
      */
     
-//    public boolean gearIsInside() {
-//    	if (IRSensor.getValue() <= NumberConstants.IR_sensor_treshold) {
-//    		return true;
-//    	} else {
-//    		return false;
-//    	}
-//    }
+    public boolean gearIsInside() {
+    	if (IRSensor.getValue() <= NumberConstants.IR_sensor_treshold) {
+    		return true;
+    	} else {
+    		return false;
+    	}
+    }
+    
+    public double getIR() {
+    	return IRSensor.getValue();
+    }
     
     
 }
