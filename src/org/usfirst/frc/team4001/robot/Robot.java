@@ -76,7 +76,7 @@ public class Robot extends IterativeRobot {
 		SmartDashboard.putData("Go Forward 7 inches", new DriveCommand(7, 1 , 0, 3, 0.3));
 		SmartDashboard.putData("Climber contract", new ClimbContract());
 		SmartDashboard.putData("curtain up", new CurtainUp());
-		//SmartDashboard.putData("align", new Align());
+		SmartDashboard.putData("align", new Align());
 		SmartDashboard.putData("Slide To Zone", new GearSlidetoZone());
 
 //		Thread visionThread = new Thread(() -> {

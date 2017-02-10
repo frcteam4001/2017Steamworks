@@ -60,9 +60,9 @@ public class NumberConstants {
     //**************************************************************************
 	
 	//Competition
-	public static final double pGyro 									 = 0.0125;
+	public static final double pGyro 									 = 0.025;
 	public static final double iGyro 									 = 0.00;
-	public static final double dGyro 									 = 0.00;
+	public static final double dGyro 									 = 0.01;
 	
 	//**************************************************************************
     //************************* ULTRASONIC CALCULATIONS ************************

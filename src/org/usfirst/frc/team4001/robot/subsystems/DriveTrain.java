@@ -349,14 +349,14 @@ public class DriveTrain extends Subsystem {
 	 * @return angle in degrees 
 	 */
     public double getTurnAngle() {
-    	if (isAligned()) {
-    		return 0.0;
-    	} else {
+//    	if (isAligned()) {
+//    		return 0.0;
+//    	} else {
     		double angleWithSurface = Math.toDegrees(Math.atan((NumberConstants.distance_between_sensors) / (getLeftUltrasonicDist() - getRightUltrasonicDist())));
     		double turnAngle = Math.signum(angleWithSurface) * (90.0 - Math.abs(angleWithSurface));
     		System.out.println(turnAngle);
     		return turnAngle;
-    	}
+//    	}
     }
     /**
      * Determines if the robot is aligned with the surface in front of it.
