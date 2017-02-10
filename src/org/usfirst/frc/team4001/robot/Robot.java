@@ -16,14 +16,13 @@ import com.team4001.lib.util.NTInterface;
 import com.team4001.lib.util.NTInterface.Subsystem;
 import com.team4001.lib.util.NTInterface.Key;
 
-<<<<<<< HEAD
+
 import org.opencv.core.Mat;
 import org.opencv.core.Point;
 import org.opencv.core.Scalar;
 import org.opencv.imgproc.Imgproc;
-=======
+
 import org.usfirst.frc.team4001.commands.auto.*;
->>>>>>> branch 'master' of https://github.com/frcteam4001/2017Steamworks.git
 import org.usfirst.frc.team4001.robot.commands.*;
 import org.usfirst.frc.team4001.robot.subsystems.*;
 
@@ -74,7 +73,8 @@ public class Robot extends IterativeRobot {
 		SmartDashboard.putData("Close Holders", new GearCloseHolders());
 		SmartDashboard.putData("ResetEncoders", new GearDrop_ResetEncoders());
 		SmartDashboard.putData("Go Forward 7 inches", new DriveCommand(7, 1 , 0, 3, 0.3));
-
+		SmartDashboard.putData("test", new Test());
+		
 		Thread visionThread = new Thread(() -> {
 			// Get the UsbCamera from CameraServer
 			UsbCamera camera = CameraServer.getInstance().startAutomaticCapture();
