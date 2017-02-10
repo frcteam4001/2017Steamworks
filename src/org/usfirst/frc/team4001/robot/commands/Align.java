@@ -1,6 +1,9 @@
 package org.usfirst.frc.team4001.robot.commands;
 
 import edu.wpi.first.wpilibj.command.CommandGroup;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+
+import org.usfirst.frc.team4001.commands.auto.DriveCommand;
 import org.usfirst.frc.team4001.commands.auto.TurnCommand;
 import org.usfirst.frc.team4001.robot.Robot;
 
@@ -27,11 +30,13 @@ public class Align extends CommandGroup {
         // a CommandGroup containing them would require both the chassis and the
         // arm.
     	
-    	while (!Robot.drive.ultrasonicsOnSameSurface()) {
-    		addSequential(new TurnCommand(Robot.drive.getBlindTurnAngle(), 0.5, 1));
-    	}
-    	while (!Robot.drive.isAligned()) {
-    		addSequential(new TurnCommand(Robot.drive.getTurnAngle(), 0.5, 1));
-    	}
+    	//while (!Robot.drive.ultrasonicsOnSameSurface()) {
+    		//addSequential(new TurnCommand(Robot.drive.getBlindTurnAngle(), 0.5, 1));
+    	//}
+    	//while (!Robot.drive.isAligned()) {
+    		//double angle = Robot.drive.getTurnAngle();
+    		//SmartDashboard.putNumber("angle", Robot.drive.getTurnAngle());
+    		addSequential(new DriveCommand(0, 0.5,Robot.drive.getTurnAngle(), 2));
+    	//}
     }
 }

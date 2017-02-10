@@ -26,7 +26,7 @@ public class ElectricalConstants {
 	public static final int CURTAIN_POT					= 3;
 	public static final int GEARDROP_ROLLER 			= 5;   // CAN
 	
-	public static final int GEARDROP_CURTAIN_MOTOR		= 1; // to be set
+	public static final int GEARDROP_CURTAIN_MOTOR		= 0; // to be set
 	
 	public static final int GEARDROP_IR_SENSOR			= 0; // to be set
 	
@@ -74,6 +74,6 @@ public class ElectricalConstants {
 	//****************************** CLIMBERS ***********************************
 	//***************************************************************************
 	
-	public static final int CLIMBER_MOTOR                                   = 0;
+	public static final int CLIMBER_MOTOR                                   = 1;
 	
 }

@@ -72,7 +72,7 @@ public class NumberConstants {
 	
 	//The maximum reading difference, in inches, for the sensors to be considered fixed on the
 	//surface. If the difference is greater, the sensors are fixed on different surfaces
-	public static final double max_ultrasonic_reading_difference		 = 10; //inches
+	public static final double max_ultrasonic_reading_difference		 = 20; //inches
 	
 	//The magnitude of the angle at which the robot must turn when sensors are not pointing at
 	//the same surface.
@@ -80,6 +80,6 @@ public class NumberConstants {
 	
 	//The maximum difference between the two ultrasonic readings that would be considered
 	//"aligned"
-	public static final double aligned_tolerance						 = 2; //inches
+	public static final double aligned_tolerance						 = 1; //inches
 
 }
