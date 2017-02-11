@@ -19,7 +19,8 @@ public class Curtain extends Subsystem {
 	
 	public Curtain() {
    		curtain_motor = new Spark(ElectricalConstants.CURTAIN_MOTOR);
-   		pot = new AnalogPotentiometer(ElectricalConstants.CURTAIN_POT,360,30);
+   		curtain_motor.setInverted(true);
+   		pot = new AnalogPotentiometer(ElectricalConstants.CURTAIN_POT,360,0);
    		//ai = new AnalogInput(1);
 	}
 	
@@ -38,7 +39,9 @@ public class Curtain extends Subsystem {
     	curtain_motor.set(0);
     }
     
-    
+    public double get_potValue(){
+    	return pot.get();
+    }
     
     public void initDefaultCommand() {
         // Set the default command for a subsystem here.

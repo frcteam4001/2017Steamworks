@@ -79,6 +79,8 @@ public class Robot extends IterativeRobot {
 		SmartDashboard.putData("ResetEncoders", new GearDrop_ResetEncoders());
 		SmartDashboard.putData("Climber contract", new ClimbContract());
 		SmartDashboard.putData("curtain up", new CurtainUp());
+		SmartDashboard.putData("curtain down", new CurtainDown());
+
 		SmartDashboard.putData("align", new Align());
 		SmartDashboard.putData("Slide To Zone", new GearSlidetoZone());
 		SmartDashboard.putData("drive to CCD", new DriveToCamCaptureDistance());
@@ -203,6 +205,7 @@ public class Robot extends IterativeRobot {
 		SmartDashboard.putNumber("Right Ultrasonic", drive.getRightUltrasonicDist());
 		SmartDashboard.putNumber("raw left IR", drive.getRawIRLeft());
 		SmartDashboard.putNumber("raw IR right", drive.getRawIRRight());
+		SmartDashboard.putNumber("Curtain Pot", curtain.get_potValue());
 
 //		networkTableCom.putNumber(Subsystem.DriveTrain, Key.RightDriveEncoder, drive.getRightEncoderDist());
 //		networkTableCom.putNumber(Subsystem.DriveTrain, Key.LeftDriveEncoder, drive.getLeftEncoderDist());

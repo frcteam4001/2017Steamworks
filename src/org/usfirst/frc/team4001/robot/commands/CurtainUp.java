@@ -1,6 +1,8 @@
-package org.usfirst.frc.team4001.commands.auto;
+package org.usfirst.frc.team4001.robot.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
+
+import org.usfirst.frc.team4001.robot.NumberConstants;
 import org.usfirst.frc.team4001.robot.Robot;
 /**
  *
@@ -24,7 +26,7 @@ public class CurtainUp extends Command {
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
     	//return Robot.geardrop.gearIsInside();
-    	return false;
+    	return Robot.curtain.get_potValue() > NumberConstants.curtain_max;
     }
 
     // Called once after isFinished returns true
