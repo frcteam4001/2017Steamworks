@@ -12,19 +12,7 @@ import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
-<<<<<<< HEAD
-import com.team4001.lib.util.NTInterface;
-import com.team4001.lib.util.NTInterface.Subsystem;
-import com.team4001.lib.util.NTInterface.Key;
 
-
-import org.opencv.core.Mat;
-import org.opencv.core.Point;
-import org.opencv.core.Scalar;
-import org.opencv.imgproc.Imgproc;
-
-import org.usfirst.frc.team4001.commands.auto.*;
-=======
 //import com.team4001.lib.util.NTInterface;
 //import com.team4001.lib.util.NTInterface.Subsystem;
 //import com.team4001.lib.util.NTInterface.Key;
@@ -37,7 +25,7 @@ import org.usfirst.frc.team4001.commands.auto.*;
 
 import org.usfirst.frc.team4001.commands.auto.*;
 
->>>>>>> refs/heads/master
+
 import org.usfirst.frc.team4001.robot.commands.*;
 import org.usfirst.frc.team4001.robot.subsystems.*;
 
