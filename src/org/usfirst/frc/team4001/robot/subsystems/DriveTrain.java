@@ -291,13 +291,21 @@ public class DriveTrain extends Subsystem {
 		gyro.reset();
 	}
 	
+	public double getRawIRLeft(){
+		return ultrasonic_left.getVoltage();
+	}
+	
+	public double getRawIRRight(){
+		return ultrasonic_right.getVoltage();
+	}
+	
 	/////////ultrasonic methods
 	/**
 	 * Returns the reading of the left ultrasonic sensor in inches
 	 * @return Distance in inches
 	 */
 	public double getLeftUltrasonicDist() {
-		return ultrasonic_left.getValue();
+		return ((58/(ultrasonic_left.getAverageVoltage() + 0.09))/2.54)*1.1;
 	}
 	
 	/**
@@ -305,7 +313,7 @@ public class DriveTrain extends Subsystem {
 	 * @return Distance in inches
 	 */
 	public double getRightUltrasonicDist() {
-		return ultrasonic_right.getValue();
+		return ((58/ultrasonic_right.getAverageVoltage())/2.54)*1.1;
 	}
     
 	/**
@@ -341,13 +349,14 @@ public class DriveTrain extends Subsystem {
 	 * @return angle in degrees 
 	 */
     public double getTurnAngle() {
-    	if (getRightUltrasonicDist() == getLeftUltrasonicDist()) {
-    		return 0.0;
-    	} else {
+//    	if (isAligned()) {
+//    		return 0.0;
+//    	} else {
     		double angleWithSurface = Math.toDegrees(Math.atan((NumberConstants.distance_between_sensors) / (getLeftUltrasonicDist() - getRightUltrasonicDist())));
     		double turnAngle = Math.signum(angleWithSurface) * (90.0 - Math.abs(angleWithSurface));
+    		System.out.println(turnAngle);
     		return turnAngle;
-    	}
+//    	}
     }
     /**
      * Determines if the robot is aligned with the surface in front of it.

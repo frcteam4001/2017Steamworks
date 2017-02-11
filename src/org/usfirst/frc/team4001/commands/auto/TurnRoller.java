@@ -9,7 +9,7 @@ public class TurnRoller extends Command {
 
     public TurnRoller() {
         // Use requires() here to declare subsystem dependencies
-        requires(Robot.gearIntake);
+        requires(Robot.geardrop);
     }
 
     // Called just before this Command runs the first time
@@ -18,7 +18,7 @@ public class TurnRoller extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Robot.gearIntake.turnRoller();
+    	Robot.geardrop.turnRoller();
     }
 
     // Make this return true when this Command no longer needs to run execute()
@@ -29,7 +29,7 @@ public class TurnRoller extends Command {
 
     // Called once after isFinished returns true
     protected void end() {
-    	Robot.gearIntake.stopRoller();
+    	Robot.geardrop.stopRoller();
     }
 
     // Called when another command which requires one or more of the same

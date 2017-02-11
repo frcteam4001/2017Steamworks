@@ -26,9 +26,18 @@ public class ElectricalConstants {
 	
 	public static final int GEARDROP_ROLLER 			= 5;   // CAN
 	
-	public static final int GEARDROP_CURTAIN_MOTOR		= 1; // to be set
+
 	
-	public static final int GEARDROP_IR_SENSOR			= 3; // to be set
+
+	public static final int GEARDROP_IR_SENSOR			= 0; // ANALOG
+
+	// ************************************************************************
+	// **************************  CURTAIN  **********************************
+	// ************************************************************************
+	
+	public static final int CURTAIN_MOTOR		= 0; // PWM
+	public static final int CURTAIN_POT			= 3; // ANALOG
+
 	
 	// ************************************************************************
 	// **************************  DRIVETRAIN  ********************************
@@ -38,8 +47,10 @@ public class ElectricalConstants {
 	public static final int DRIVETRAIN_REAR_LEFT				= 4;  // CAN
 	public static final int DRIVETRAIN_REAR_RIGHT 				= 2;  // CAN
 	
-	public static final int DRIVETRAIN_ULTRASONIC_LEFT			= 2;  // ANALOG
-	public static final int DRIVETRAIN_ULTRASONIC_RIGHT 		= 1;  // ANALOG
+
+	public static final int DRIVETRAIN_ULTRASONIC_LEFT			= 1;  // ANALOG
+	public static final int DRIVETRAIN_ULTRASONIC_RIGHT 		= 2;  // ANALOG
+
 	
 	public static final boolean DRIVETRAIN_FRONT_LEFT_REVERSE	= true;
 	public static final boolean DRIVETRAIN_FRONT_RIGHT_REVERSE	= true;
@@ -74,6 +85,8 @@ public class ElectricalConstants {
 	//****************************** CLIMBERS ***********************************
 	//***************************************************************************
 	
-	public static final int CLIMBER_MOTOR                                   = 0;
+
+	public static final int CLIMBER_MOTOR                                   = 1; //PWM
+
 	
 }
