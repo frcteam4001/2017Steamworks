@@ -49,8 +49,10 @@ public class PlaceGear extends CommandGroup {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-    	
-    	addSequential(new DriveCommand(NumberConstants.camera_capture_distance - 13, 0.5, 0, 2, 0.3));
+    	if (Robot.gearZone != -1 || Robot.gearZone == -20000 || Robot.gearZone == -30000){
+    		addSequential(new GearSlidetoZone());
+    		addSequential(new DriveCommand(NumberConstants.camera_capture_distance - 13, 0.5, 0, 2, 0.3));
+    	}
     	
     }
 }

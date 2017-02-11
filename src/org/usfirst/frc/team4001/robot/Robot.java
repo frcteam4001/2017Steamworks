@@ -27,6 +27,10 @@ import org.usfirst.frc.team4001.commands.auto.*;
 import org.usfirst.frc.team4001.robot.commands.*;
 import org.usfirst.frc.team4001.robot.subsystems.*;
 
+import com.team4001.lib.util.NTInterface;
+import com.team4001.lib.util.NTInterface.Key;
+import com.team4001.lib.util.NTInterface.Subsystem;
+
 /**
  * The VM is configured to automatically run this class, and to call the
  * functions corresponding to each mode, as described in the IterativeRobot
@@ -45,7 +49,7 @@ public class Robot extends IterativeRobot {
 	public static GearDrop geardrop;
 	public static Climber climber;
 	public static GearIntake gearIntake;
-	//public static NTInterface networkTableCom;
+	public static NTInterface networkTableCom;
 	public static double gearZone;
 	
 	
@@ -64,7 +68,7 @@ public class Robot extends IterativeRobot {
 		oi = new OI();
 
 
-		//networkTableCom = new NTInterface();
+		networkTableCom = new NTInterface();
 
 		// chooser.addObject("My Auto", new MyAutoCommand());
 		SmartDashboard.putData("Auto mode", chooser);
@@ -73,7 +77,6 @@ public class Robot extends IterativeRobot {
 		SmartDashboard.putData("Open Holders", new GearHoldersFullOpen());
 		SmartDashboard.putData("Close Holders", new GearCloseHolders());
 		SmartDashboard.putData("ResetEncoders", new GearDrop_ResetEncoders());
-		SmartDashboard.putData("Go Forward 7 inches", new DriveCommand(7, 1 , 0, 3, 0.3));
 		SmartDashboard.putData("Climber contract", new ClimbContract());
 		SmartDashboard.putData("curtain up", new CurtainUp());
 		SmartDashboard.putData("align", new Align());
@@ -208,8 +211,8 @@ public class Robot extends IterativeRobot {
 //		networkTableCom.putNumber(Subsystem.GearDrop, Key.RightGearMotorPosition, geardrop.getRightHolderEncPosition()/1.0);
 //		networkTableCom.putNumber(Subsystem.GearDrop, Key.LeftGearMotorPosition, geardrop.getLeftHolderEncPosition()/1.0);
 //		
-		//gearZone = networkTableCom.getNumber(Subsystem.GearZone, Key.GearZone);
-		gearZone = 2.0;
+		gearZone = networkTableCom.getNumber(Subsystem.GearZone, Key.GearZone);
+		
 
 		//System.out.println("gear zone: " + Double.toString(gearZone));
 		
