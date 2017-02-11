@@ -40,7 +40,7 @@ public class NumberConstants {
 	public static final int IR_sensor_treshold							 = -1; 	// to be set
 	
 	//The distance to the airship from which the image must be captured
-	public static final double camera_capture_distance					 = 36; // inches
+	public static final double camera_capture_distance					 = 36 + 4; // inches
 	
 	public static final double distance_from_loading_station			 = 5; // inches
 
@@ -49,9 +49,9 @@ public class NumberConstants {
     //**************************************************************************
 	
 	//Competition
-	public static final double pDrive 									 = 0.05;
+	public static final double pDrive 									 = 0.06;
 	public static final double iDrive 									 = 0.00;
-	public static final double dDrive 									 = 0.00;
+	public static final double dDrive 									 = 0.02;
 	
 	public static final double Drive_Scale 								 = 0.6;
 	
@@ -62,7 +62,7 @@ public class NumberConstants {
 	//Competition
 	public static final double pGyro 									 = 0.025;
 	public static final double iGyro 									 = 0.00;
-	public static final double dGyro 									 = 0.01;
+	public static final double dGyro 									 = 0.00;
 	
 	//**************************************************************************
     //************************* ULTRASONIC CALCULATIONS ************************
