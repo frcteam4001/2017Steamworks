@@ -18,8 +18,8 @@ public class Curtain extends Subsystem {
 	//private AnalogInput ai;
 	
 	public Curtain() {
-   		curtain_motor = new Spark(ElectricalConstants.GEARDROP_CURTAIN_MOTOR);
-   		pot = new AnalogPotentiometer(0,360,30);
+   		curtain_motor = new Spark(ElectricalConstants.CURTAIN_MOTOR);
+   		pot = new AnalogPotentiometer(ElectricalConstants.CURTAIN_POT,360,30);
    		//ai = new AnalogInput(1);
 	}
 	

@@ -23,12 +23,20 @@ public class ElectricalConstants {
 	public static final int GEARDROP_SWITCH_LEFT		= 0;  // DIO
 	public static final int GEARDROP_SWITCH_RIGHT		= 1;  // DIO
 	
-	public static final int CURTAIN_POT					= 3;
+	
 	public static final int GEARDROP_ROLLER 			= 5;   // CAN
 	
-	public static final int GEARDROP_CURTAIN_MOTOR		= 0; // to be set
+
 	
-	public static final int GEARDROP_IR_SENSOR			= 0; // to be set
+	public static final int GEARDROP_IR_SENSOR			= 0; // ANALOG
+
+	// ************************************************************************
+	// **************************  CURTAIN  **********************************
+	// ************************************************************************
+	
+	public static final int CURTAIN_MOTOR		= 0; // PWM
+	public static final int CURTAIN_POT			= 3; // ANALOG
+	
 	
 	// ************************************************************************
 	// **************************  DRIVETRAIN  ********************************
