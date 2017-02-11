@@ -59,8 +59,8 @@ public class NumberConstants {
     //******************************* CURTAIN **********************************
     //**************************************************************************
 	
-	public static final double curtain_max = 38;
-	public static final double curtain_min  = 1;
+	public static final double curtain_max = 130;
+	public static final double curtain_min  = 9;
 	
 	//**************************************************************************
     //**************************** PID VALUES (GYRO) ***************************
