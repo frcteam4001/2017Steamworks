@@ -1,5 +1,6 @@
 package org.usfirst.frc.team4001.robot.commands;
 
+import org.usfirst.frc.team4001.robot.NumberConstants;
 import org.usfirst.frc.team4001.robot.Robot;
 
 import edu.wpi.first.wpilibj.command.Command;
@@ -7,43 +8,41 @@ import edu.wpi.first.wpilibj.command.Command;
 /**
  *
  */
-public class Align extends Command {
-	
+public class DriveToCamCaptureDistance extends Command {
+
 	private double distance;
 	private double speed;
 	private double angle;
 	private double timeOut;
 	private double epsilon;
-
-    public Align() {
+	
+    public DriveToCamCaptureDistance() {
         // Use requires() here to declare subsystem dependencies
-        // eg. requires(chassis);
     	requires(Robot.drive);
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	this.distance = 0;
-    	this.speed = 0.4;
-    	this.angle = Robot.drive.getTurnAngle();
-    	this.epsilon = 0.5;
-    	this.timeOut = 2;
+    	this.distance = (Robot.drive.getLeftUltrasonicDist() + Robot.drive.getRightUltrasonicDist())/2 - NumberConstants.camera_capture_distance;
+		this.speed = 0.6;
+		this.angle = 0;
+		this.timeOut = 2.5;
+		this.epsilon = 0.25;
 		Robot.drive.reset();
 		setTimeout(timeOut);
-	}
-
-
-    // Called repeatedly when this Command is scheduled to run
-    protected void execute() {
-    	Robot.drive.driveStraight(distance, speed, angle, epsilon);
     }
 
-    // Make this return true when this Command no longer needs to run execute()
-    protected boolean isFinished() {
-    	return isTimedOut();
-    }
+ // Called repeatedly when this Command is scheduled to run
+ 	protected void execute() {
+ 		Robot.drive.driveStraight(distance, speed, angle, epsilon);
+ 	}
 
- // Called once after isFinished returns true, reset all PID controllers and
+ 	// Command will finish when it is timed out
+ 	protected boolean isFinished() {
+ 		return isTimedOut();
+ 	}
+
+ 	// Called once after isFinished returns true, reset all PID controllers and
  	// stop drive.
  	protected void end() {
  		Robot.drive.runLeftDrive(0);

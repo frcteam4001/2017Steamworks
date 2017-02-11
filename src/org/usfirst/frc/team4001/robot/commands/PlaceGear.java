@@ -40,24 +40,18 @@ public class PlaceGear extends CommandGroup {
 //    	addSequential(new DriveCommand(distanceToTravel, 0.5, 0, 5));
 //    	
 //    	
-    	//Wait a bit to ensure that the gear zone in the network table has been updated
+    	addSequential(new Align());
+    	addSequential(new DriveToCamCaptureDistance());
+    	
     	try {
-			Thread.sleep(300);
+			Thread.sleep(1000);
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-    	
-    	if (Robot.gearZone == -1) { //gear impossible
-    		// drive away?
-    	} else {
-    		// set gear position
-    		// go forward (how much?)
-    		
-//    		while (Robot.geardrop.gearIsInside()) {
-//    			// wait until the gear has been removed
-//    		}
-    		// drive away (how much?)
+    	if (Robot.gearZone != -1 || Robot.gearZone == -20000 || Robot.gearZone == -30000){
+    		addSequential(new GearSlidetoZone());
+    		addSequential(new DriveCommand(NumberConstants.camera_capture_distance - 13, 0.5, 0, 2, 0.3));
     	}
     	
     }
