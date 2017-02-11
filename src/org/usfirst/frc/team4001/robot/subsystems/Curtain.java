@@ -15,24 +15,22 @@ public class Curtain extends Subsystem {
 
 	private Spark curtain_motor;
 	private Potentiometer pot;
-	//private AnalogInput ai;
+	private AnalogInput ai;
+	double degrees;
 	
 	public Curtain() {
    		curtain_motor = new Spark(ElectricalConstants.CURTAIN_MOTOR);
    		curtain_motor.setInverted(true);
    		pot = new AnalogPotentiometer(ElectricalConstants.CURTAIN_POT,360,0);
-   		//ai = new AnalogInput(1);
+
 	}
-	
 	
 	public void curtainUp() {
     		curtain_motor.set(0.5);
-    		pot.get();
    	}
     
     public void curtainDown() {
     	curtain_motor.set(-0.5);
-    	pot.get();
     }
 	
     public void stopCurtain() {
