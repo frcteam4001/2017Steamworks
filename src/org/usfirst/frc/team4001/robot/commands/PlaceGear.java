@@ -45,14 +45,14 @@ public class PlaceGear extends CommandGroup {
     	addSequential(new DriveToCamCaptureDistance());
     	
     	try {
-			Thread.sleep(500);
+			Thread.sleep(400);
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
     	if (Robot.gearZone != -1 || Robot.gearZone == -20000 || Robot.gearZone == -30000){
     		addSequential(new GearSlidetoZone());
-    		addSequential(new DriveCommand(NumberConstants.camera_capture_distance - 13, 0.45, 0, 2, 0.3));
+    		addSequential(new DriveCommand(NumberConstants.camera_capture_distance - 13, 0.45, 0, 1.75, 0.3));
     	}
     	
     }
