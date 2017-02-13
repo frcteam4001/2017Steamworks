@@ -25,7 +25,7 @@ public class GetGear extends CommandGroup {
         //      addSequential(new Command2());
         // Command1 and Command2 will run in parallel.
 
-    	//Level with loading station
+    	
     	addParallel(new GearHoldersFullOpen());
         addSequential(new Align());
         

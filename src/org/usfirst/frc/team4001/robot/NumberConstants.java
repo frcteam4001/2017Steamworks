@@ -40,7 +40,7 @@ public class NumberConstants {
 	public static final int IR_sensor_treshold							 = -1; 	// to be set
 	
 	//The distance to the airship from which the image must be captured
-	public static final double camera_capture_distance					 = 36 + 4; // inches
+	public static final double camera_capture_distance					 = 36 + 3; // inches
 	
 	public static final double distance_from_loading_station			 = 5; // inches
 
