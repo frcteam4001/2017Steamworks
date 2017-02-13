@@ -52,7 +52,7 @@ public class PlaceGear extends CommandGroup {
 		}
     	if (Robot.gearZone != -1 || Robot.gearZone == -20000 || Robot.gearZone == -30000){
     		addSequential(new GearSlidetoZone());
-    		addSequential(new DriveCommand(NumberConstants.camera_capture_distance - 13, 0.45, 0, 1.75, 0.3));
+    		addSequential(new DriveCommand(NumberConstants.camera_capture_distance - 12, 0.45, 0, 1.75, 0.3));
     	}
     	
     }
