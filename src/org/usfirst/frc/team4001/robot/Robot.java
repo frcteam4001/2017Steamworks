@@ -1,6 +1,10 @@
 
 package org.usfirst.frc.team4001.robot;
 
+//import edu.wpi.cscore.CvSink;
+//import edu.wpi.cscore.CvSource;
+//import edu.wpi.cscore.UsbCamera;
+//import edu.wpi.first.wpilibj.CameraServer;
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
@@ -8,13 +12,24 @@ import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
-import com.team4001.lib.util.NTInterface;
-import com.team4001.lib.util.NTInterface.Subsystem;
-import com.team4001.lib.util.NTInterface.Key;
+//import com.team4001.lib.util.NTInterface;
+//import com.team4001.lib.util.NTInterface.Subsystem;
+//import com.team4001.lib.util.NTInterface.Key;
+//
+//
+//import org.opencv.core.Mat;
+//import org.opencv.core.Point;
+//import org.opencv.core.Scalar;
+//import org.opencv.imgproc.Imgproc;
 
 import org.usfirst.frc.team4001.commands.auto.*;
+
 import org.usfirst.frc.team4001.robot.commands.*;
 import org.usfirst.frc.team4001.robot.subsystems.*;
+
+import com.team4001.lib.util.NTInterface;
+import com.team4001.lib.util.NTInterface.Key;
+import com.team4001.lib.util.NTInterface.Subsystem;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -33,7 +48,7 @@ public class Robot extends IterativeRobot {
 	public static DriveTrain drive;
 	public static GearDrop geardrop;
 	public static Climber climber;
-	public static GearIntake gearIntake;
+	public static Curtain curtain;
 	public static NTInterface networkTableCom;
 	public static double gearZone;
 	
@@ -49,7 +64,7 @@ public class Robot extends IterativeRobot {
 		geardrop = new GearDrop();
 
 		climber = new Climber();
-		gearIntake = new GearIntake();
+		curtain = new Curtain();
 		oi = new OI();
 
 
@@ -62,12 +77,54 @@ public class Robot extends IterativeRobot {
 		SmartDashboard.putData("Open Holders", new GearHoldersFullOpen());
 		SmartDashboard.putData("Close Holders", new GearCloseHolders());
 		SmartDashboard.putData("ResetEncoders", new GearDrop_ResetEncoders());
-		SmartDashboard.putData("Go Forward 7 inches", new DriveCommand(7, 1 , 0, 3, 0.3));
+		SmartDashboard.putData("Climber contract", new ClimbContract());
+		SmartDashboard.putData("curtain up", new CurtainUp());
+		SmartDashboard.putData("curtain down", new CurtainDown());
 
-
-		//SmartDashboard.putData("SlideTest", new GearSlideToPosition(8000));
+		SmartDashboard.putData("align", new Align());
 		SmartDashboard.putData("Slide To Zone", new GearSlidetoZone());
-
+		SmartDashboard.putData("Get Gear", new GetGear());
+		SmartDashboard.putData("Place Gear", new PlaceGear());
+//		Thread visionThread = new Thread(() -> {
+//			// Get the UsbCamera from CameraServer
+//			UsbCamera camera = CameraServer.getInstance().startAutomaticCapture();
+//			// Set the resolution
+//			camera.setResolution(640, 480);
+//			
+//		//SmartDashboard.putData("SlideTest", new GearSlideToPosition(8000));
+//		
+//		
+//
+//			// Get a CvSink. This will capture Mats from the camera
+//			CvSink cvSink = CameraServer.getInstance().getVideo();
+//			// Setup a CvSource. This will send images back to the Dashboard
+//			CvSource outputStream = CameraServer.getInstance().putVideo("Rectangle", 640, 480);
+//
+//			// Mats are very memory expensive. Lets reuse this Mat.
+//			Mat mat = new Mat();
+//
+//			// This cannot be 'true'. The program will never exit if it is. This
+//			// lets the robot stop this thread when restarting robot code or
+//			// deploying.
+//			while (!Thread.interrupted()) {
+//				// Tell the CvSink to grab a frame from the camera and put it
+//				// in the source mat.  If there is an error notify the output.
+//				if (cvSink.grabFrame(mat) == 0) {
+//					// Send the output the error.
+//					outputStream.notifyError(cvSink.getError());
+//					// skip the rest of the current iteration
+//					continue;
+//				}
+//				// Put a rectangle on the image
+//				Imgproc.rectangle(mat, new Point(100, 100), new Point(400, 400),
+//						new Scalar(255, 255, 255), 5);
+//				// Give the output stream a new image to display
+//				outputStream.putFrame(mat);
+//			}
+//		});
+//		visionThread.setDaemon(true);
+//		visionThread.start();
+		
 
 	}
  
@@ -160,17 +217,22 @@ public class Robot extends IterativeRobot {
 		SmartDashboard.putNumber("Left Drive Encoder", drive.getLeftEncoderDist());
 		SmartDashboard.putNumber("Right Drive Encoder", drive.getRightEncoderDist());
 		SmartDashboard.putNumber("Gyro Angle", drive.getYaw());
-		
+		SmartDashboard.putNumber("IR READING", geardrop.getIR());
+		SmartDashboard.putNumber("Left Ultrasonic", drive.getLeftUltrasonicDist());
+		SmartDashboard.putNumber("Right Ultrasonic", drive.getRightUltrasonicDist());
+		SmartDashboard.putNumber("raw left IR", drive.getRawIRLeft());
+		SmartDashboard.putNumber("raw IR right", drive.getRawIRRight());
+		SmartDashboard.putNumber("Curtain Pot", curtain.get_potValue());
 
-		networkTableCom.putNumber(Subsystem.DriveTrain, Key.RightDriveEncoder, drive.getRightEncoderDist());
-		networkTableCom.putNumber(Subsystem.DriveTrain, Key.LeftDriveEncoder, drive.getLeftEncoderDist());
-		networkTableCom.putNumber(Subsystem.DriveTrain, Key.GyroAngle, drive.getYaw());
-				
-		networkTableCom.putNumber(Subsystem.GearDrop, Key.RightGearMotorPosition, geardrop.getRightHolderEncPosition()/1.0);
-		networkTableCom.putNumber(Subsystem.GearDrop, Key.LeftGearMotorPosition, geardrop.getLeftHolderEncPosition()/1.0);
+//		networkTableCom.putNumber(Subsystem.DriveTrain, Key.RightDriveEncoder, drive.getRightEncoderDist());
+//		networkTableCom.putNumber(Subsystem.DriveTrain, Key.LeftDriveEncoder, drive.getLeftEncoderDist());
+//		networkTableCom.putNumber(Subsystem.DriveTrain, Key.GyroAngle, drive.getYaw());
+//				
+//		networkTableCom.putNumber(Subsystem.GearDrop, Key.RightGearMotorPosition, geardrop.getRightHolderEncPosition()/1.0);
+//		networkTableCom.putNumber(Subsystem.GearDrop, Key.LeftGearMotorPosition, geardrop.getLeftHolderEncPosition()/1.0);
+//		
+		gearZone = networkTableCom.getNumber(Subsystem.GearZone, Key.GearZone);
 		
-		//gearZone = networkTableCom.getNumber(Subsystem.GearZone, Key.GearZone);
-		gearZone = 2.0;
 
 		//System.out.println("gear zone: " + Double.toString(gearZone));
 		

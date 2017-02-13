@@ -2,7 +2,7 @@ package org.usfirst.frc.team4001.robot.subsystems;
 
 import org.usfirst.frc.team4001.robot.ElectricalConstants;
 
-import edu.wpi.first.wpilibj.PWM;
+import edu.wpi.first.wpilibj.Spark;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
 /**
@@ -13,7 +13,11 @@ public class Climber extends Subsystem
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
 	
-	//public PWM climbmotor = new PWM(ElectricalConstants.climber_port);
+	private Spark climbMotor;
+	
+	public Climber() {
+		climbMotor = new Spark(ElectricalConstants.CLIMBER_MOTOR);
+	}
 	
     public void initDefaultCommand()
     {
@@ -23,11 +27,15 @@ public class Climber extends Subsystem
     
     public void expand()
     {
-    	//climbmotor.setRaw(-1500);
+    	climbMotor.set(-0.5);
     }
     
     public void contract()
     {
-    	//climbmotor.setRaw(-500);
+    	climbMotor.set(1);
+    }
+    
+    public void stop() {
+    	climbMotor.set(0);
     }
 }

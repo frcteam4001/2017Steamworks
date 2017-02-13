@@ -25,15 +25,17 @@ public class GetGear extends CommandGroup {
         //      addSequential(new Command2());
         // Command1 and Command2 will run in parallel.
 
-    	//Level with loading station
+    	
+    	addParallel(new GearHoldersFullOpen());
         addSequential(new Align());
         
-        //Drive to the correct distance from the loading station
-//        double distanceFromLoadingStation = (Robot.drive.getLeftUltrasonicDist() + Robot.drive.getRightUltrasonicDist()) / 2;
-//        double travelDistance = distanceFromLoadingStation - NumberConstants.distance_from_loading_station;
-//        addSequential(new DriveCommand(travelDistance, 0.8, 0, 1.5, 0.5));
+        addSequential(new DriveToGearLoadingDistance());
         
-        addParallel(new TurnRoller());
         addParallel(new CurtainUp());
+        addSequential(new TurnRoller());
+        addSequential(new GearCloseHolders());
+        addSequential(new CurtainDown());
+        
+        
     }
 }
