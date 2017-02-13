@@ -199,8 +199,8 @@ public class DriveTrain extends Subsystem {
 	public void turnDrive(double setAngle, double speed, double epsilon) {
 		double angle = gyroPID.calcPID(setAngle, getYaw(), epsilon);
 
-		runLeftDrive(angle * speed);
-		runRightDrive(angle * speed);
+		runLeftDrive(-angle * speed);
+		runRightDrive(-angle * speed);
 	}
 	
 	

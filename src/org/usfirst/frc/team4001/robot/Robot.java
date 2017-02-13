@@ -156,19 +156,19 @@ public class Robot extends IterativeRobot {
 	 */
 	@Override
 	public void autonomousInit() {
-		autonomousCommand = chooser.getSelected();
-		String autoSelected = SmartDashboard.getString("Auto Selector");
+		//autonomousCommand = chooser.getSelected();
+		//String autoSelected = SmartDashboard.getString("Auto Selector");
 		
 		/*
 		 * String autoSelected = SmartDashboard.getString("Auto Selector",
 		 * "Default"); switch(autoSelected) { case "My Auto": autonomousCommand
 		 * = new MyAutoCommand(); break; case "Default Auto": default:
 		 * autonomousCommand = new ExampleCommand(); break; }
-		 */
+		 
 		switch(autoSelected){
 		
 		case "Drive Straight and Stop":
-			autonomousCommand = new DriveCommand(57.36, 0.5, 0, 8, 0.2);
+			autonomousCommand = new DriveCommand(58.36, 0.5, 0, 8, 0.2);
 			break;
 		case "Drive Red Right to Gear":
 			autonomousCommand = new DriveRedRightToGear();
@@ -177,11 +177,13 @@ public class Robot extends IterativeRobot {
 			autonomousCommand = new DriveRedLeftToGear();
 			break;
 		default: 
-			autonomousCommand = new DriveCommand(57.36, 0.5, 0, 8, 0.2);
+			autonomousCommand = new DriveCommand(58.36, 0.5, 0, 1.5, 0.2);
 			break;
 			
 		}
-		
+		*/
+		//autonomousCommand = new DriveCommand(58.36, 0.5, 0, 1.5, 0.2);
+		autonomousCommand = new Test90DegPlace();
 
 		// schedule the autonomous command (example)
 		if (autonomousCommand != null)
@@ -193,6 +195,8 @@ public class Robot extends IterativeRobot {
 	 */
 	@Override
 	public void autonomousPeriodic() {
+		SmartDashboard.putNumber("Left Drive Encoder", drive.getLeftEncoderDist());
+		SmartDashboard.putNumber("Right Drive Encoder", drive.getRightEncoderDist());
 		Scheduler.getInstance().run();
 		
 	}

@@ -26,6 +26,7 @@ public class Align extends Command {
     	this.distance = 0;
     	this.speed = 0.4;
     	this.angle = Robot.drive.getTurnAngle();
+    	System.out.println(this.angle);
     	this.epsilon = 0.5;
     	this.timeOut = 1.75;
 		Robot.drive.reset();
