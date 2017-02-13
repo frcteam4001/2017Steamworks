@@ -1,4 +1,4 @@
-package org.usfirst.frc.team4001.robot.commands;
+package org.usfirst.frc.team4001.commands.auto;
 
 import org.usfirst.frc.team4001.robot.NumberConstants;
 import org.usfirst.frc.team4001.robot.Robot;
@@ -26,7 +26,7 @@ public class DriveToCamCaptureDistance extends Command {
     	this.distance = (Robot.drive.getLeftUltrasonicDist() + Robot.drive.getRightUltrasonicDist())/2 - NumberConstants.camera_capture_distance;
 		this.speed = 0.6;
 		this.angle = 0;
-		this.timeOut = 2.5;
+		this.timeOut = 2;
 		this.epsilon = 0.25;
 		Robot.drive.reset();
 		setTimeout(timeOut);
