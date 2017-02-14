@@ -45,6 +45,8 @@ public class Robot extends IterativeRobot {
 	Command autonomousCommand;
 	SendableChooser<Command> chooser = new SendableChooser<>();
 	
+	SendableChooser<Command> autoChooser;
+	
 	public static DriveTrain drive;
 	public static GearDrop geardrop;
 	public static Climber climber;
@@ -69,8 +71,17 @@ public class Robot extends IterativeRobot {
 
 
 		networkTableCom = new NTInterface();
-
+		//AUTONOMOUS CHOOSER COMMANDS
 		// chooser.addObject("My Auto", new MyAutoCommand());
+		autoChooser = new SendableChooser<Command>();
+		autoChooser.addDefault("Default: Drive Straight and Stop", new DriveCommand(58.36, 0.5, 0, 8, 0.2));
+		autoChooser.addObject("Blue Right with Gear", new DriveKeyLineAndGear(1));
+		autoChooser.addObject("Red Left with Gear", new DriveKeyLineAndGear(-1));
+		autoChooser.addObject("Blue Left with Gear", new DriveRetLineAndGear(1));
+		autoChooser.addObject("Red Right with Gear", new DriveRetLineAndGear(-1));
+		SmartDashboard.putData("Autonomous Mode Chooser", autoChooser);
+
+		
 		SmartDashboard.putData("Auto mode", chooser);
 		//SmartDashboard.putData("Open Left Gear Holder", new GearHolderLeftFullOpen());
 		//SmartDashboard.putData("Open Right Gear Holder", new GearHolderRightFullOpen());
@@ -158,7 +169,7 @@ public class Robot extends IterativeRobot {
 	public void autonomousInit() {
 		//autonomousCommand = chooser.getSelected();
 		//String autoSelected = SmartDashboard.getString("Auto Selector");
-		
+		autonomousCommand = (Command) autoChooser.getSelected();
 		/*
 		 * String autoSelected = SmartDashboard.getString("Auto Selector",
 		 * "Default"); switch(autoSelected) { case "My Auto": autonomousCommand
@@ -183,7 +194,7 @@ public class Robot extends IterativeRobot {
 		}
 		*/
 		//autonomousCommand = new DriveCommand(58.36, 0.5, 0, 1.5, 0.2);
-		autonomousCommand = new Test90DegPlace();
+//		autonomousCommand = new Test90DegPlace();
 
 		// schedule the autonomous command (example)
 		if (autonomousCommand != null)
