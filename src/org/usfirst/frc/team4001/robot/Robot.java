@@ -207,8 +207,8 @@ public class Robot extends IterativeRobot {
 		SmartDashboard.putNumber("Right Drive Encoder", drive.getRightEncoderDist());
 		SmartDashboard.putNumber("Gyro Angle", drive.getYaw());
 		SmartDashboard.putNumber("IR READING", geardrop.getIR());
-		SmartDashboard.putNumber("Left Ultrasonic", drive.getLeftUltrasonicDist());
-		SmartDashboard.putNumber("Right Ultrasonic", drive.getRightUltrasonicDist());
+		SmartDashboard.putNumber("Left IR", drive.getLeftUltrasonicDist());
+		SmartDashboard.putNumber("Right IR", drive.getRightUltrasonicDist());
 		SmartDashboard.putNumber("raw left IR", drive.getRawIRLeft());
 		SmartDashboard.putNumber("raw IR right", drive.getRawIRRight());
 		SmartDashboard.putNumber("Curtain Pot", curtain.get_potValue());
