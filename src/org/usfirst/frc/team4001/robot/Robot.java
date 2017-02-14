@@ -202,6 +202,8 @@ public class Robot extends IterativeRobot {
 	public void teleopPeriodic() {
 		SmartDashboard.putNumber("Right Gear Motor Position", geardrop.getRightHolderEncPosition());
 		SmartDashboard.putNumber("Left Gear Motor Position", geardrop.getLeftHolderEncPosition());
+		SmartDashboard.putBoolean("Left Switch", geardrop.leftswitchpressed());
+		SmartDashboard.putBoolean("Right Switch", geardrop.rightswitchpressed());
 		SmartDashboard.putBoolean("Holders Paired", geardrop.get_HoldersPaired());
 		SmartDashboard.putNumber("Left Drive Encoder", drive.getLeftEncoderDist());
 		SmartDashboard.putNumber("Right Drive Encoder", drive.getRightEncoderDist());
