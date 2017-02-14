@@ -87,7 +87,7 @@ public class Robot extends IterativeRobot {
 		SmartDashboard.putData("align", new Align());
 
 		SmartDashboard.putData("Slide To Zone", new GearSlidetoZone());
-		SmartDashboard.putData("drive to CCD", new DriveToCamCaptureDistance());
+		SmartDashboard.putData("Get Gear", new GetGear());
 		SmartDashboard.putData("Place Gear", new PlaceGear());
 //		Thread visionThread = new Thread(() -> {
 //			// Get the UsbCamera from CameraServer
