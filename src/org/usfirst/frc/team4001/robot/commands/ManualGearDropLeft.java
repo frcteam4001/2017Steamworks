@@ -13,17 +13,18 @@ public class ManualGearDropLeft extends Command {
     {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
-    	System.out.println("ManualGearDropLeft: constructor() calling");
+    	//System.out.println("ManualGearDropLeft: constructor() calling");
     	requires(Robot.geardrop);
-    	System.out.println("ManualGearDropLeft: constructor() called");
+    	//System.out.println("ManualGearDropLeft: constructor() called");
     }
 
     // Called just before this Command runs the first time
     protected void initialize()
     {
-    	System.out.println("ManualGearDropLeft: initialize() calling");
     	Robot.geardrop.enablePowerMode();
-    	System.out.println("ManualGearDropLeft: initialize() called");
+    	if (!Robot.geardrop.get_HoldersPaired()){
+    		Robot.geardrop.pairHolders();
+    	}
     }
 
     // Called repeatedly when this Command is scheduled to run
@@ -43,8 +44,7 @@ public class ManualGearDropLeft extends Command {
     // Called once after isFinished returns true
     protected void end()
     {
-    	System.out.println("ManualGearDropLeft: end() called: \nI have a pen,\n I have an apple."
-    			+ "\n ugh!\n apple pen!");
+    	System.out.println("ManualGearDropLeft: end()");
     }
 
     // Called when another command which requires one or more of the same

@@ -20,6 +20,9 @@ public class ManualGearDropRight extends Command {
     protected void initialize()
     {
     	Robot.geardrop.enablePowerMode();
+    	if (!Robot.geardrop.get_HoldersPaired()){
+    		Robot.geardrop.pairHolders();
+    	}
     }
 
     // Called repeatedly when this Command is scheduled to run

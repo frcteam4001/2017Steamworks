@@ -89,6 +89,7 @@ public class Robot extends IterativeRobot {
 		SmartDashboard.putData("Slide To Zone", new GearSlidetoZone());
 		SmartDashboard.putData("Get Gear", new GetGear());
 		SmartDashboard.putData("Place Gear", new PlaceGear());
+		SmartDashboard.putData(Scheduler.getInstance());
 //		Thread visionThread = new Thread(() -> {
 //			// Get the UsbCamera from CameraServer
 //			UsbCamera camera = CameraServer.getInstance().startAutomaticCapture();
@@ -201,6 +202,7 @@ public class Robot extends IterativeRobot {
 	public void teleopPeriodic() {
 		SmartDashboard.putNumber("Right Gear Motor Position", geardrop.getRightHolderEncPosition());
 		SmartDashboard.putNumber("Left Gear Motor Position", geardrop.getLeftHolderEncPosition());
+		SmartDashboard.putBoolean("Holders Paired", geardrop.get_HoldersPaired());
 		SmartDashboard.putNumber("Left Drive Encoder", drive.getLeftEncoderDist());
 		SmartDashboard.putNumber("Right Drive Encoder", drive.getRightEncoderDist());
 		SmartDashboard.putNumber("Gyro Angle", drive.getYaw());
