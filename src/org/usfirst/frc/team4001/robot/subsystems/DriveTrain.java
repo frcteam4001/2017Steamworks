@@ -305,7 +305,7 @@ public class DriveTrain extends Subsystem {
 	 * @return Distance in inches
 	 */
 	public double getLeftUltrasonicDist() {
-		return ((58/(ultrasonic_left.getAverageVoltage() + 0.09))/2.54)*1.1;
+		return ((58/(ultrasonic_left.getAverageVoltage() + 0.09))/2.54)*1.08;
 	}
 	
 	/**
@@ -313,7 +313,7 @@ public class DriveTrain extends Subsystem {
 	 * @return Distance in inches
 	 */
 	public double getRightUltrasonicDist() {
-		return ((58/ultrasonic_right.getAverageVoltage())/2.54)*1.1;
+		return ((58/ultrasonic_right.getAverageVoltage())/2.54)*1.05;
 	}
     
 	/**
