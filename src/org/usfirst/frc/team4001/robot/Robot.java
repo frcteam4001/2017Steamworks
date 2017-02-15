@@ -12,6 +12,7 @@ import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
+
 //import com.team4001.lib.util.NTInterface;
 //import com.team4001.lib.util.NTInterface.Subsystem;
 //import com.team4001.lib.util.NTInterface.Key;
@@ -23,6 +24,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 //import org.opencv.imgproc.Imgproc;
 
 import org.usfirst.frc.team4001.commands.auto.*;
+
 
 import org.usfirst.frc.team4001.robot.commands.*;
 import org.usfirst.frc.team4001.robot.subsystems.*;
@@ -71,6 +73,7 @@ public class Robot extends IterativeRobot {
 
 
 		networkTableCom = new NTInterface();
+		networkTableCom.reset();
 		//AUTONOMOUS CHOOSER COMMANDS
 		// chooser.addObject("My Auto", new MyAutoCommand());
 		autoChooser = new SendableChooser<Command>();
@@ -89,14 +92,17 @@ public class Robot extends IterativeRobot {
 		SmartDashboard.putData("Open Holders", new GearHoldersFullOpen());
 		SmartDashboard.putData("Close Holders", new GearCloseHolders());
 		SmartDashboard.putData("ResetEncoders", new GearDrop_ResetEncoders());
+
 		SmartDashboard.putData("Climber contract", new ClimbContract());
 		SmartDashboard.putData("curtain up", new CurtainUp());
 		SmartDashboard.putData("curtain down", new CurtainDown());
 
 		SmartDashboard.putData("align", new Align());
+
 		SmartDashboard.putData("Slide To Zone", new GearSlidetoZone());
 		SmartDashboard.putData("Get Gear", new GetGear());
 		SmartDashboard.putData("Place Gear", new PlaceGear());
+		SmartDashboard.putData(Scheduler.getInstance());
 //		Thread visionThread = new Thread(() -> {
 //			// Get the UsbCamera from CameraServer
 //			UsbCamera camera = CameraServer.getInstance().startAutomaticCapture();
@@ -230,12 +236,15 @@ public class Robot extends IterativeRobot {
 	public void teleopPeriodic() {
 		SmartDashboard.putNumber("Right Gear Motor Position", geardrop.getRightHolderEncPosition());
 		SmartDashboard.putNumber("Left Gear Motor Position", geardrop.getLeftHolderEncPosition());
+		SmartDashboard.putBoolean("Left Switch", geardrop.leftswitchpressed());
+		SmartDashboard.putBoolean("Right Switch", geardrop.rightswitchpressed());
+		SmartDashboard.putBoolean("Holders Paired", geardrop.get_HoldersPaired());
 		SmartDashboard.putNumber("Left Drive Encoder", drive.getLeftEncoderDist());
 		SmartDashboard.putNumber("Right Drive Encoder", drive.getRightEncoderDist());
 		SmartDashboard.putNumber("Gyro Angle", drive.getYaw());
 		SmartDashboard.putNumber("IR READING", geardrop.getIR());
-		SmartDashboard.putNumber("Left Ultrasonic", drive.getLeftUltrasonicDist());
-		SmartDashboard.putNumber("Right Ultrasonic", drive.getRightUltrasonicDist());
+		SmartDashboard.putNumber("Left IR", drive.getLeftUltrasonicDist());
+		SmartDashboard.putNumber("Right IR", drive.getRightUltrasonicDist());
 		SmartDashboard.putNumber("raw left IR", drive.getRawIRLeft());
 		SmartDashboard.putNumber("raw IR right", drive.getRawIRRight());
 		SmartDashboard.putNumber("Curtain Pot", curtain.get_potValue());

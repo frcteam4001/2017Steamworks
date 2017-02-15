@@ -31,12 +31,16 @@ public class GearHoldersFullOpen extends Command {
 
     // Called just before this Command runs the first time
     protected void initialize() {
+    	if (Robot.geardrop.get_HoldersPaired()){
+    		Robot.geardrop.unpairmotors();
+    	}
     	Robot.geardrop.enablePowerMode();
     	
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
+    	
     	if(!Robot.geardrop.leftswitchpressed()){
     		Robot.geardrop.openLeftHolder(NumberConstants.geardrop_openpower);
     	}

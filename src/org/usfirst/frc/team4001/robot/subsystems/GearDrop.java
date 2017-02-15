@@ -42,7 +42,7 @@ public class GearDrop extends Subsystem {
 
    		gear_drop_motor_right.setFeedbackDevice(FeedbackDevice.QuadEncoder);
    		gear_drop_motor_right.configNominalOutputVoltage(+0f, -0f);
-   		gear_drop_motor_right.configPeakOutputVoltage(+12f, -12f);    	
+   		gear_drop_motor_right.configPeakOutputVoltage(+8f, -8f);    	
    		
    		this.closed = false;
    		
@@ -206,15 +206,13 @@ public class GearDrop extends Subsystem {
     public void unpairmotors()
     {
     	//unfollow the motor(follow = 0)
-    	this.gear_drop_motor_left.set(0);
-    	
+    	this.gear_drop_motor_left.set(0);	
     	this.gear_drop_motor_left.changeControlMode(TalonControlMode.PercentVbus);
-    	holderPairing = false;
     }
     
     public void slideleftsync()
     {
-    	if(holderPairing)
+    	if(this.get_HoldersPaired())
     	{
     		this.gear_drop_motor_right.set(0.5);
     	}
@@ -222,7 +220,7 @@ public class GearDrop extends Subsystem {
     
     public void sliderightsync()
     {
-    	if(holderPairing)
+    	if(this.get_HoldersPaired())
     	{
     		this.gear_drop_motor_right.set(-0.5);
     	}
