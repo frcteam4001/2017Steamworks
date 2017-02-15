@@ -291,31 +291,7 @@ public class DriveTrain extends Subsystem {
 		gyro.reset();
 	}
 	
-	public double getRawIRLeft(){
-		return ultrasonic_left.getVoltage();
-	}
 	
-	public double getRawIRRight(){
-		return ultrasonic_right.getVoltage();
-	}
-	
-	/////////ultrasonic methods
-	/**
-	 * Returns the reading of the left ultrasonic sensor in inches
-	 * @return Distance in inches
-	 */
-	public double getLeftUltrasonicDist() {
-		return ((58/(ultrasonic_left.getAverageVoltage() + 0.09))/2.54)*1.08;
-	}
-	
-	/**
-	 * Returns the reading of the right ultrasonic sensor in inches
-	 * @return Distance in inches
-	 */
-	public double getRightUltrasonicDist() {
-		return ((58/ultrasonic_right.getAverageVoltage())/2.54)*1.05;
-	}
-    
 	/**
 	 * Determines if both sensors are fixed on the same surface
 	 * @return true if both sensors are on the same surface, else false
@@ -341,6 +317,42 @@ public class DriveTrain extends Subsystem {
 			return -1.0 * NumberConstants.blind_turn_angle;
 		}
 	}
+	
+	public double getRawIRLeft(){
+		double reading = 0;
+		for (int i = 0; i < 200; i++){
+			reading += ultrasonic_left.getAverageVoltage();
+		}
+		reading /= 200;
+		return reading;
+	}
+	
+	public double getRawIRRight(){
+		double reading = 0;
+		for (int i = 0; i < 200; i++){
+			reading += ultrasonic_right.getAverageVoltage();
+		}
+		reading /= 200;
+		return reading;
+	}
+	
+	/////////ultrasonic methods
+	/**
+	 * Returns the reading of the left ultrasonic sensor in inches
+	 * @return Distance in inches
+	 */
+	public double getLeftUltrasonicDist() {
+		return ((58/(getRawIRLeft() + 0.09))/2.54)*1.08;
+	}
+	
+	/**
+	 * Returns the reading of the right ultrasonic sensor in inches
+	 * @return Distance in inches
+	 */
+	public double getRightUltrasonicDist() {
+		return ((58/getRawIRRight())/2.54)*1.05;
+	}
+    
 	
 	/**
 	 * Calculates and returns the angle, in degrees, at which the robot must turn so it is 
