@@ -1,6 +1,8 @@
 package com.team4001.lib.util;
 
 
+import java.util.Set;
+
 import edu.wpi.first.wpilibj.networktables.*;
 
 
@@ -159,6 +161,29 @@ public class NTInterface {
 		return false;
 	}
 	
-	
+	//resets all the networkTables
+	public void reset()
+	{
+		Set<String> driveTrainKeys = this.driveTrain.getKeys();
+		for(String s : driveTrainKeys)
+		{
+			this.driveTrain.putBoolean(s, false);
+			this.driveTrain.putNumber(s, 0);
+		}
+			
+		Set<String> gearDropKeys = this.gearDrop.getKeys();
+		for(String s : gearDropKeys)
+		{
+			this.gearDrop.putBoolean(s, false);
+			this.gearDrop.putNumber(s, 0);
+		}
+			
+		Set<String> gearZoneKeys = this.GearZone.getKeys();
+		for(String s : gearZoneKeys)
+		{
+			this.GearZone.putBoolean(s, false);
+			this.GearZone.putNumber(s, 0);
+		}
+	}
 	
 }

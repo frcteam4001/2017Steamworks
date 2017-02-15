@@ -41,8 +41,10 @@ public class OI {
 	// until it is finished as determined by it's isFinished method.
 	// button.whenReleased(new ExampleCommand());
 	
-	public Gamepad primary_controller;
-	public Gamepad secondary_controller;
+
+	public Gamepad game_controller;
+	public Gamepad support_controller;
+
 	public Button goForward;
 	
 	public JoystickButton gearslideRight;
@@ -55,8 +57,10 @@ public class OI {
 	
 	public OI(){
 
-		primary_controller = new Gamepad(0);
-		secondary_controller = new Gamepad(1);
+
+		game_controller = new Gamepad(0);
+		support_controller = new Gamepad(1);
+
 		
 		//gearslideRight = game_controller.getRightShoulder();
 		//gearslideRight.whileHeld(new ManualGearDropRight());
@@ -73,6 +77,9 @@ public class OI {
 		climbcon.whenPressed(new ClimbContract());
 		*/
 		
-		
+        //support_controller.getRightShoulder().whileHeld();
+        //support_controller.getRightAxisButton().whileHeld();
+        
+        support_controller.getButtonX().whileHeld(new PlaceGear());
 	}
 }
