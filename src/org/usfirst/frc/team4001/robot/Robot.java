@@ -75,10 +75,11 @@ public class Robot extends IterativeRobot {
 		// chooser.addObject("My Auto", new MyAutoCommand());
 		autoChooser = new SendableChooser<Command>();
 		autoChooser.addDefault("Default: Drive Straight and Stop", new DriveCommand(58.36, 0.5, 0, 8, 0.2));
-		autoChooser.addObject("Blue Right with Gear", new DriveKeyLineAndGear(1));
-		autoChooser.addObject("Red Left with Gear", new DriveKeyLineAndGear(-1));
-		autoChooser.addObject("Blue Left with Gear", new DriveRetLineAndGear(1));
-		autoChooser.addObject("Red Right with Gear", new DriveRetLineAndGear(-1));
+		autoChooser.addDefault("Straight w/ Gear", new DriveAndGear("Mid", 1));
+		autoChooser.addObject("Blue Right w/ Gear", new DriveAndGear("Key",1));
+		autoChooser.addObject("Red Left w/ Gear", new DriveAndGear("Key",-1));
+		autoChooser.addObject("Blue Left w/ Gear", new DriveAndGear("Ret",1));
+		autoChooser.addObject("Red Right w/ Gear", new DriveAndGear("Ret",-1));
 		SmartDashboard.putData("Autonomous Mode Chooser", autoChooser);
 
 		
