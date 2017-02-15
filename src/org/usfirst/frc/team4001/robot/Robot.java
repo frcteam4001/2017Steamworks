@@ -12,6 +12,7 @@ import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
+
 //import com.team4001.lib.util.NTInterface;
 //import com.team4001.lib.util.NTInterface.Subsystem;
 //import com.team4001.lib.util.NTInterface.Key;
@@ -23,6 +24,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 //import org.opencv.imgproc.Imgproc;
 
 import org.usfirst.frc.team4001.commands.auto.*;
+
 
 import org.usfirst.frc.team4001.robot.commands.*;
 import org.usfirst.frc.team4001.robot.subsystems.*;
@@ -44,6 +46,8 @@ public class Robot extends IterativeRobot {
 
 	Command autonomousCommand;
 	SendableChooser<Command> chooser = new SendableChooser<>();
+	
+	SendableChooser<Command> autoChooser;
 	
 	public static DriveTrain drive;
 	public static GearDrop geardrop;
@@ -69,22 +73,34 @@ public class Robot extends IterativeRobot {
 
 
 		networkTableCom = new NTInterface();
-
+		//AUTONOMOUS CHOOSER COMMANDS
 		// chooser.addObject("My Auto", new MyAutoCommand());
+		autoChooser = new SendableChooser<Command>();
+		autoChooser.addDefault("Default: Drive Straight and Stop", new DriveCommand(58.36, 0.5, 0, 8, 0.2));
+		autoChooser.addObject("Blue Right with Gear", new DriveKeyLineAndGear(1));
+		autoChooser.addObject("Red Left with Gear", new DriveKeyLineAndGear(-1));
+		autoChooser.addObject("Blue Left with Gear", new DriveRetLineAndGear(1));
+		autoChooser.addObject("Red Right with Gear", new DriveRetLineAndGear(-1));
+		SmartDashboard.putData("Autonomous Mode Chooser", autoChooser);
+
+		
 		SmartDashboard.putData("Auto mode", chooser);
 		//SmartDashboard.putData("Open Left Gear Holder", new GearHolderLeftFullOpen());
 		//SmartDashboard.putData("Open Right Gear Holder", new GearHolderRightFullOpen());
 		SmartDashboard.putData("Open Holders", new GearHoldersFullOpen());
 		SmartDashboard.putData("Close Holders", new GearCloseHolders());
 		SmartDashboard.putData("ResetEncoders", new GearDrop_ResetEncoders());
+
 		SmartDashboard.putData("Climber contract", new ClimbContract());
 		SmartDashboard.putData("curtain up", new CurtainUp());
 		SmartDashboard.putData("curtain down", new CurtainDown());
 
 		SmartDashboard.putData("align", new Align());
+
 		SmartDashboard.putData("Slide To Zone", new GearSlidetoZone());
 		SmartDashboard.putData("Get Gear", new GetGear());
 		SmartDashboard.putData("Place Gear", new PlaceGear());
+		SmartDashboard.putData(Scheduler.getInstance());
 //		Thread visionThread = new Thread(() -> {
 //			// Get the UsbCamera from CameraServer
 //			UsbCamera camera = CameraServer.getInstance().startAutomaticCapture();
@@ -156,15 +172,34 @@ public class Robot extends IterativeRobot {
 	 */
 	@Override
 	public void autonomousInit() {
-		autonomousCommand = chooser.getSelected();
-		
-		
+		//autonomousCommand = chooser.getSelected();
+		//String autoSelected = SmartDashboard.getString("Auto Selector");
+		autonomousCommand = (Command) autoChooser.getSelected();
 		/*
 		 * String autoSelected = SmartDashboard.getString("Auto Selector",
 		 * "Default"); switch(autoSelected) { case "My Auto": autonomousCommand
 		 * = new MyAutoCommand(); break; case "Default Auto": default:
 		 * autonomousCommand = new ExampleCommand(); break; }
-		 */
+		 
+		switch(autoSelected){
+		
+		case "Drive Straight and Stop":
+			autonomousCommand = new DriveCommand(58.36, 0.5, 0, 8, 0.2);
+			break;
+		case "Drive Red Right to Gear":
+			autonomousCommand = new DriveRedRightToGear();
+			break;
+		case "Drive Left Red to Gear":
+			autonomousCommand = new DriveRedLeftToGear();
+			break;
+		default: 
+			autonomousCommand = new DriveCommand(58.36, 0.5, 0, 1.5, 0.2);
+			break;
+			
+		}
+		*/
+		//autonomousCommand = new DriveCommand(58.36, 0.5, 0, 1.5, 0.2);
+//		autonomousCommand = new Test90DegPlace();
 
 		// schedule the autonomous command (example)
 		if (autonomousCommand != null)
@@ -176,6 +211,8 @@ public class Robot extends IterativeRobot {
 	 */
 	@Override
 	public void autonomousPeriodic() {
+		SmartDashboard.putNumber("Left Drive Encoder", drive.getLeftEncoderDist());
+		SmartDashboard.putNumber("Right Drive Encoder", drive.getRightEncoderDist());
 		Scheduler.getInstance().run();
 		
 	}
@@ -197,6 +234,9 @@ public class Robot extends IterativeRobot {
 	public void teleopPeriodic() {
 		SmartDashboard.putNumber("Right Gear Motor Position", geardrop.getRightHolderEncPosition());
 		SmartDashboard.putNumber("Left Gear Motor Position", geardrop.getLeftHolderEncPosition());
+		SmartDashboard.putBoolean("Left Switch", geardrop.leftswitchpressed());
+		SmartDashboard.putBoolean("Right Switch", geardrop.rightswitchpressed());
+		SmartDashboard.putBoolean("Holders Paired", geardrop.get_HoldersPaired());
 		SmartDashboard.putNumber("Left Drive Encoder", drive.getLeftEncoderDist());
 		SmartDashboard.putNumber("Right Drive Encoder", drive.getRightEncoderDist());
 		SmartDashboard.putNumber("Gyro Angle", drive.getYaw());

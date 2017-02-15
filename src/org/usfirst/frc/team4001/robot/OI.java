@@ -2,6 +2,7 @@ package org.usfirst.frc.team4001.robot;
 
 import edu.wpi.first.wpilibj.buttons.Button;
 import org.usfirst.frc.team4001.robot.commands.*;
+
 import com.team4001.lib.util.*;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj.Joystick;
@@ -43,6 +44,9 @@ public class OI {
 	public Gamepad game_controller;
 	public Button goForward;
 	
+	public JoystickButton gearslideRight;
+	public JoystickButton gearslideLeft;
+	
 	//button for climbing command
 	JoystickButton climbexp;
 	JoystickButton climbcon;
@@ -51,6 +55,12 @@ public class OI {
 	public OI(){
 
 		game_controller = new Gamepad(0);
+		
+		gearslideRight = game_controller.getRightShoulder();
+		gearslideRight.whileHeld(new ManualGearDropRight());
+		
+		gearslideLeft = game_controller.getLeftShoulder();
+        gearslideLeft.whileHeld(new ManualGearDropLeft());
 
 		/*
 		//change button binding configuration later

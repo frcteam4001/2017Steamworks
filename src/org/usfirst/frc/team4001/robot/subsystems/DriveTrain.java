@@ -107,7 +107,7 @@ public class DriveTrain extends Subsystem {
     
     
     public void arcadeDrive(double forward, double turn){
-    	drive.arcadeDrive(forward, turn,false);
+    	drive.arcadeDrive(0.9 * forward, 0.9 * turn,false);
 
     } 
     
@@ -199,8 +199,8 @@ public class DriveTrain extends Subsystem {
 	public void turnDrive(double setAngle, double speed, double epsilon) {
 		double angle = gyroPID.calcPID(setAngle, getYaw(), epsilon);
 
-		runLeftDrive(angle * speed);
-		runRightDrive(angle * speed);
+		runLeftDrive(-angle * speed);
+		runRightDrive(-angle * speed);
 	}
 	
 	
@@ -292,6 +292,7 @@ public class DriveTrain extends Subsystem {
 	}
 	
 	
+
 	/**
 	 * Determines if both sensors are fixed on the same surface
 	 * @return true if both sensors are on the same surface, else false
