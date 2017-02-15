@@ -41,7 +41,8 @@ public class OI {
 	// until it is finished as determined by it's isFinished method.
 	// button.whenReleased(new ExampleCommand());
 	
-	public Gamepad game_controller;
+	public Gamepad primary_controller;
+	public Gamepad secondary_controller;
 	public Button goForward;
 	
 	public JoystickButton gearslideRight;
@@ -54,13 +55,14 @@ public class OI {
 	
 	public OI(){
 
-		game_controller = new Gamepad(0);
+		primary_controller = new Gamepad(0);
+		secondary_controller = new Gamepad(1);
 		
-		gearslideRight = game_controller.getRightShoulder();
-		gearslideRight.whileHeld(new ManualGearDropRight());
+		//gearslideRight = game_controller.getRightShoulder();
+		//gearslideRight.whileHeld(new ManualGearDropRight());
 		
-		gearslideLeft = game_controller.getLeftShoulder();
-        gearslideLeft.whileHeld(new ManualGearDropLeft());
+		//gearslideLeft = game_controller.getLeftShoulder();
+        //gearslideLeft.whileHeld(new ManualGearDropLeft());
 
 		/*
 		//change button binding configuration later
