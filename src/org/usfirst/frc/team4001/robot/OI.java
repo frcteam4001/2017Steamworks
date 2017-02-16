@@ -56,7 +56,8 @@ public class OI {
 	JoystickButton place_gear;
 	JoystickButton get_gear;
 	
-	
+	ClimbUp up_command = new ClimbUp();
+	ClimbDown down_command = new ClimbDown();
 	
 	public OI(){
 
@@ -75,11 +76,14 @@ public class OI {
         
         //SUPPORT CONTROLLER
         //change button binding configuration later
-        climb_up = support_controller.getButtonX();
-        climb_down = support_controller.getButtonY();
+        climb_up = support_controller.getButtonY();
+        climb_down = support_controller.getButtonX();
       		
-        climb_up.whenPressed(new ClimbDown());
-        climb_down.whenPressed(new ClimbUp());
+        climb_up.whenPressed(new ClimbUp());
+        climb_down.whenPressed(new ClimbDown());
+        
+        //climb_up.cancelWhenPressed(up_command);
+        //climb_down.cancelWhenPressed(down_command);
 
 		
 		//gearslideRight = game_controller.getRightShoulder();
