@@ -51,8 +51,11 @@ public class OI {
 	public JoystickButton gearslideLeft;
 	
 	//button for climbing command
-	JoystickButton climbexp;
-	JoystickButton climbcon;
+	JoystickButton climb_up;
+	JoystickButton climb_down;
+	JoystickButton place_gear;
+	JoystickButton get_gear;
+	
 	
 	
 	public OI(){
@@ -60,6 +63,23 @@ public class OI {
 
 		game_controller = new Gamepad(0);
 		support_controller = new Gamepad(1);
+		
+		//game controller - primary control
+		place_gear = game_controller.getButtonX();
+        place_gear.whenPressed(new PlaceGear());
+        
+        get_gear = game_controller.getButtonY();
+        get_gear.whenPressed(new GetGear());
+        
+        
+        
+        //SUPPORT CONTROLLER
+        //change button binding configuration later
+        climb_up = support_controller.getButtonX();
+        climb_down = support_controller.getButtonY();
+      		
+        climb_up.whenPressed(new ClimbDown());
+        climb_down.whenPressed(new ClimbUp());
 
 		
 		//gearslideRight = game_controller.getRightShoulder();
@@ -68,18 +88,15 @@ public class OI {
 		//gearslideLeft = game_controller.getLeftShoulder();
         //gearslideLeft.whileHeld(new ManualGearDropLeft());
 
-		/*
-		//change button binding configuration later
-		climbexp = game_controller.getButtonX();
-		climbcon = game_controller.getButtonY();
 		
-		climbexp.whenPressed(new ClimbExpand());
-		climbcon.whenPressed(new ClimbContract());
-		*/
+		
+		
 		
         //support_controller.getRightShoulder().whileHeld();
         //support_controller.getRightAxisButton().whileHeld();
+		
         
-        support_controller.getButtonX().whileHeld(new PlaceGear());
+        
+        
 	}
 }

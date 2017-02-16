@@ -88,11 +88,11 @@ public class Robot extends IterativeRobot {
 		SmartDashboard.putData("Auto mode", chooser);
 		//SmartDashboard.putData("Open Left Gear Holder", new GearHolderLeftFullOpen());
 		//SmartDashboard.putData("Open Right Gear Holder", new GearHolderRightFullOpen());
-		SmartDashboard.putData("Open Holders", new GearHoldersFullOpen());
+		SmartDashboard.putData("Open Holders", new GearHoldersFullOpen(true));
 		SmartDashboard.putData("Close Holders", new GearCloseHolders());
 		SmartDashboard.putData("ResetEncoders", new GearDrop_ResetEncoders());
 
-		SmartDashboard.putData("Climber contract", new ClimbContract());
+		SmartDashboard.putData("Climber contract", new ClimbUp());
 		SmartDashboard.putData("curtain up", new CurtainUp());
 		SmartDashboard.putData("curtain down", new CurtainDown());
 
