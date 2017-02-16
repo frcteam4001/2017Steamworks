@@ -13,9 +13,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 
-//import com.team4001.lib.util.NTInterface;
-//import com.team4001.lib.util.NTInterface.Subsystem;
-//import com.team4001.lib.util.NTInterface.Key;
+
 //
 //
 //import org.opencv.core.Mat;
@@ -45,7 +43,6 @@ public class Robot extends IterativeRobot {
 	public static OI oi;
 
 	Command autonomousCommand;
-	SendableChooser<Command> chooser = new SendableChooser<>();
 	
 	SendableChooser<Command> autoChooser;
 	
@@ -86,7 +83,7 @@ public class Robot extends IterativeRobot {
 		SmartDashboard.putData("Autonomous Mode Chooser", autoChooser);
 
 		
-		SmartDashboard.putData("Auto mode", chooser);
+		
 		//SmartDashboard.putData("Open Left Gear Holder", new GearHolderLeftFullOpen());
 		//SmartDashboard.putData("Open Right Gear Holder", new GearHolderRightFullOpen());
 		SmartDashboard.putData("Open Holders", new GearHoldersFullOpen());
@@ -215,6 +212,8 @@ public class Robot extends IterativeRobot {
 	public void autonomousPeriodic() {
 		SmartDashboard.putNumber("Left Drive Encoder", drive.getLeftEncoderDist());
 		SmartDashboard.putNumber("Right Drive Encoder", drive.getRightEncoderDist());
+		gearZone = networkTableCom.getNumber(Subsystem.GearZone, Key.GearZone);
+		SmartDashboard.putNumber("Gearzone", gearZone);
 		Scheduler.getInstance().run();
 		
 	}
@@ -257,6 +256,7 @@ public class Robot extends IterativeRobot {
 //		networkTableCom.putNumber(Subsystem.GearDrop, Key.LeftGearMotorPosition, geardrop.getLeftHolderEncPosition()/1.0);
 //		
 		gearZone = networkTableCom.getNumber(Subsystem.GearZone, Key.GearZone);
+		SmartDashboard.putNumber("Gearzone", gearZone);
 		
 
 		//System.out.println("gear zone: " + Double.toString(gearZone));
