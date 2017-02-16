@@ -41,41 +41,66 @@ public class OI {
 	// until it is finished as determined by it's isFinished method.
 	// button.whenReleased(new ExampleCommand());
 	
+
 	public Gamepad game_controller;
 	public Gamepad support_controller;
+
 	public Button goForward;
 	
 	public JoystickButton gearslideRight;
 	public JoystickButton gearslideLeft;
 	
 	//button for climbing command
-	JoystickButton climbexp;
-	JoystickButton climbcon;
+	JoystickButton climb_up;
+	JoystickButton climb_down;
+	JoystickButton place_gear;
+	JoystickButton get_gear;
 	
+	ClimbUp up_command = new ClimbUp();
+	ClimbDown down_command = new ClimbDown();
 	
 	public OI(){
+
 
 		game_controller = new Gamepad(0);
 		support_controller = new Gamepad(1);
 		
-		gearslideRight = game_controller.getRightShoulder();
-		gearslideRight.whileHeld(new ManualGearDropRight());
-		
-		gearslideLeft = game_controller.getLeftShoulder();
-        gearslideLeft.whileHeld(new ManualGearDropLeft());
+		//game controller - primary control
+		place_gear = game_controller.getButtonX();
+        place_gear.whenPressed(new PlaceGear());
+        
+        get_gear = game_controller.getButtonY();
+        get_gear.whenPressed(new GetGear());
+        
+        
+        
+        //SUPPORT CONTROLLER
+        //change button binding configuration later
+        climb_up = support_controller.getButtonY();
+        climb_down = support_controller.getButtonX();
+      		
+        climb_up.whenPressed(new ClimbUp());
+        climb_down.whenPressed(new ClimbDown());
+        
+        //climb_up.cancelWhenPressed(up_command);
+        //climb_down.cancelWhenPressed(down_command);
 
-		/*
-		//change button binding configuration later
-		climbexp = game_controller.getButtonX();
-		climbcon = game_controller.getButtonY();
 		
-		climbexp.whenPressed(new ClimbExpand());
-		climbcon.whenPressed(new ClimbContract());
-		*/
+		//gearslideRight = game_controller.getRightShoulder();
+		//gearslideRight.whileHeld(new ManualGearDropRight());
+		
+		//gearslideLeft = game_controller.getLeftShoulder();
+        //gearslideLeft.whileHeld(new ManualGearDropLeft());
+
+		
+		
+		
 		
         //support_controller.getRightShoulder().whileHeld();
         //support_controller.getRightAxisButton().whileHeld();
+		
         
-        support_controller.getButtonX().whileHeld(new PlaceGear());
+        
+        
 	}
 }

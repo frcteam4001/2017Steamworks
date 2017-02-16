@@ -26,7 +26,7 @@ public class GetGear extends CommandGroup {
         // Command1 and Command2 will run in parallel.
 
     	
-    	addParallel(new GearHoldersFullOpen());
+    	addParallel(new GearHoldersFullOpen(true));
         addSequential(new Align());
         
         addSequential(new DriveToGearLoadingDistance());

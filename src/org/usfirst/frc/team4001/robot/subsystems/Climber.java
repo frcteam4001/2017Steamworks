@@ -14,6 +14,9 @@ public class Climber extends Subsystem
     // here. Call these from Commands.
 	
 	private Spark climbMotor;
+	//represents the state of the climber
+	//1 means up, 0 means idle, -1 means down
+	public byte state = 0;
 	
 	public Climber() {
 		climbMotor = new Spark(ElectricalConstants.CLIMBER_MOTOR);
