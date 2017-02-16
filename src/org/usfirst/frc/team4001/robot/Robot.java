@@ -88,7 +88,7 @@ public class Robot extends IterativeRobot {
 		SmartDashboard.putData("Auto mode", chooser);
 		//SmartDashboard.putData("Open Left Gear Holder", new GearHolderLeftFullOpen());
 		//SmartDashboard.putData("Open Right Gear Holder", new GearHolderRightFullOpen());
-		SmartDashboard.putData("Open Holders", new GearHoldersFullOpen(true));
+		SmartDashboard.putData("Open Holders", new GearHoldersFullOpen());
 		SmartDashboard.putData("Close Holders", new GearCloseHolders());
 		SmartDashboard.putData("ResetEncoders", new GearDrop_ResetEncoders());
 
@@ -99,7 +99,7 @@ public class Robot extends IterativeRobot {
 		SmartDashboard.putData("align", new Align());
 
 		SmartDashboard.putData("Slide To Zone", new GearSlidetoZone());
-		SmartDashboard.putData("Get Gear", new GetGear());
+		SmartDashboard.putData("Get Gear", new GetGearAutoAlign());
 		SmartDashboard.putData("Place Gear", new PlaceGear());
 		SmartDashboard.putData(Scheduler.getInstance());
 //		Thread visionThread = new Thread(() -> {
@@ -247,6 +247,7 @@ public class Robot extends IterativeRobot {
 		SmartDashboard.putNumber("raw left IR", drive.getRawIRLeft());
 		SmartDashboard.putNumber("raw IR right", drive.getRawIRRight());
 		SmartDashboard.putNumber("Curtain Pot", curtain.get_potValue());
+		SmartDashboard.putNumber("Climber State",climber.get_state());
 
 //		networkTableCom.putNumber(Subsystem.DriveTrain, Key.RightDriveEncoder, drive.getRightEncoderDist());
 //		networkTableCom.putNumber(Subsystem.DriveTrain, Key.LeftDriveEncoder, drive.getLeftEncoderDist());

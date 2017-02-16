@@ -344,7 +344,7 @@ public class DriveTrain extends Subsystem {
 	 * @return Distance in inches
 	 */
 	public double getLeftUltrasonicDist() {
-		return ((1/0.36) - (1/getRawIRLeft())) * 17.486 + 8;
+		return 50 - ((1/0.36) - (1/getRawIRLeft())) * 17.486;
 	}
 	
 	/**
@@ -352,7 +352,7 @@ public class DriveTrain extends Subsystem {
 	 * @return Distance in inches
 	 */
 	public double getRightUltrasonicDist() {
-		return ((1/0.46) - (1/getRawIRRight())) * 23.321 + 8;
+		return 50 - ((1/0.46) - (1/getRawIRRight())) * 23.321;
 	}
     
 	

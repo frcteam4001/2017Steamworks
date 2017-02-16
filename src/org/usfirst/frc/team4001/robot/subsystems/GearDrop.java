@@ -109,7 +109,7 @@ public class GearDrop extends Subsystem {
     
     public void stopLeftHolder()
     {
-	this.unpairmotors();
+	//this.unpairmotors();
     	gear_drop_motor_left.set(0);
     }
     

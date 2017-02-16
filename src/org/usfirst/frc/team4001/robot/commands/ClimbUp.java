@@ -20,20 +20,21 @@ public class ClimbUp extends Command
     // Called just before this Command runs the first time
     protected void initialize()
     {
-    	if(Robot.climber.state != 1)
+    	System.out.println("Climber Up init");
+    	if(Robot.climber.get_state() != 1)
     	{
-    		Robot.climber.state = 1;
+    		Robot.climber.set_state(1);
     	}
     	else
     	{
-    		Robot.climber.state = 0;
+    		Robot.climber.set_state(0);
     	}
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute()
-    {
-    	if(Robot.climber.state == 1)
+    {	System.out.println("Climber Up exec");
+    	if(Robot.climber.get_state() == 1)
     	{
     		Robot.climber.expand();
     	}
@@ -46,20 +47,22 @@ public class ClimbUp extends Command
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished()
     {
-        return Robot.climber.state == 0;
+    	return false;
+        //return Robot.climber.get_state() == 0;
     }
 
     // Called once after isFinished returns true
     protected void end()
     {
-    	//Robot.climber.stop();
-    	//Robot.climber.state = 0;
+    	Robot.climber.stop();
+    	Robot.climber.set_state(0);
     }
 
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run
     protected void interrupted()
     {
-    	Robot.climber.stop();
+    	//Robot.climber.stop();
+    	end();
     }
 }

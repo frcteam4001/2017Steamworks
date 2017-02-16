@@ -70,7 +70,7 @@ public class OI {
         place_gear.whenPressed(new PlaceGear());
         
         get_gear = game_controller.getButtonY();
-        get_gear.whenPressed(new GetGear());
+        get_gear.whenPressed(new GetGearAutoAlign());
         
         
         
