@@ -1,5 +1,6 @@
 package org.usfirst.frc.team4001.robot.commands;
 
+import org.usfirst.frc.team4001.robot.OI;
 import org.usfirst.frc.team4001.robot.Robot;
 
 import edu.wpi.first.wpilibj.command.Command;
@@ -7,10 +8,10 @@ import edu.wpi.first.wpilibj.command.Command;
 /**
  *
  */
-public class ClimbContract extends Command
+public class ClimbDown extends Command
 {
 
-    public ClimbContract()
+    public ClimbDown()
     {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
@@ -25,7 +26,7 @@ public class ClimbContract extends Command
     // Called repeatedly when this Command is scheduled to run
     protected void execute()
     {
-    	Robot.climber.contract();
+    	Robot.climber.expand();
     }
 
     // Make this return true when this Command no longer needs to run execute()
