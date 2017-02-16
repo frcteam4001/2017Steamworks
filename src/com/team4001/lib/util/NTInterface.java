@@ -25,7 +25,10 @@ public class NTInterface {
 		RightUltrasonicDistance("Right Ultrasonic Distance"),
 		
 		//GearZone valid keys
-		GearZone("zone")
+		GearZone("zone"),
+		IRreadingL("IRreadingL"),
+		IRreadingR("IRreadingR"),
+		Encoder("Encoder")
 		;
 		
 		
