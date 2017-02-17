@@ -73,7 +73,7 @@ public class Robot extends IterativeRobot {
 
 
 		networkTableCom = new NTInterface();
-		networkTableCom.reset();
+		//networkTableCom.reset();
 		//AUTONOMOUS CHOOSER COMMANDS
 		// chooser.addObject("My Auto", new MyAutoCommand());
 		autoChooser = new SendableChooser<Command>();
