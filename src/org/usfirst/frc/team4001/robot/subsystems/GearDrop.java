@@ -42,7 +42,7 @@ public class GearDrop extends Subsystem {
 
    		gear_drop_motor_right.setFeedbackDevice(FeedbackDevice.QuadEncoder);
    		gear_drop_motor_right.configNominalOutputVoltage(+0f, -0f);
-   		gear_drop_motor_right.configPeakOutputVoltage(+8f, -8f);    	
+   		gear_drop_motor_right.configPeakOutputVoltage(+3f, -3f);    	
    		
    		this.closed = false;
    		
@@ -63,6 +63,8 @@ public class GearDrop extends Subsystem {
 		gear_drop_motor_right.setP(p);
 		gear_drop_motor_right.setI(i);
 		gear_drop_motor_right.setD(d);
+		gear_drop_motor_right.configNominalOutputVoltage(+0f, -0f);
+   		gear_drop_motor_right.configPeakOutputVoltage(+8f, -8f);   
 		gear_drop_motor_right.changeControlMode(TalonControlMode.Position);
 		
 		if(resetEncoder && rightswitchpressed() ){

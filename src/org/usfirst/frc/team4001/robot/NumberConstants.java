@@ -14,14 +14,15 @@ public class NumberConstants {
     //**************************************************************************
 	
 	public static final double geardrop_openpower 						 = 0.5;
+	public static final double geardrop_peakvoltage						=0.3;
 	
 	// pid constants for gear holder
-	public static final double geardrop_holder_close_p					 = 0.9;
+	public static final double geardrop_holder_close_p					 = 0.8;
 	public static final double geardrop_holder_close_i					 = 0.0;
 	public static final double geardrop_holder_close_d					 = 0.3;
 	public static final double geardrop_holder_close_f					 = 0.0;
 	public static final int geardrop_holder_close_error					 = 100;
-	public static final int geardrop_holder_close_position				 = 15900; //pulses
+	public static final int geardrop_holder_close_position				 = 15200; //pulses
 
 	
 

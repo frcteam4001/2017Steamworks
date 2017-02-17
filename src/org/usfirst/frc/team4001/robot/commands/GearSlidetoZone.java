@@ -16,15 +16,15 @@ public class GearSlidetoZone extends Command {
         // eg. requires(chassis);
     	requires(Robot.geardrop);
     	zonePosition = -1;
-    	
-    	
     }
-
+    
     // Called just before this Command runs the first time
     protected void initialize() {
 
     		Robot.geardrop.pairHolders();
         	Robot.geardrop.pid_initRightPosition(NumberConstants.geardrop_holder_close_p, NumberConstants.geardrop_holder_close_i, NumberConstants.geardrop_holder_close_d, NumberConstants.geardrop_holder_close_f, NumberConstants.geardrop_holder_close_error, false);       	
+        	
+        	
         	
         	switch((int) Robot.gearZone){
         	
