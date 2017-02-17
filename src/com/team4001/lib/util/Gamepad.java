@@ -23,9 +23,9 @@ public class Gamepad extends Joystick {
   private static final int AXIS_DPAD = 6;
 
   // Gamepad buttons
-  private static final int BUTTON_A = 2;
-  private static final int BUTTON_B = 3;
-  private static final int BUTTON_X = 1;
+  private static final int BUTTON_A = 1;
+  private static final int BUTTON_B = 2;
+  private static final int BUTTON_X = 3;
   private static final int BUTTON_Y = 4;
   private static final int BUTTON_SHOULDER_LEFT = 5;
   private static final int BUTTON_SHOULDER_RIGHT = 6;

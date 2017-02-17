@@ -14,13 +14,14 @@ public class NumberConstants {
     //**************************************************************************
 	
 	public static final double geardrop_openpower 						 = 0.5;
+	public static final double geardrop_peakvoltage						=0.3;
 	
 	// pid constants for gear holder
-	public static final double geardrop_holder_close_p					 = 0.9;
+	public static final double geardrop_holder_close_p					 = 0.8;
 	public static final double geardrop_holder_close_i					 = 0.0;
 	public static final double geardrop_holder_close_d					 = 0.3;
 	public static final double geardrop_holder_close_f					 = 0.0;
-	public static final int geardrop_holder_close_error					 = 50;
+	public static final int geardrop_holder_close_error					 = 100;
 	public static final int geardrop_holder_close_position				 = 15200; //pulses
 
 	
@@ -50,7 +51,7 @@ public class NumberConstants {
 	
 	//Competition
 	public static final double pDrive 									 = 0.15;
-	public static final double iDrive 									 = 0.00;
+	public static final double iDrive 									 = 0.005;
 	public static final double dDrive 									 = 0.04;
 	
 	public static final double Drive_Scale 								 = 0.6;
@@ -61,6 +62,13 @@ public class NumberConstants {
 	
 	public static final double curtain_max = 130;
 	public static final double curtain_min  = 9;
+	public static final double curtain_speed = 0.8;
+	
+	//**************************************************************************
+    //******************************* CLIMBER **********************************
+    //**************************************************************************
+	public static final double climber_upSpeed = 1;
+	public static final double climber_downSpeed = 0.5;
 	
 	//**************************************************************************
     //**************************** PID VALUES (GYRO) ***************************

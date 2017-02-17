@@ -108,7 +108,7 @@ public class DriveTrain extends Subsystem {
     
     
     public void arcadeDrive(double forward, double turn){
-    	drive.arcadeDrive(0.9 * forward, 0.9 * turn,false);
+    	drive.arcadeDrive(0.8 * forward, 0.8 * turn,false);
 
     } 
     
@@ -322,19 +322,37 @@ public class DriveTrain extends Subsystem {
 	
 	public double getRawIRLeft(){
 		double reading = 0;
-		for (int i = 0; i < 200; i++){
+		for (int i = 0; i < 20; i++){
 			reading += ultrasonic_left.getAverageVoltage();
 		}
-		reading /= 200;
+		try {
+			Thread.sleep(10);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		for (int i = 0; i < 20; i++){
+			reading += ultrasonic_left.getAverageVoltage();
+		}
+		reading /= 40;
 		return reading;
 	}
 	
 	public double getRawIRRight(){
 		double reading = 0;
-		for (int i = 0; i < 200; i++){
+		for (int i = 0; i < 20; i++){
 			reading += ultrasonic_right.getAverageVoltage();
 		}
-		reading /= 200;
+		try {
+			Thread.sleep(10);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		for (int i = 0; i < 20; i++){
+			reading += ultrasonic_right.getAverageVoltage();
+		}
+		reading /= 40;
 		return reading;
 	}
 	
@@ -344,7 +362,8 @@ public class DriveTrain extends Subsystem {
 	 * @return Distance in inches
 	 */
 	public double getLeftUltrasonicDist() {
-		return ((1/0.36) - (1/getRawIRLeft())) * 17.486 + 8;
+		double ir = getRawIRLeft();
+		return -9.136 * Math.pow(ir, 5) + 70.09 * Math.pow(ir, 4) - 215.2 * Math.pow(ir, 3) + 336.4 * Math.pow(ir, 2) - 281.8 * ir + 121.2;
 	}
 	
 	/**
@@ -352,7 +371,8 @@ public class DriveTrain extends Subsystem {
 	 * @return Distance in inches
 	 */
 	public double getRightUltrasonicDist() {
-		return ((1/0.46) - (1/getRawIRRight())) * 23.321 + 8;
+		double ir = getRawIRRight();
+		return -11.3 * Math.pow(ir, 5) + 85.18 * Math.pow(ir, 4) - 255.4 * Math.pow(ir, 3) + 387.6 * Math.pow(ir, 2) - 313.1 * ir + 127.7;
 	}
     
 	

@@ -1,6 +1,7 @@
 package org.usfirst.frc.team4001.robot.subsystems;
 
 import org.usfirst.frc.team4001.robot.ElectricalConstants;
+import org.usfirst.frc.team4001.robot.NumberConstants;
 
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.interfaces.Potentiometer;
@@ -26,11 +27,11 @@ public class Curtain extends Subsystem {
 	}
 	
 	public void curtainUp() {
-    		curtain_motor.set(0.5);
+    		curtain_motor.set(NumberConstants.curtain_speed);
    	}
     
     public void curtainDown() {
-    	curtain_motor.set(-0.5);
+    	curtain_motor.set(-1*NumberConstants.curtain_speed);
     }
 	
     public void stopCurtain() {
@@ -40,6 +41,7 @@ public class Curtain extends Subsystem {
     public double get_potValue(){
     	return pot.get();
     }
+
     
     public void initDefaultCommand() {
         // Set the default command for a subsystem here.

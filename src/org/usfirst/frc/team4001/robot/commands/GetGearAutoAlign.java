@@ -11,9 +11,9 @@ import org.usfirst.frc.team4001.robot.Robot;
 /**
  *
  */
-public class GetGear extends CommandGroup {
+public class GetGearAutoAlign extends CommandGroup {
 
-    public GetGear() {
+    public GetGearAutoAlign() {
         // Add Commands here:
         // e.g. addSequential(new Command1());
         //      addSequential(new Command2());
@@ -26,7 +26,7 @@ public class GetGear extends CommandGroup {
         // Command1 and Command2 will run in parallel.
 
     	
-    	addParallel(new GearHoldersFullOpen());
+    	addParallel(new GearHoldersFullOpen(true));
         addSequential(new Align());
         
         addSequential(new DriveToGearLoadingDistance());
