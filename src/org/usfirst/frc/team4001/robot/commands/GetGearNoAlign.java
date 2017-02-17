@@ -29,8 +29,8 @@ public class GetGearNoAlign extends CommandGroup {
         // e.g. if Command1 requires chassis, and Command2 requires arm,
         // a CommandGroup containing them would require both the chassis and the
         // arm.
-    	addParallel(new GearHoldersFullOpen(true));
-        addSequential(new CurtainUp());
+    	addSequential(new GearHoldersFullOpen(false));
+        addParallel(new CurtainUp());
         addSequential(new TurnRoller());
         addSequential(new GearCloseHolders());
         addSequential(new CurtainDown());

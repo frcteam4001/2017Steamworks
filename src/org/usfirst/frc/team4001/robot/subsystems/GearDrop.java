@@ -192,7 +192,7 @@ public class GearDrop extends Subsystem {
 	}
 
 	public void turnRoller() {
-    		gear_roller.set(0.8);
+    		gear_roller.set(-0.8);
     	}
     
    	public void stopRoller() {

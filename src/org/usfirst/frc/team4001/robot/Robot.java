@@ -105,7 +105,7 @@ public class Robot extends IterativeRobot {
 		SmartDashboard.putData("align", new Align());
 
 		SmartDashboard.putData("Slide To Zone", new GearSlidetoZone());
-		SmartDashboard.putData("Get Gear", new GetGearAutoAlign());
+		SmartDashboard.putData("Get Gear - No Align", new GetGearNoAlign());
 		SmartDashboard.putData("Place Gear", new PlaceGear());
 		SmartDashboard.putData(Scheduler.getInstance());
 		
