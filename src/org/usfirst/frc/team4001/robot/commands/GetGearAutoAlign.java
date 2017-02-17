@@ -11,9 +11,9 @@ import org.usfirst.frc.team4001.robot.Robot;
 /**
  *
  */
-public class GetGear extends CommandGroup {
+public class GetGearAutoAlign extends CommandGroup {
 
-    public GetGear() {
+    public GetGearAutoAlign() {
         // Add Commands here:
         // e.g. addSequential(new Command1());
         //      addSequential(new Command2());
