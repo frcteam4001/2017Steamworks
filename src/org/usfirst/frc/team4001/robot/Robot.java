@@ -1,10 +1,12 @@
 
 package org.usfirst.frc.team4001.robot;
 
+
 //import edu.wpi.cscore.CvSink;
 //import edu.wpi.cscore.CvSource;
-//import edu.wpi.cscore.UsbCamera;
-//import edu.wpi.first.wpilibj.CameraServer;
+import edu.wpi.cscore.UsbCamera;
+import edu.wpi.first.wpilibj.CameraServer;
+
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
@@ -57,6 +59,7 @@ public class Robot extends IterativeRobot {
 	public static double rightir;
 	public static double leftir;
 	public static double avgdistance;
+	public static CameraServer server;
 	
 	
 	/**
@@ -105,11 +108,17 @@ public class Robot extends IterativeRobot {
 		SmartDashboard.putData("Get Gear", new GetGearAutoAlign());
 		SmartDashboard.putData("Place Gear", new PlaceGear());
 		SmartDashboard.putData(Scheduler.getInstance());
+		
+		//server = CameraServer.getInstance();
+	    //server.startAutomaticCapture();
+	    
+	    // Get the UsbCamera from CameraServer
+		UsbCamera camera = CameraServer.getInstance().startAutomaticCapture("cam0",0);
+		// Set the resolution
+		camera.setResolution(640, 480);
+		
 //		Thread visionThread = new Thread(() -> {
-//			// Get the UsbCamera from CameraServer
-//			UsbCamera camera = CameraServer.getInstance().startAutomaticCapture();
-//			// Set the resolution
-//			camera.setResolution(640, 480);
+
 //			
 //		//SmartDashboard.putData("SlideTest", new GearSlideToPosition(8000));
 //		
@@ -250,7 +259,6 @@ public class Robot extends IterativeRobot {
 		SmartDashboard.putNumber("raw left IR", drive.getRawIRLeft());
 		SmartDashboard.putNumber("raw IR right", drive.getRawIRRight());
 		SmartDashboard.putNumber("Curtain Pot", curtain.get_potValue());
-		SmartDashboard.putNumber("Climber State",climber.get_state());
 
 //		networkTableCom.putNumber(Subsystem.DriveTrain, Key.RightDriveEncoder, drive.getRightEncoderDist());
 //		networkTableCom.putNumber(Subsystem.DriveTrain, Key.LeftDriveEncoder, drive.getLeftEncoderDist());

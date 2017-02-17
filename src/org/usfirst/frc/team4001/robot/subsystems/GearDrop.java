@@ -234,7 +234,7 @@ public class GearDrop extends Subsystem {
      */
     
     public boolean gearIsInside() {
-    	if (IRSensor.getValue() <= NumberConstants.IR_sensor_treshold) {
+    	if (IRSensor.getValue() > NumberConstants.IR_sensor_treshold) {
     		return true;
     	} else {
     		return false;

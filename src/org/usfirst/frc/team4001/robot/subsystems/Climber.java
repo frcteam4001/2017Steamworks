@@ -17,11 +17,11 @@ public class Climber extends Subsystem
 	private Spark climbMotor;
 	//represents the state of the climber
 	//1 means up, 0 means idle, -1 means down
-	private int state;
+
 	
 	public Climber() {
 		climbMotor = new Spark(ElectricalConstants.CLIMBER_MOTOR);
-		this.state = 0;
+
 	}
 	
     public void initDefaultCommand()
@@ -44,12 +44,5 @@ public class Climber extends Subsystem
     	climbMotor.set(0);
     }
     
-    public void set_state(int new_state){
-    	this.state = new_state;
-    }
-    
-    public int get_state(){
-    	return this.state;
-    }
     
 }
