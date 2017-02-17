@@ -31,19 +31,10 @@ public class PlaceGear extends CommandGroup {
         // a CommandGroup containing them would require both the chassis and the
         // arm.
     	
-//    	//Level to airship
-//    	addSequential(new Align());
-//    	
-//    	//Drive to camera_capture_distance from the airship. The average of the readings from the
-//    	//ultrasonic sensors is used to increase accuracy
-//    	double distanceFromAirship = (Robot.drive.getLeftUltrasonicDist() + Robot.drive.getRightUltrasonicDist()) / 2.0;
-//    	double distanceToTravel = distanceFromAirship - NumberConstants.camera_capture_distance;
-//    	addSequential(new DriveCommand(distanceToTravel, 0.5, 0, 5));
-//    	
-//    	
-    	//if(!Robot.drive.isAligned()){
+
+    	if(!Robot.drive.isAligned()){
     		addSequential(new Align());
-    	//}
+    	}
     	
     	
     	addSequential(new DriveToCamCaptureDistance());
@@ -56,8 +47,11 @@ public class PlaceGear extends CommandGroup {
 		}
     	if (Robot.gearZone != -1 || Robot.gearZone == -20000 || Robot.gearZone == -30000){
     		addSequential(new GearSlidetoZone());
-    		addSequential(new DriveCommand(NumberConstants.camera_capture_distance - 12, 0.35, 0, 1.75, 0.3));
+    		addSequential(new DriveCommand(NumberConstants.camera_capture_distance - 12, 0.35, 0, 1.5, 0.3));
+    	} else if (Robot.gearZone == -1) {
+    		addSequential(new DriveCommand(12, 0.5, 0, 1.5, 0.3));
     	}
+    	
     	
     }
 }

@@ -24,9 +24,9 @@ public class DriveToCamCaptureDistance extends Command {
     // Called just before this Command runs the first time
     protected void initialize() {
     	this.distance = (Robot.drive.getLeftUltrasonicDist() + Robot.drive.getRightUltrasonicDist())/2 - NumberConstants.camera_capture_distance;
-		this.speed = 0.6;
+		this.speed = 0.5;
 		this.angle = 0;
-		this.timeOut = 1.75;
+		this.timeOut = 1.5;
 		this.epsilon = 0.25;
 		Robot.drive.reset();
 		setTimeout(timeOut);
