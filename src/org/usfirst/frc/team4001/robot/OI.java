@@ -79,8 +79,8 @@ public class OI {
         climb_up = support_controller.getButtonY();
         climb_down = support_controller.getButtonX();
       		
-        climb_up.whenPressed(new ClimbUp());
-        climb_down.whenPressed(new ClimbDown());
+        climb_up.toggleWhenPressed(new ClimbUp());
+        climb_down.toggleWhenPressed(new ClimbDown());
         
         //climb_up.cancelWhenPressed(up_command);
         //climb_down.cancelWhenPressed(down_command);

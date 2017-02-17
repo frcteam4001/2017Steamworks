@@ -87,7 +87,7 @@ public class Robot extends IterativeRobot {
 		SmartDashboard.putData("Autonomous Mode Chooser", autoChooser);
 
 		
-
+		SmartDashboard.putData("drive forward 12", new DriveCommand(12, 0.5, 0, 8, 0.2));
 		//SmartDashboard.putData("Open Left Gear Holder", new GearHolderLeftFullOpen());
 		//SmartDashboard.putData("Open Right Gear Holder", new GearHolderRightFullOpen());
 		SmartDashboard.putData("Open Holders", new GearHoldersFullOpen());

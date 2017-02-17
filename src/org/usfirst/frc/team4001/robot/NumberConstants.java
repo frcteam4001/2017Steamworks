@@ -51,7 +51,7 @@ public class NumberConstants {
 	
 	//Competition
 	public static final double pDrive 									 = 0.15;
-	public static final double iDrive 									 = 0.00;
+	public static final double iDrive 									 = 0.005;
 	public static final double dDrive 									 = 0.04;
 	
 	public static final double Drive_Scale 								 = 0.6;
