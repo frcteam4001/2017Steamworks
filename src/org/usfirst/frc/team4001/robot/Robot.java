@@ -90,14 +90,14 @@ public class Robot extends IterativeRobot {
 		SmartDashboard.putData("Autonomous Mode Chooser", autoChooser);
 
 		
-		SmartDashboard.putData("drive forward 12", new DriveCommand(12, 0.5, 0, 8, 0.2));
+
 		//SmartDashboard.putData("Open Left Gear Holder", new GearHolderLeftFullOpen());
 		//SmartDashboard.putData("Open Right Gear Holder", new GearHolderRightFullOpen());
 		SmartDashboard.putData("Open Holders", new GearHoldersFullOpen());
 		SmartDashboard.putData("Close Holders", new GearCloseHolders());
 		SmartDashboard.putData("ResetEncoders", new GearDrop_ResetEncoders());
+		SmartDashboard.putData("Drive to CCD", new DriveToCamCaptureDistance());
 
-		SmartDashboard.putData("slow drive", new DriveCommand(50, 0.1, 0, 30, 0.2));
 		SmartDashboard.putData("Climber contract", new ClimbUp());
 		SmartDashboard.putData("curtain up", new CurtainUp());
 		SmartDashboard.putData("curtain down", new CurtainDown());
@@ -106,53 +106,18 @@ public class Robot extends IterativeRobot {
 
 		SmartDashboard.putData("Slide To Zone", new GearSlidetoZone());
 		SmartDashboard.putData("Get Gear - No Align", new GetGearNoAlign());
+		SmartDashboard.putData("Get Gear with Align", new GetGearAutoAlign());
 		SmartDashboard.putData("Place Gear", new PlaceGear());
 		SmartDashboard.putData(Scheduler.getInstance());
 		
-		//server = CameraServer.getInstance();
-	    //server.startAutomaticCapture();
+
 	    
 	    // Get the UsbCamera from CameraServer
-		UsbCamera camera = CameraServer.getInstance().startAutomaticCapture("cam0",0);
-		// Set the resolution
-		camera.setResolution(640, 480);
+		UsbCamera camera = CameraServer.getInstance().startAutomaticCapture("cam1",1);
 		
-//		Thread visionThread = new Thread(() -> {
-
-//			
-//		//SmartDashboard.putData("SlideTest", new GearSlideToPosition(8000));
-//		
-//		
-//
-//			// Get a CvSink. This will capture Mats from the camera
-//			CvSink cvSink = CameraServer.getInstance().getVideo();
-//			// Setup a CvSource. This will send images back to the Dashboard
-//			CvSource outputStream = CameraServer.getInstance().putVideo("Rectangle", 640, 480);
-//
-//			// Mats are very memory expensive. Lets reuse this Mat.
-//			Mat mat = new Mat();
-//
-//			// This cannot be 'true'. The program will never exit if it is. This
-//			// lets the robot stop this thread when restarting robot code or
-//			// deploying.
-//			while (!Thread.interrupted()) {
-//				// Tell the CvSink to grab a frame from the camera and put it
-//				// in the source mat.  If there is an error notify the output.
-//				if (cvSink.grabFrame(mat) == 0) {
-//					// Send the output the error.
-//					outputStream.notifyError(cvSink.getError());
-//					// skip the rest of the current iteration
-//					continue;
-//				}
-//				// Put a rectangle on the image
-//				Imgproc.rectangle(mat, new Point(100, 100), new Point(400, 400),
-//						new Scalar(255, 255, 255), 5);
-//				// Give the output stream a new image to display
-//				outputStream.putFrame(mat);
-//			}
-//		});
-//		visionThread.setDaemon(true);
-//		visionThread.start();
+		// Set the resolution
+		camera.setResolution(320, 240);
+		
 		
 
 	}

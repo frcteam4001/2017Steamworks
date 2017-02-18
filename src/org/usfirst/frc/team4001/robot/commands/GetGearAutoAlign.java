@@ -27,9 +27,9 @@ public class GetGearAutoAlign extends CommandGroup {
 
     	
     	addParallel(new GearHoldersFullOpen(true));
-    	if (!Robot.drive.isAligned()) {
-    		addSequential(new Align());
-    	}
+    	
+    	addSequential(new Align());
+    	
         
         addSequential(new DriveToGearLoadingDistance());
         

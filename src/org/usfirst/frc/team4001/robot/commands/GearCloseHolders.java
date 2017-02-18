@@ -10,6 +10,7 @@ public class GearCloseHolders extends Command {
 	
 	private boolean isStart;
 	private int counter;
+	private int timeOut;
 
     public GearCloseHolders() {
         // Use requires() here to declare subsystem dependencies
@@ -21,7 +22,8 @@ public class GearCloseHolders extends Command {
     // Called just before this Command runs the first time
     protected void initialize() {
     	this.isStart = true;
-
+    	this.timeOut = 2;
+    	setTimeout(this.timeOut);
     	if(this.isStart){
     		Robot.geardrop.pid_initRightPosition(NumberConstants.geardrop_holder_close_p, NumberConstants.geardrop_holder_close_i, NumberConstants.geardrop_holder_close_d, NumberConstants.geardrop_holder_close_f, NumberConstants.geardrop_holder_close_error, true);
     	}
@@ -56,7 +58,7 @@ public class GearCloseHolders extends Command {
     		}
     	}
     	
-        return Robot.geardrop.pid_rightPositionReached();
+        return Robot.geardrop.pid_rightPositionReached() && isTimedOut();
     }
 
     // Called once after isFinished returns true

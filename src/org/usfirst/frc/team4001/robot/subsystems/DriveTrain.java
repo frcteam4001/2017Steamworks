@@ -387,9 +387,19 @@ public class DriveTrain extends Subsystem {
 //    		return 0.0;
 //    	} else {
     		double angleWithSurface = Math.toDegrees(Math.atan((NumberConstants.distance_between_sensors) / (getLeftUltrasonicDist() - getRightUltrasonicDist())));
-    		double turnAngle = Math.signum(angleWithSurface) * (90.0 - Math.abs(angleWithSurface)) - 5;
+    		double turnAngle = Math.signum(angleWithSurface) * (90.0 - Math.abs(angleWithSurface));
+    		if (turnAngle > 0) {
+    			turnAngle *= 0.92;
+    		} else {
+    			turnAngle *= 1.08;
+    		}
+    		if (Math.abs(turnAngle) < 1) {
+    			return 0;
+    		} else if (Math.abs(turnAngle) < 5) {
+    			return Math.signum(turnAngle) * 6;
+    		} 
     		System.out.println(turnAngle);
-    		return turnAngle;
+    		return turnAngle; 
 //    	}
     }
     /**

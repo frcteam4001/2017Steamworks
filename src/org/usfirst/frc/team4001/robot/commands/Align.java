@@ -24,7 +24,7 @@ public class Align extends Command {
     // Called just before this Command runs the first time
     protected void initialize() {
     	this.distance = 0;
-    	this.speed = 0.4;
+    	this.speed = 0.55;
     	this.angle = Robot.drive.getTurnAngle();
     	System.out.println(this.angle);
     	this.epsilon = 0.5;

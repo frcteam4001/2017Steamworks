@@ -27,7 +27,7 @@ public class DriveToGearLoadingDistance extends Command {
     	this.distance = (Robot.drive.getLeftUltrasonicDist() + Robot.drive.getRightUltrasonicDist())/2 - NumberConstants.distance_from_loading_station;
     	this.speed = 0.6;
 		this.angle = 0;
-		this.timeOut = 1.75;
+		this.timeOut = 1.5;
 		this.epsilon = 0.25;
 		Robot.drive.reset();
 		setTimeout(timeOut);
