@@ -13,6 +13,7 @@ public class MidDriveAndGear extends CommandGroup {
 	public int n;
 
     public MidDriveAndGear(int n) {
+    	
     	this.n = n;
     	
     	addSequential(new DriveCommand(54.36, 0.5, 0, 3, 0.2));
