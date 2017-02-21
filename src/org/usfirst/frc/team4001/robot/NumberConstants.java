@@ -28,6 +28,11 @@ public class NumberConstants {
 
 	//placement zones in pulses
 	public static final int geardrop_zone1 								= 15200;	// far left position
+	
+	public static final int geardrop_start								= 15200;	// far left position
+	public static final int geardrop_zone_interval						= 3800;
+	public static final int geardrop_number_of_zones					= 5;
+	
 	public static final int geardrop_zone2								= 11400;
 	public static final int geardrop_zone3								= 7600;
 	public static final int geardrop_zone4								= 3800;

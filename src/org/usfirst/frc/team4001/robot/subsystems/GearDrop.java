@@ -27,8 +27,9 @@ public class GearDrop extends Subsystem {
 	
 	public double directionCalibration;
 	
-	private boolean holderPairing;
 	private boolean closed;
+	private int currentZone;
+	
 	
 	public GearDrop(){
    		//Initialize components
@@ -45,6 +46,8 @@ public class GearDrop extends Subsystem {
    		gear_drop_motor_right.configPeakOutputVoltage(+3f, -3f);    	
    		
    		this.closed = false;
+   		
+   		this.currentZone = 1;
    		
    	}
 	
@@ -88,6 +91,7 @@ public class GearDrop extends Subsystem {
    
     
     public void pid_moveRightToPosition(int position){
+    	gear_drop_motor_right.changeControlMode(TalonControlMode.Position);
     	gear_drop_motor_right.set(position);
     }
   
@@ -108,20 +112,24 @@ public class GearDrop extends Subsystem {
     	gear_drop_motor_right.set(-1*power);
     }
     
-    
+    /**
+     * Stop the 
+     */
     public void stopLeftHolder()
     {
 	//this.unpairmotors();
     	gear_drop_motor_left.set(0);
     }
     
-    
+    /**
+     * Stop the right holder
+     */
     public void stopRightHolder(){
     	gear_drop_motor_right.set(0);
     }
     
     
-    /* 
+    /** 
 	 * Reset the encoder values to 0, used to calibrate
 	 */
 	public void resetEncoders(){
@@ -141,21 +149,21 @@ public class GearDrop extends Subsystem {
 	}
 	
 	
-	/* 
+	/* *
 	 * Return encoder position of the left holder motor
 	 */
 	public int getLeftHolderEncPosition(){
 		return gear_drop_motor_left.getEncPosition();
 	}
 	
-	/* 
+	/* *
 	 * Return encoder position of the right holder motor 
 	 */
 	public int getRightHolderEncPosition(){
 		return gear_drop_motor_right.getEncPosition();
 	}
 	
-	/* 
+	/* *
 	 * Changes gear holder motors to PercentVbus modes
 	 */
 	public void enablePowerMode(){
@@ -163,38 +171,34 @@ public class GearDrop extends Subsystem {
 		gear_drop_motor_right.changeControlMode(TalonControlMode.PercentVbus);
 	}
 	
-   	
-	public void receive(){
-		//If directionCalibration is negative, moves left gear left, otherwise moves right
-		if(directionCalibration<0){
-			gear_drop_motor_left.reverseOutput(true);
-		}
-		gear_drop_motor_left.set(1);
-	}
-	
-	public void receive1(){
-		// If directionCalibration is positive, moves right gear left, otherwise moves right
-		if(directionCalibration<0){
-			gear_drop_motor_right.reverseOutput(true);
-		}
-		gear_drop_motor_right.set(1);
-	}
-	
+ 
+	/**
+	 * Check if the left switch is pressed
+	 */
 	public boolean leftswitchpressed(){
 		// boolean return for calibrationSwitch
 		return !left_switch.get();
 	}
 	
-	
+	/**
+	 * Check if the right switch is pressed	
+	 * @return True if the right switch is pressed
+	 */
 	public boolean rightswitchpressed(){
 		// boolean return for calibrationSwitch
 		return !right_switch.get();
 	}
 
+	/**
+	 * Move the gear feed roller
+	 */
 	public void turnRoller() {
     		gear_roller.set(-0.8);
     	}
-    
+   
+	/**
+	 * Stop the gear feed roller
+	 */
    	public void stopRoller() {
     		gear_roller.set(0);
     	}
@@ -204,28 +208,74 @@ public class GearDrop extends Subsystem {
         //setDefaultCommand(new MySpecialCommand());
     }
 	
-	//new methods
+	/*
+	 * Take the left gear motor out of follower mode and set to power mode
+	 */
     public void unpairmotors()
     {
-    	//unfollow the motor(follow = 0)
     	this.gear_drop_motor_left.set(0);	
     	this.gear_drop_motor_left.changeControlMode(TalonControlMode.PercentVbus);
     }
     
-    public void slideleftsync()
-    {
-    	if(this.get_HoldersPaired())
-    	{
-    		this.gear_drop_motor_right.set(0.5);
+    
+    /**
+     * get the current zone position
+     */
+    public int getCurrentZone(){
+    	return this.currentZone;
+    }
+    
+    /**
+     * slide to a specific zone
+     * @param setZone - the zone to slide to
+     */
+    public void slideToZone(int setZone){
+    	int setPosition;
+    	
+    	if(this.get_HoldersPaired()){
+    		setPosition = NumberConstants.geardrop_start - NumberConstants.geardrop_zone_interval*(setZone-1);
+    		this.pid_moveRightToPosition(setPosition);
+    		this.currentZone = setZone;
+    		
     	}
     }
     
-    public void sliderightsync()
+    /**
+     * Slide the gear holders to the home paired position
+     */
+    public void slideHome(){
+    	this.slideToZone(1);
+    }
+    
+    
+    /**
+     * Slide holders one zone left 
+     */
+    public void slideZoneLeft()
     {
-    	if(this.get_HoldersPaired())
-    	{
-    		this.gear_drop_motor_right.set(-0.5);
-    	}
+    	if(this.currentZone > 1){
+    		if(this.get_HoldersPaired())
+        	{
+        		this.slideToZone(this.currentZone - 1);	
+        	}	
+    	}   	
+    }
+    
+    /**
+     * Slide holders one zone right
+     */
+    public void slideZoneRight()
+    {
+    	if(this.currentZone < NumberConstants.geardrop_number_of_zones){
+    		if(this.get_HoldersPaired())
+        	{
+        		this.slideToZone(this.currentZone + 1);
+        	}	
+    	}  
+    }
+    
+    public void resetCurrentZone_value(int setZone){
+    	this.currentZone = setZone;
     }
     
     /**
@@ -241,6 +291,10 @@ public class GearDrop extends Subsystem {
     	}
     }
     
+    /**
+     * Get IR sensor value
+     * @return the raw value of the sensor
+     */
     public double getIR() {
     	return IRSensor.getValue();
     }

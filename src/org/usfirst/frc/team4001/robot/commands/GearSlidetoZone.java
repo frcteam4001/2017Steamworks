@@ -9,23 +9,28 @@ import org.usfirst.frc.team4001.robot.*;
  */
 public class GearSlidetoZone extends Command {
 	
-	private int zonePosition;
+	
+
 
     public GearSlidetoZone() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     	requires(Robot.geardrop);
-    	zonePosition = -1;
     }
     
     // Called just before this Command runs the first time
     protected void initialize() {
+    	
+    		int target_zone;
+    		
+    		target_zone = (int)Robot.gearZone;
 
     		Robot.geardrop.pairHolders();
         	Robot.geardrop.pid_initRightPosition(NumberConstants.geardrop_holder_close_p, NumberConstants.geardrop_holder_close_i, NumberConstants.geardrop_holder_close_d, NumberConstants.geardrop_holder_close_f, NumberConstants.geardrop_holder_close_error, false);       	
         	
         	
-        	
+        	/*
+        	 *  	 
         	switch((int) Robot.gearZone){
         	
 	        	case 1:	this.zonePosition = NumberConstants.geardrop_zone1;
@@ -39,15 +44,20 @@ public class GearSlidetoZone extends Command {
 	        	case 5:	this.zonePosition = NumberConstants.geardrop_zone5;   
         		 	break;
         	}
+        	*/
+        	
+        	if(target_zone >= 1 && target_zone <=5){
+        		Robot.geardrop.slideToZone((int)Robot.gearZone);
+        	}
+        	
+        	
    
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	if(Robot.geardrop.get_HoldersPaired()){
-    		System.out.println("Execute Slide to Position: " + Integer.toString(this.zonePosition));
-        	Robot.geardrop.pid_moveRightToPosition(this.zonePosition);
-    	}
+ 
+    	//Robot.geardrop.slideToZone((int)Robot.gearZone);
     	
     }
 
@@ -63,5 +73,6 @@ public class GearSlidetoZone extends Command {
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run
     protected void interrupted() {
+    	
     }
 }

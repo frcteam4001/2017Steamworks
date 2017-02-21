@@ -80,7 +80,7 @@ public class Robot extends IterativeRobot {
 		//AUTONOMOUS CHOOSER COMMANDS
 		// chooser.addObject("My Auto", new MyAutoCommand());
 		autoChooser = new SendableChooser<Command>();
-		autoChooser.addDefault("Default: Drive Straight and Stop", new DriveCommand(58.36, 0.5, 0, 8, 0.2));
+		autoChooser.addDefault("Drive 12 inches backward", new DriveCommand(-12, 0.5, 0, 8, 0.2));
 		autoChooser.addDefault("StraightGearLeft", new MidDriveAndGear(-1));
 		autoChooser.addDefault("StraightGearRight", new MidDriveAndGear(1));
 		autoChooser.addObject("Blue Right w/ Gear", new DriveAndGear("Key",1));
@@ -220,6 +220,8 @@ public class Robot extends IterativeRobot {
 		SmartDashboard.putNumber("Left Drive Encoder", drive.getLeftEncoderDist());
 		SmartDashboard.putNumber("Right Drive Encoder", drive.getRightEncoderDist());
 		SmartDashboard.putNumber("Gyro Angle", drive.getYaw());
+		SmartDashboard.putBoolean("Right Switch pressed", geardrop.rightswitchpressed());
+		SmartDashboard.putBoolean("left switch pressed", geardrop.leftswitchpressed());
 		SmartDashboard.putNumber("IR READING", geardrop.getIR());
 		SmartDashboard.putNumber("Left IR", drive.getLeftUltrasonicDist());
 		SmartDashboard.putNumber("Right IR", drive.getRightUltrasonicDist());

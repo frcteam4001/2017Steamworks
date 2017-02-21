@@ -3,7 +3,7 @@ package org.usfirst.frc.team4001.robot.subsystems;
 import org.usfirst.frc.team4001.robot.ElectricalConstants;
 import org.usfirst.frc.team4001.robot.NumberConstants;
 
-import edu.wpi.first.wpilibj.Spark;
+import edu.wpi.first.wpilibj.Victor;
 import edu.wpi.first.wpilibj.command.Subsystem;
  
 /**
@@ -14,13 +14,13 @@ public class Climber extends Subsystem
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
 	
-	private Spark climbMotor;
+	private Victor climbMotor;
 	//represents the state of the climber
 	//1 means up, 0 means idle, -1 means down
 
 	
 	public Climber() {
-		climbMotor = new Spark(ElectricalConstants.CLIMBER_MOTOR);
+		climbMotor = new Victor(ElectricalConstants.CLIMBER_MOTOR);
 
 	}
 	
