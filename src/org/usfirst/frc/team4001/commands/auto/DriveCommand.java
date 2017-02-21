@@ -66,8 +66,12 @@ public class DriveCommand extends Command {
 	}
 
 	// Called repeatedly when this Command is scheduled to run
-	protected void execute() {
-		Robot.drive.driveStraight(distance, speed, angle, epsilon);
+	protected void execute() {	
+		if (Robot.drive.getRightUltrasonicDist() <= 12 || Robot.drive.getLeftUltrasonicDist() <= 12 || Robot.drive.getLeftEncoderDist()==distance){
+			Robot.drive.driveStraight(distance, 0, angle, epsilon);
+		} else {
+			Robot.drive.driveStraight(distance, speed, angle, epsilon);
+		}
 	}
 
 	// Command will finish when it is timed out
@@ -92,4 +96,6 @@ public class DriveCommand extends Command {
 		Robot.drive.drivePID.resetPID();
 		Robot.drive.gyroPID.resetPID();
 	}
+	
+	
 }

@@ -9,24 +9,22 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
  */
 public class DriveAndGear extends CommandGroup {
 	
-	public static String ln;
-	public static int n;
+	public String ln;
+	public int n;
 
     public DriveAndGear(String ln, int n) {
     	
     	this.ln = ln;
     	this.n = n;
     	// check for bumper dimensions
-    	if(ln=="Key"){
+    	if(ln.equals("Key")){
         	addSequential(new DriveCommand(12.6, 0.5, 0, 1, 0.2));
         	addSequential(new DriveCommand(0, 0.5, 20*n, 1, 0.2));
-//orig        	addSequential(new DriveCommand(213.3, 0.5, 0, 3.5, 0.2));
-        	addSequential(new DriveCommand(182.3, 0.5, 0, 3.5, 0.2));
-//orig        	addSequential(new DriveCommand(0, 0.5, (-140)*n, 1, 0.2));
+        	addSequential(new DriveCommand(213.3, 0.5, 0, 3.5, 0.2));
         	addSequential(new DriveCommand(0, 0.5, (-115)*n, 1, 0.2));
         	addSequential(new DriveCommand(31.64, 0.5, 0, 1.5, 0.2));
     	}
-    	else if(ln=="Ret"){
+    	else if(ln.equals("Key")){
     		addSequential(new DriveCommand(12.6, 0.5, 0, 1, 0.2));
         	addSequential(new DriveCommand(0, 0.5, (-20)*n, 1, 0.2));
         	addSequential(new DriveCommand(213.3, 0.5, 0, 3.5, 0.2));
