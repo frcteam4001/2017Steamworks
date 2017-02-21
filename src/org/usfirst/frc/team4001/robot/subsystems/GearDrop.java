@@ -274,6 +274,10 @@ public class GearDrop extends Subsystem {
     	}  
     }
     
+    public void resetCurrentZone_value(int setZone){
+    	this.currentZone = setZone;
+    }
+    
     /**
      * Reads the IR sensor to determine if a gear is inside the robot
      * @return True if a gear is inside

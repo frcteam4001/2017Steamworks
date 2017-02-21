@@ -42,22 +42,25 @@ public class OI {
 	// button.whenReleased(new ExampleCommand());
 	
 
-	public Gamepad game_controller;
-	public Gamepad support_controller;
+	
 
-	public Button goForward;
+
+	//PRIMARY CONTROLLER
+	public Gamepad game_controller;
+	public JoystickButton gearslideRight_button;
+	public JoystickButton gearslideLeft_button;
 	
-	public JoystickButton gearslideRight;
-	public JoystickButton gearslideLeft;
+	public JoystickButton place_gear_button;
+	public JoystickButton get_gear_button;
 	
-	//button for climbing command
+	public JoystickButton gear_open_button;
+	public JoystickButton gear_close_button;
+
+	//SUPPORT CONTROLLER	
+	public Gamepad support_controller;
 	JoystickButton climb_up;
 	JoystickButton climb_down;
-	JoystickButton place_gear;
-	JoystickButton get_gear;
-	
-	ClimbUp up_command = new ClimbUp();
-	ClimbDown down_command = new ClimbDown();
+
 	
 	public OI(){
 
@@ -65,12 +68,27 @@ public class OI {
 		game_controller = new Gamepad(0);
 		support_controller = new Gamepad(1);
 		
-		//game controller - primary control
-		place_gear = game_controller.getButtonX();
-        place_gear.whenPressed(new PlaceGear());
+		//GAME CONTROLLER - PRIMARY CONTROL
+		place_gear_button = game_controller.getButtonX();
+        place_gear_button.whenPressed(new PlaceGear());
         
-        get_gear = game_controller.getButtonY();
-        get_gear.whenPressed(new GetGearAutoAlign());
+        get_gear_button = game_controller.getButtonY();
+        get_gear_button.whenPressed(new GetGearNoAlign());
+        
+        
+        
+        gearslideRight_button = game_controller.getRightShoulder();
+		gearslideRight_button.whenPressed(new GearSlidetoZoneManualRight());
+		
+		gearslideLeft_button = game_controller.getLeftShoulder();
+        gearslideLeft_button.whenPressed(new GearSlidetoZoneManualLeft());
+        
+        gear_open_button = game_controller.getButtonB();
+        gear_open_button.whenPressed(new GearHoldersFullOpen());
+        
+        gear_close_button = game_controller.getButtonA();
+        gear_close_button.whenPressed(new GearCloseHolders());
+        
         
         
         
@@ -82,15 +100,12 @@ public class OI {
         climb_up.toggleWhenPressed(new ClimbUp());
         climb_down.toggleWhenPressed(new ClimbDown());
         
+        
         //climb_up.cancelWhenPressed(up_command);
         //climb_down.cancelWhenPressed(down_command);
 
 		
-		//gearslideRight = game_controller.getRightShoulder();
-		//gearslideRight.whileHeld(new ManualGearDropRight());
 		
-		//gearslideLeft = game_controller.getLeftShoulder();
-        //gearslideLeft.whileHeld(new ManualGearDropLeft());
 
 		
 		

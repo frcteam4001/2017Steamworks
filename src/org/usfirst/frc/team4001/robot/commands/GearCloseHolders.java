@@ -58,14 +58,17 @@ public class GearCloseHolders extends Command {
     	if(this.isStart){
     		if(!Robot.geardrop.leftswitchpressed() || !Robot.geardrop.rightswitchpressed()){
     			// cannot close since one of the holders is not in open position
-    				return true;
+    			System.out.println("1");	
+    			return true;
+    				
     			
     		}else{
     			this.isStart = false;  //toggle start flag
+    			System.out.println("2");
     			return false;
     		}
     	}
-    	
+    	System.out.println("3");
         return Robot.geardrop.pid_rightPositionReached() || isTimedOut();
     }
 
@@ -73,6 +76,8 @@ public class GearCloseHolders extends Command {
     protected void end() {
     	System.out.println("Gear close end()");
     	Robot.geardrop.set_closed(true);
+    	Robot.geardrop.resetCurrentZone_value(1);
+    	
     	//Robot.geardrop.stopLeftHolder();
     	//Robot.geardrop.stopRightHolder();
     	
