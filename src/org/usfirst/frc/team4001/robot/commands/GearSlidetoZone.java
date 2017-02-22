@@ -63,6 +63,8 @@ public class GearSlidetoZone extends Command {
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
+    	//System.out.println("GearSlideToZone is Finished");
+    	
         return Robot.geardrop.pid_rightPositionReached();
     }
 
