@@ -25,7 +25,13 @@ public class ArcadeDrive extends Command {
     	
     	double moveForward = Robot.oi.game_controller.getLeftY();
     	double turn = Robot.oi.game_controller.getRightX();
-    	Robot.drive.arcadeDrive(moveForward, turn);
+    	
+    	if(Robot.oi.drive_slow_button.get()){
+    		Robot.drive.arcadeDrive(moveForward*0.5, turn*0.5);
+    	}else{
+    		Robot.drive.arcadeDrive(moveForward, turn);
+    	}
+    	
     }
 
     // Make this return true when this Command no longer needs to run execute()

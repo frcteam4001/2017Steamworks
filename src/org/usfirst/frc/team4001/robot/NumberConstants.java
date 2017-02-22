@@ -66,7 +66,7 @@ public class NumberConstants {
     //**************************************************************************
 	
 	public static final double curtain_max = 130;
-	public static final double curtain_min  = 9;
+	public static final double curtain_min  = 16;
 	public static final double curtain_speed = 0.8;
 	
 	//**************************************************************************

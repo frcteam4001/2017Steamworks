@@ -49,6 +49,7 @@ public class OI {
 	public Gamepad game_controller;
 	public JoystickButton gearslideRight_button;
 	public JoystickButton gearslideLeft_button;
+	public JoystickButton drive_slow_button;
 	
 	public JoystickButton place_gear_button;
 	public JoystickButton get_gear_button;
@@ -68,37 +69,50 @@ public class OI {
 		game_controller = new Gamepad(0);
 		support_controller = new Gamepad(1);
 		
-		//GAME CONTROLLER - PRIMARY CONTROL
-		place_gear_button = game_controller.getButtonX();
-        place_gear_button.whenPressed(new PlaceGear());
-        
-        get_gear_button = game_controller.getButtonY();
-        get_gear_button.whenPressed(new GetGearNoAlign());
-        
-        
-        
-        gearslideRight_button = game_controller.getRightShoulder();
-		gearslideRight_button.whenPressed(new GearSlidetoZoneManualRight());
+        /*********************************
+         * PRIMARY CONTROLLER
+         ********************************/
 		
-		gearslideLeft_button = game_controller.getLeftShoulder();
-        gearslideLeft_button.whenPressed(new GearSlidetoZoneManualLeft());
+		//PRIMARY CONTROL - RIGHT SHOULDER
+		place_gear_button = game_controller.getRightShoulder();
+        place_gear_button.whenPressed(new PlaceGearNoForward());
         
-        gear_open_button = game_controller.getButtonB();
-        gear_open_button.whenPressed(new GearHoldersFullOpen());
-        
-        gear_close_button = game_controller.getButtonA();
-        gear_close_button.whenPressed(new GearCloseHolders());
+        drive_slow_button = game_controller.getLeftShoulder();
         
         
+        /*********************************
+         * SUPPORT CONTROLLER
+         ********************************/
         
-        
-        //SUPPORT CONTROLLER
+        //SUPPORT CONTROL - Y
         //change button binding configuration later
         climb_up = support_controller.getButtonY();
-        climb_down = support_controller.getButtonX();
+        //climb_down = support_controller.getButtonX();
       		
         climb_up.toggleWhenPressed(new ClimbUp());
-        climb_down.toggleWhenPressed(new ClimbDown());
+        //climb_down.toggleWhenPressed(new ClimbDown());
+        
+        //SUPPORT CONTROL - X
+        get_gear_button = support_controller.getButtonX();
+        get_gear_button.whenPressed(new GetGearNoAlign());
+        
+        //SUPPORT CONTROL RIGHT SHOULDER
+        gearslideRight_button = support_controller.getRightShoulder();
+		gearslideRight_button.whenPressed(new GearSlidetoZoneManualRight());
+		
+		
+		//SUPPORT CONTROL LEFT SHOULDER
+		gearslideLeft_button = support_controller.getLeftShoulder();
+        gearslideLeft_button.whenPressed(new GearSlidetoZoneManualLeft());
+        
+        
+        //SUPPORT CONTROL - B
+        gear_open_button = support_controller.getButtonB();
+        gear_open_button.whenPressed(new GearHoldersFullOpen());
+        
+        //SUPPORT CONTROL -A
+        gear_close_button = support_controller.getButtonA();
+        gear_close_button.whenPressed(new GearCloseHolders());
         
         
         //climb_up.cancelWhenPressed(up_command);
