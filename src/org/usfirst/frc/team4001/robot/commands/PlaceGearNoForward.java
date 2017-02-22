@@ -11,9 +11,9 @@ import org.usfirst.frc.team4001.robot.NumberConstants;
  *the entire process, from start to finish. This should be the only command that is mapped to 
  *the controller for the purpose of placing the gear. 
  */
-public class PlaceGear extends CommandGroup {
+public class PlaceGearNoForward extends CommandGroup {
 
-    public PlaceGear() {
+    public PlaceGearNoForward() {
         // Add Commands here:
         // e.g. addSequential(new Command1());
         //      addSequential(new Command2());
@@ -48,7 +48,7 @@ public class PlaceGear extends CommandGroup {
     	if (Robot.gearZone != -1 && Robot.gearZone != -20000 && Robot.gearZone != -30000){
     		addSequential(new GearSlidetoZone());
  
-    		addSequential(new DriveCommand(NumberConstants.camera_capture_distance - 8, 0.35, 0, 1.5, 0.3));
+    		//addSequential(new DriveCommand(NumberConstants.camera_capture_distance - 8, 0.35, 0, 1.5, 0.3));
     	} else if (Robot.gearZone == -1) {
     		addSequential(new DriveCommand(12, 0.5, 0, 1.5, 0.3));
     	}
