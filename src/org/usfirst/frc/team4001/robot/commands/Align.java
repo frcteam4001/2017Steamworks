@@ -36,6 +36,7 @@ public class Align extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
+    	System.out.println("align excute");
     	Robot.drive.driveStraight(distance, speed, angle, epsilon);
     }
 

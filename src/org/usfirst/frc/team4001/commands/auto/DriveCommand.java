@@ -62,6 +62,7 @@ public class DriveCommand extends Command {
 	// Called just before this Command runs the first time
 	protected void initialize() {
 		Robot.drive.reset();
+		//System.out.println("DriveCommand init");
 		setTimeout(timeOut);
 	}
 

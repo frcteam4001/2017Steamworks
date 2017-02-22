@@ -363,7 +363,7 @@ public class DriveTrain extends Subsystem {
 	 */
 	public double getLeftUltrasonicDist() {
 		double ir = getRawIRLeft();
-		return -9.136 * Math.pow(ir, 5) + 70.09 * Math.pow(ir, 4) - 215.2 * Math.pow(ir, 3) + 336.4 * Math.pow(ir, 2) - 281.8 * ir + 121.2;
+		return -5.948 * Math.pow(ir, 5) + 49.05 * Math.pow(ir, 4) -161.2 * Math.pow(ir, 3) + 269.4  * Math.pow(ir, 2) - 241.8 * ir + 110.8;
 	}
 	
 	/**
@@ -372,7 +372,7 @@ public class DriveTrain extends Subsystem {
 	 */
 	public double getRightUltrasonicDist() {
 		double ir = getRawIRRight();
-		return -11.3 * Math.pow(ir, 5) + 85.18 * Math.pow(ir, 4) - 255.4 * Math.pow(ir, 3) + 387.6 * Math.pow(ir, 2) - 313.1 * ir + 127.7;
+		return -5.171 * Math.pow(ir, 5) + 49.39 * Math.pow(ir, 4) - 186.1 * Math.pow(ir, 3) + 349.7 * Math.pow(ir, 2) - 340.3 * ir + 155.2;
 	}
     
 	
@@ -393,11 +393,12 @@ public class DriveTrain extends Subsystem {
     		} else {
     			turnAngle *= 1.08;
     		}
-    		if (Math.abs(turnAngle) < 1) {
-    			return 0;
-    		} else if (Math.abs(turnAngle) < 5) {
-    			return Math.signum(turnAngle) * 6;
-    		} 
+//    		if (Math.abs(turnAngle) < 1) {
+//    			return 0;
+ //   		} 
+//    		if (Math.abs(turnAngle) < 5) {
+//    			return Math.signum(turnAngle) * 6;
+//    		} 
     		System.out.println(turnAngle);
     		return turnAngle; 
 //    	}
