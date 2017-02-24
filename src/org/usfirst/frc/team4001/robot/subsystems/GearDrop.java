@@ -8,6 +8,7 @@ import com.ctre.CANTalon.FeedbackDevice;
 import com.ctre.CANTalon.TalonControlMode;
 
 import edu.wpi.first.wpilibj.DigitalInput;
+import edu.wpi.first.wpilibj.Solenoid;
 import edu.wpi.first.wpilibj.AnalogInput;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
@@ -22,6 +23,8 @@ public class GearDrop extends Subsystem {
 	private DigitalInput right_switch;
 	private DigitalInput left_switch;
 	private CANTalon gear_roller;
+	private Solenoid gearPusherOut;
+	private Solenoid gearPusherIn;
 	
 	private AnalogInput IRSensor;
 	
@@ -40,6 +43,8 @@ public class GearDrop extends Subsystem {
 
 		gear_roller = new CANTalon(ElectricalConstants.GEARDROP_ROLLER);
    		IRSensor = new AnalogInput(ElectricalConstants.GEARDROP_IR_SENSOR);
+   		gearPusherOut = new Solenoid(ElectricalConstants.GEARDROP_PUSHER_OUT);
+   		gearPusherIn = new Solenoid(ElectricalConstants.GEARDROP_PUSHER_IN);
 
    		gear_drop_motor_right.setFeedbackDevice(FeedbackDevice.QuadEncoder);
    		gear_drop_motor_right.configNominalOutputVoltage(+0f, -0f);
@@ -299,5 +304,14 @@ public class GearDrop extends Subsystem {
     	return IRSensor.getValue();
     }
     
+    public void pusherOut() {
+    	gearPusherOut.set(true);
+    	gearPusherIn.set(false);
+    }
+    
+    public void pusherIn() {
+    	gearPusherOut.set(false);
+    	gearPusherIn.set(true);
+    }
     
 }
