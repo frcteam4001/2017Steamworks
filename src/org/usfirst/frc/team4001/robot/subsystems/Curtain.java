@@ -42,6 +42,10 @@ public class Curtain extends Subsystem {
     	return pot.get();
     }
 
+    public boolean getIfCurtainUp()
+    {
+    	return pot.get() > 30;
+    }
     
     public void initDefaultCommand() {
         // Set the default command for a subsystem here.
