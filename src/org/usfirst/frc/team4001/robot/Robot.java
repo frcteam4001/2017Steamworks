@@ -52,6 +52,7 @@ public class Robot extends IterativeRobot {
 	public static GearDrop geardrop;
 	public static Climber climber;
 	public static Curtain curtain;
+	public static Pusher pusher;
 	public static NTInterface networkTableCom;
 	public static double gearZone;
 	public static double rightir;
@@ -72,6 +73,7 @@ public class Robot extends IterativeRobot {
 
 		climber = new Climber();
 		curtain = new Curtain();
+		pusher = new Pusher();
 		oi = new OI();
 
 

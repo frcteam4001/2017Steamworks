@@ -25,15 +25,14 @@ public class ElectricalConstants {
 	
 	
 	public static final int GEARDROP_ROLLER 			= 5;   // CAN
-	
-
-	
-
 	public static final int GEARDROP_IR_SENSOR			= 0; // ANALOG
 	
+
 	public static final int GEARDROP_PUSHER_OUT			= 0; 
 	public static final int GEARDROP_PUSHER_IN			= 1;
+	public static final int PUSHER_SWITCH				= 2;
 
+	
 	// ************************************************************************
 	// **************************  CURTAIN  **********************************
 	// ************************************************************************
