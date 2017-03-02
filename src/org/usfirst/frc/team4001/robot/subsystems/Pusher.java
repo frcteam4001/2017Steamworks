@@ -14,8 +14,8 @@ public class Pusher extends Subsystem {
 	private DigitalInput pusher_switch;
 	
 	public void Pusher() {
-		gear_sol = new DoubeSolenoid(ElectricalConstants.GEARDROP_PUSHER_OUT, ElectricalConstants.GEARDROP_PUSHER_IN)
-		pusher_switch = new DigitalInput(ElectricalConstants.PUSHER_SWITCH)
+		gear_sol = new DoubeSolenoid(ElectricalConstants.GEARDROP_PUSHER_OUT, ElectricalConstants.GEARDROP_PUSHER_IN);
+		pusher_switch = new DigitalInput(ElectricalConstants.PUSHER_SWITCH);
 	}
 	
 	public void forwardSol() {
