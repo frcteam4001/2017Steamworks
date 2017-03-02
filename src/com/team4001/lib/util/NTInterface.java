@@ -9,13 +9,15 @@ import edu.wpi.first.wpilibj.networktables.*;
 public class NTInterface {
 	
 	public enum Subsystem {
-		DriveTrain, GearDrop, GearZone
+		DriveTrain, GearDrop, GearZone, Curtain, Climber
 	}
 	
 	public enum Key {
 		//GearDrop valid keys
 		RightGearMotorPosition("Right Gear Motor Position"),
 		LeftGearMotorPosition("Left Gear Motor Position"),
+		GearOpen("Gear Open"),
+		GearInside("Gear Inside"),
 		
 		//DriveTrain valid keys
 		LeftDriveEncoder("Left Drive Encoder"),
@@ -25,10 +27,17 @@ public class NTInterface {
 		RightUltrasonicDistance("Right Ultrasonic Distance"),
 		
 		//GearZone valid keys
-		GearZone("zone"),
+		TargetZone("zone"),
+		CurrentZone("Current Zone"),
 		IRreadingL("IRreadingL"),
 		IRreadingR("IRreadingR"),
-		Encoder("Encoder")
+		Encoder("Encoder"),
+		
+		//Curtain keys
+		CurtainUp("Curtain Up"),
+		
+		//Climber keys
+		ClimberState("Climb Status")
 		;
 		
 		
@@ -55,6 +64,8 @@ public class NTInterface {
 	NetworkTable driveTrain;
 	NetworkTable gearDrop;
 	NetworkTable GearZone;
+	NetworkTable climber;
+	NetworkTable curtain;
 	
 	public NTInterface() {
 		//Initialize the connection
@@ -74,6 +85,9 @@ public class NTInterface {
 		driveTrain = NetworkTable.getTable("DriveTrain");
 		gearDrop = NetworkTable.getTable("GearDrop");
 		GearZone = NetworkTable.getTable("GearZone");
+		climber = NetworkTable.getTable("Climber");
+		curtain = NetworkTable.getTable("Curtain");
+		
 	}
 	
 	/**
@@ -95,6 +109,10 @@ public class NTInterface {
 			case GearDrop:
 				gearDrop.putNumber(key.toString(), value);
 				break;
+			case Climber:
+				climber.putNumber(key.toString(), value);
+			case Curtain:
+				curtain.putNumber(key.toString(), value);
 		}
 	}
 	
@@ -117,6 +135,12 @@ public class NTInterface {
 		case GearDrop:
 			gearDrop.putBoolean(key.toString(), value);
 			break;
+		case Climber:
+			climber.putBoolean(key.toString(), value);
+			break;
+		case Curtain:
+			curtain.putBoolean(key.toString(), value);
+			break;
 		}
 	}
 	
@@ -138,6 +162,10 @@ public class NTInterface {
 				return gearDrop.getNumber(key.toString(), -20000);
 			case GearZone:
 				return GearZone.getNumber(key.toString(), -20000);
+			case Climber:
+				return climber.getNumber(key.toString(), -20000);
+			case Curtain:
+				return curtain.getNumber(key.toString(), -20000);
 		}
 		return -30000;
 	}
@@ -160,6 +188,10 @@ public class NTInterface {
 				return gearDrop.getBoolean(key.toString(), false);
 			case GearZone:
 				return GearZone.getBoolean(key.toString(), false);
+			case Climber:
+				return climber.getBoolean(key.toString(), false);
+			case Curtain:
+				return curtain.getBoolean(key.toString(), false);
 		}
 		return false;
 	}

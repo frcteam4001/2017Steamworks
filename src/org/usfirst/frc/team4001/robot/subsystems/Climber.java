@@ -15,6 +15,7 @@ public class Climber extends Subsystem
     // here. Call these from Commands.
 	
 	private Victor climbMotor;
+	private int climberState = 0;
 	//represents the state of the climber
 	//1 means up, 0 means idle, -1 means down
 
@@ -33,16 +34,22 @@ public class Climber extends Subsystem
     public void expand()
     {
     	climbMotor.set(NumberConstants.climber_upSpeed);
+    	this.climberState = 1;
     }
     
     public void contract()
     {
     	climbMotor.set(-1*NumberConstants.climber_downSpeed);
+    	this.climberState = -1;
     }
     
     public void stop() {
     	climbMotor.set(0);
+    	this.climberState = 0;
     }
     
-    
+    public int getState()
+    {
+    	return climberState;
+    }
 }

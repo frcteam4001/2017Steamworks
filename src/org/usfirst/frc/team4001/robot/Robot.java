@@ -191,7 +191,7 @@ public class Robot extends IterativeRobot {
 	public void autonomousPeriodic() {
 		SmartDashboard.putNumber("Left Drive Encoder", drive.getLeftEncoderDist());
 		SmartDashboard.putNumber("Right Drive Encoder", drive.getRightEncoderDist());
-		gearZone = networkTableCom.getNumber(Subsystem.GearZone, Key.GearZone);
+		gearZone = networkTableCom.getNumber(Subsystem.GearZone, Key.TargetZone);
 		SmartDashboard.putNumber("Vision Zone", gearZone);
 		Scheduler.getInstance().run();
 		
@@ -228,7 +228,7 @@ public class Robot extends IterativeRobot {
 		SmartDashboard.putNumber("raw left IR", drive.getRawIRLeft());
 		SmartDashboard.putNumber("raw IR right", drive.getRawIRRight());
 		SmartDashboard.putNumber("Curtain Pot", curtain.get_potValue());
-		SmartDashboard.putNumber("Curtain Up", curtain.getIfCurtainUp());
+		SmartDashboard.putBoolean("Curtain Up", curtain.getIfCurtainUp());
 
 		networkTableCom.putNumber(Subsystem.DriveTrain, Key.RightDriveEncoder, drive.getRightEncoderDist());
 		networkTableCom.putNumber(Subsystem.DriveTrain, Key.LeftDriveEncoder, drive.getLeftEncoderDist());
@@ -237,8 +237,13 @@ public class Robot extends IterativeRobot {
 //		networkTableCom.putNumber(Subsystem.GearDrop, Key.RightGearMotorPosition, geardrop.getRightHolderEncPosition()/1.0);
 //		networkTableCom.putNumber(Subsystem.GearDrop, Key.LeftGearMotorPosition, geardrop.getLeftHolderEncPosition()/1.0);
 
-		gearZone = networkTableCom.getNumber(Subsystem.GearZone, Key.GearZone);
-
+		gearZone = networkTableCom.getNumber(Subsystem.GearZone, Key.TargetZone);
+		
+		networkTableCom.putNumber(Subsystem.GearDrop,Key.CurrentZone , (double)geardrop.getCurrentZone());
+		networkTableCom.putBoolean(Subsystem.Curtain, Key.CurtainUp, curtain.getIfCurtainUp());
+		networkTableCom.putBoolean(Subsystem.GearDrop, Key.GearOpen, geardrop.get_HoldersOpened());
+		networkTableCom.putBoolean(Subsystem.GearDrop, Key.GearInside, geardrop.gearIsInside());
+		networkTableCom.putNumber(Subsystem.Climber, Key.ClimberState, (double)climber.getState());
 		
 		SmartDashboard.putNumber("Target Zone",gearZone);
 		

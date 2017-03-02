@@ -43,8 +43,8 @@ public class GearDrop extends Subsystem {
 
 		gear_roller = new CANTalon(ElectricalConstants.GEARDROP_ROLLER);
    		IRSensor = new AnalogInput(ElectricalConstants.GEARDROP_IR_SENSOR);
-   		gearPusherOut = new Solenoid(ElectricalConstants.GEARDROP_PUSHER_OUT);
-   		gearPusherIn = new Solenoid(ElectricalConstants.GEARDROP_PUSHER_IN);
+   		//gearPusherOut = new Solenoid(ElectricalConstants.GEARDROP_PUSHER_OUT);
+   		//gearPusherIn = new Solenoid(ElectricalConstants.GEARDROP_PUSHER_IN);
 
    		gear_drop_motor_right.setFeedbackDevice(FeedbackDevice.QuadEncoder);
    		gear_drop_motor_right.configNominalOutputVoltage(+0f, -0f);
@@ -117,6 +117,7 @@ public class GearDrop extends Subsystem {
     	gear_drop_motor_right.set(-1*power);
     }
     
+    
     /**
      * Stop the 
      */
@@ -183,6 +184,10 @@ public class GearDrop extends Subsystem {
 	public boolean leftswitchpressed(){
 		// boolean return for calibrationSwitch
 		return !left_switch.get();
+	}
+	
+	public boolean get_HoldersOpened(){
+		return this.leftswitchpressed() && this.rightswitchpressed();
 	}
 	
 	/**

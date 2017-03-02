@@ -31,8 +31,8 @@ public class ElectricalConstants {
 
 	public static final int GEARDROP_IR_SENSOR			= 0; // ANALOG
 	
-	public static final int GEARDROP_PUSHER_OUT			= -1; // to be set
-	public static final int GEARDROP_PUSHER_IN			= -1; // to be set
+	public static final int GEARDROP_PUSHER_OUT			= 0; 
+	public static final int GEARDROP_PUSHER_IN			= 1;
 
 	// ************************************************************************
 	// **************************  CURTAIN  **********************************
