@@ -95,6 +95,7 @@ public class Robot extends IterativeRobot {
 
 		//SmartDashboard.putData("Open Left Gear Holder", new GearHolderLeftFullOpen());
 		//SmartDashboard.putData("Open Right Gear Holder", new GearHolderRightFullOpen());
+		/*
 		SmartDashboard.putData("Open Holders", new GearHoldersFullOpen());
 		SmartDashboard.putData("Close Holders", new GearCloseHolders());
 		SmartDashboard.putData("ResetEncoders", new GearDrop_ResetEncoders());
@@ -112,6 +113,7 @@ public class Robot extends IterativeRobot {
 		SmartDashboard.putData("Place Gear", new PlaceGear());
 		SmartDashboard.putData(Scheduler.getInstance());
 		SmartDashboard.putData("Slow Drive", new DriveCommand(44, 0.15, 0, 12, 0.2));
+		*/
 
 	    
 	    // Get the UsbCamera from CameraServer
@@ -191,10 +193,14 @@ public class Robot extends IterativeRobot {
 	 */
 	@Override
 	public void autonomousPeriodic() {
+		/*
 		SmartDashboard.putNumber("Left Drive Encoder", drive.getLeftEncoderDist());
 		SmartDashboard.putNumber("Right Drive Encoder", drive.getRightEncoderDist());
-		gearZone = networkTableCom.getNumber(Subsystem.GearZone, Key.TargetZone);
 		SmartDashboard.putNumber("Vision Zone", gearZone);
+		*/
+		
+		gearZone = networkTableCom.getNumber(Subsystem.GearZone, Key.TargetZone);
+		
 		Scheduler.getInstance().run();
 		
 	}
@@ -214,6 +220,7 @@ public class Robot extends IterativeRobot {
 	 */
 	@Override
 	public void teleopPeriodic() {
+		/*
 		SmartDashboard.putNumber("Right Gear Motor Position", geardrop.getRightHolderEncPosition());
 		SmartDashboard.putNumber("Left Gear Motor Position", geardrop.getLeftHolderEncPosition());
 		SmartDashboard.putBoolean("Left Switch", geardrop.leftswitchpressed());
@@ -231,13 +238,12 @@ public class Robot extends IterativeRobot {
 		SmartDashboard.putNumber("raw IR right", drive.getRawIRRight());
 		SmartDashboard.putNumber("Curtain Pot", curtain.get_potValue());
 		SmartDashboard.putBoolean("Curtain Up", curtain.getIfCurtainUp());
+		SmartDashboard.putNumber("Gearzone", gearZone);
+		*/
 
 		networkTableCom.putNumber(Subsystem.DriveTrain, Key.RightDriveEncoder, drive.getRightEncoderDist());
 		networkTableCom.putNumber(Subsystem.DriveTrain, Key.LeftDriveEncoder, drive.getLeftEncoderDist());
 		networkTableCom.putNumber(Subsystem.DriveTrain, Key.GyroAngle, drive.getYaw());
-//				
-//		networkTableCom.putNumber(Subsystem.GearDrop, Key.RightGearMotorPosition, geardrop.getRightHolderEncPosition()/1.0);
-//		networkTableCom.putNumber(Subsystem.GearDrop, Key.LeftGearMotorPosition, geardrop.getLeftHolderEncPosition()/1.0);
 
 		gearZone = networkTableCom.getNumber(Subsystem.GearZone, Key.TargetZone);
 		
@@ -247,7 +253,6 @@ public class Robot extends IterativeRobot {
 		networkTableCom.putBoolean(Subsystem.GearDrop, Key.GearInside, geardrop.gearIsInside());
 		networkTableCom.putNumber(Subsystem.Climber, Key.ClimberState, (double)climber.getState());
 		
-		SmartDashboard.putNumber("Target Zone",gearZone);
 		
 		avgdistance = drive.getAverageDistance();
     	leftir = drive.getRawIRLeft();
@@ -257,10 +262,8 @@ public class Robot extends IterativeRobot {
     	networkTableCom.putNumber(Subsystem.DriveTrain, Key.IRreadingR, rightir);
     	networkTableCom.putNumber(Subsystem.DriveTrain, Key.Encoder, avgdistance);
 
-		SmartDashboard.putNumber("Gearzone", gearZone);
+		
 
-
-		//System.out.println("gear zone: " + Double.toString(gearZone));
 		
 		
 		Scheduler.getInstance().run();
