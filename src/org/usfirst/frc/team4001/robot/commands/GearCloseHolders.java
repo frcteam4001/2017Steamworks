@@ -33,7 +33,7 @@ public class GearCloseHolders extends Command {
     		}
     		
     		
-    		Robot.geardrop.pid_initRightPosition(NumberConstants.geardrop_holder_close_p, NumberConstants.geardrop_holder_close_i, NumberConstants.geardrop_holder_close_d, NumberConstants.geardrop_holder_close_f, NumberConstants.geardrop_holder_close_error, this.resetRightEncoder);
+    		Robot.geardrop.pid_initRightPosition(NumberConstants.geardrop_holder_close_p, NumberConstants.geardrop_holder_close_i, NumberConstants.geardrop_holder_close_d, NumberConstants.geardrop_holder_close_f, NumberConstants.geardrop_holder_close_error, this.resetRightEncoder, NumberConstants.geardrop_close_peakvoltage);
     	}
     	
     	//if(Robot.geardrop.leftswitchpressed() && Robot.geardrop.rightswitchpressed()){

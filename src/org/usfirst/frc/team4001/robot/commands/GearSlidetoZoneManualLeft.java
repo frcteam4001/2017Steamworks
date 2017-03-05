@@ -1,5 +1,6 @@
 package org.usfirst.frc.team4001.robot.commands;
 
+import org.usfirst.frc.team4001.robot.NumberConstants;
 import org.usfirst.frc.team4001.robot.Robot;
 
 import edu.wpi.first.wpilibj.command.Command;
@@ -23,12 +24,14 @@ public class GearSlidetoZoneManualLeft extends Command {
     // Called just before this Command runs the first time
     protected void initialize()
     {
-    	this.timeOut = 2;
-    	setTimeout(this.timeOut);
+    	//this.timeOut = 2;
+    	//setTimeout(this.timeOut);
 
     	if (!Robot.geardrop.get_HoldersPaired()){
     		Robot.geardrop.pairHolders();
     	}
+    	Robot.geardrop.pid_initRightPosition(NumberConstants.geardrop_holder_close_p, NumberConstants.geardrop_holder_close_i, NumberConstants.geardrop_holder_close_d, NumberConstants.geardrop_holder_close_f, NumberConstants.geardrop_holder_close_error, false, NumberConstants.geardrop_slide_peakvolage);       	
+    	
     	
     	Robot.geardrop.slideZoneLeft();
     }

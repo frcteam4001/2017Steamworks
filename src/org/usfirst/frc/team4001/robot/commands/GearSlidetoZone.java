@@ -9,7 +9,6 @@ import org.usfirst.frc.team4001.robot.*;
  */
 public class GearSlidetoZone extends Command {
 	
-	
 
 
     public GearSlidetoZone() {
@@ -26,7 +25,7 @@ public class GearSlidetoZone extends Command {
     		target_zone = (int)Robot.gearZone;
 
     		Robot.geardrop.pairHolders();
-        	Robot.geardrop.pid_initRightPosition(NumberConstants.geardrop_holder_close_p, NumberConstants.geardrop_holder_close_i, NumberConstants.geardrop_holder_close_d, NumberConstants.geardrop_holder_close_f, NumberConstants.geardrop_holder_close_error, false);       	
+        	Robot.geardrop.pid_initRightPosition(NumberConstants.geardrop_holder_close_p, NumberConstants.geardrop_holder_close_i, NumberConstants.geardrop_holder_close_d, NumberConstants.geardrop_holder_close_f, NumberConstants.geardrop_holder_close_error, false, NumberConstants.geardrop_slide_peakvolage);       	
         	
         	
         	/*

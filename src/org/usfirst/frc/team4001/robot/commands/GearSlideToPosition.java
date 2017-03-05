@@ -28,7 +28,7 @@ public class GearSlideToPosition extends Command {
     // Called just before this Command runs the first time
     protected void initialize() {
     	Robot.geardrop.pairHolders();
-    	Robot.geardrop.pid_initRightPosition(NumberConstants.geardrop_holder_close_p, NumberConstants.geardrop_holder_close_i, NumberConstants.geardrop_holder_close_d, NumberConstants.geardrop_holder_close_f, NumberConstants.geardrop_holder_close_error, true);
+    	Robot.geardrop.pid_initRightPosition(NumberConstants.geardrop_holder_close_p, NumberConstants.geardrop_holder_close_i, NumberConstants.geardrop_holder_close_d, NumberConstants.geardrop_holder_close_f, NumberConstants.geardrop_holder_close_error, true, NumberConstants.geardrop_slide_peakvolage);
     }
 
     // Called repeatedly when this Command is scheduled to run

@@ -13,8 +13,12 @@ public class NumberConstants {
     //***************************** GEARDROP/Intake *****************************
     //**************************************************************************
 	
-	public static final double geardrop_openpower 						 = 0.5;
-	public static final double geardrop_peakvoltage						=0.3;
+	public static final double geardrop_openpower 						= 0.8;
+	public static final double geardrop_peakvoltage						= 0.3;
+	
+	public static final double geardrop_close_peakvoltage				= +5f;
+	public static final double geardrop_slide_peakvolage				= +12f;
+	
 	
 	// pid constants for gear holder
 	public static final double geardrop_holder_close_p					 = 0.8;
@@ -27,12 +31,13 @@ public class NumberConstants {
 	
 
 	//placement zones in pulses
-	public static final int geardrop_zone1 								= 15200;	// far left position
+	
 	
 	public static final int geardrop_start								= 15200;	// far left position
 	public static final int geardrop_zone_interval						= 3800;
 	public static final int geardrop_number_of_zones					= 5;
 	
+	public static final int geardrop_zone1 								= 15200;	// far left position
 	public static final int geardrop_zone2								= 11400;
 	public static final int geardrop_zone3								= 7600;
 	public static final int geardrop_zone4								= 3800;

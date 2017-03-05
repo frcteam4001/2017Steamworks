@@ -65,14 +65,14 @@ public class GearDrop extends Subsystem {
 	}
 	
 	
-    public void pid_initRightPosition(double p, double i, double d, double f, int closedLoopError, boolean resetEncoder){
+    public void pid_initRightPosition(double p, double i, double d, double f, int closedLoopError, boolean resetEncoder, double peak_voltage){
     	gear_drop_motor_right.setProfile(0);
 		gear_drop_motor_right.setF(f);
 		gear_drop_motor_right.setP(p);
 		gear_drop_motor_right.setI(i);
 		gear_drop_motor_right.setD(d);
 		gear_drop_motor_right.configNominalOutputVoltage(+0f, -0f);
-   		gear_drop_motor_right.configPeakOutputVoltage(+5f, -5f);   
+   		gear_drop_motor_right.configPeakOutputVoltage(peak_voltage, -1*peak_voltage);   
 		gear_drop_motor_right.changeControlMode(TalonControlMode.Position);
 		
 		if(resetEncoder && rightswitchpressed() ){
