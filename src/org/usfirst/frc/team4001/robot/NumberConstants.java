@@ -36,6 +36,8 @@ public class NumberConstants {
 	public static final int geardrop_start								= 15200;	// far left position
 	public static final int geardrop_zone_interval						= 3800;
 	public static final int geardrop_number_of_zones					= 5;
+	public static final int geardrop_home_zone							= 1;
+	
 	
 	public static final int geardrop_zone1 								= 15200;	// far left position
 	public static final int geardrop_zone2								= 11400;
