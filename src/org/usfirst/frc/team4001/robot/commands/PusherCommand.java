@@ -1,6 +1,6 @@
-ackage org.usfirst.frc.team4001.robot.commands;
+package org.usfirst.frc.team4001.robot.commands;
 
-import java.awt.Robot;
+import org.usfirst.frc.team4001.robot.*;
 
 import edu.wpi.first.wpilibj.command.Command;
 

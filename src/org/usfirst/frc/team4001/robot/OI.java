@@ -1,12 +1,16 @@
 package org.usfirst.frc.team4001.robot;
 
 import edu.wpi.first.wpilibj.buttons.Button;
+
+import org.usfirst.frc.team4001.commands.auto.GearPusher;
 import org.usfirst.frc.team4001.robot.commands.*;
+
 
 import com.team4001.lib.util.*;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
+
 
 /**
  * This class is the glue that binds the controls on the physical operator
@@ -56,6 +60,7 @@ public class OI {
 	
 	public JoystickButton gear_open_button;
 	public JoystickButton gear_close_button;
+	public AxisButton pusher_trigger;
 
 	//SUPPORT CONTROLLER	
 	public Gamepad support_controller;
@@ -78,6 +83,11 @@ public class OI {
         place_gear_button.whenPressed(new PlaceGearNoForward());
         
         drive_slow_button = game_controller.getLeftShoulder();
+        
+        pusher_trigger = game_controller.getRightAxisButton();
+        pusher_trigger.whileHeld(new GearPusher());
+        
+        
         
         
         /*********************************

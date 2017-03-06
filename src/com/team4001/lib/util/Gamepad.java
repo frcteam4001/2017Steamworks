@@ -2,6 +2,7 @@ package com.team4001.lib.util;
 
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
+import com.team4001.lib.util.AxisButton;
 
 
 /**
@@ -194,6 +195,12 @@ public class Gamepad extends Joystick {
   public JoystickButton getRightTriggerClick() {
     return new JoystickButton(this, BUTTON_TRIGGER_RIGHT);
   }
+  
+//Team 4001 edits
+  
+ public AxisButton getRightAxisButton(){
+	  return new AxisButton(this, AXIS_SHOULDER);
+ }
   
 
   

@@ -1,6 +1,7 @@
-package org.usfirst.frc.team4001.robot.commands;
+package org.usfirst.frc.team4001.commands.auto;
 
-import java.awt.Robot;
+import org.usfirst.frc.team4001.robot.*;
+
 
 import edu.wpi.first.wpilibj.command.Command;
 
@@ -27,7 +28,8 @@ public class PusherAutoCommand extends Command {
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return false;
+    	return !Robot.oi.game_controller.getRightAxisButton().get();
+        
     }
 
     // Called once after isFinished returns true
