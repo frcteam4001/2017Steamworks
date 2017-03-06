@@ -7,11 +7,11 @@ import org.usfirst.frc.team4001.robot.*;
 /**
  *
  */
-public class GearSlidetoZone extends Command {
+public class GearSlidetoVisionZone extends Command {
 	
 
 
-    public GearSlidetoZone() {
+    public GearSlidetoVisionZone() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     	requires(Robot.geardrop);

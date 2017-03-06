@@ -10,7 +10,7 @@ import edu.wpi.first.wpilibj.command.Command;
  */
 public class GearSlidetoZoneManualRight extends Command {
 	
-	private int timeOut;
+	//private int timeOut;
 
     public GearSlidetoZoneManualRight()
     {

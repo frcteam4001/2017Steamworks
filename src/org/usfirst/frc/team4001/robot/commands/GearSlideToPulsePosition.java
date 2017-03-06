@@ -7,18 +7,18 @@ import org.usfirst.frc.team4001.robot.*;
 /**
  *
  */
-public class GearSlideToPosition extends Command {
+public class GearSlideToPulsePosition extends Command {
 	
 	private int pulsePosition;
 	
 
-    public GearSlideToPosition() {
+    public GearSlideToPulsePosition() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     	requires(Robot.geardrop);
     }
     
-    public GearSlideToPosition(int inPosition) {
+    public GearSlideToPulsePosition(int inPosition) {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     	requires(Robot.geardrop);
