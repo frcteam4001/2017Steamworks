@@ -3,6 +3,7 @@ package org.usfirst.frc.team4001.commands.auto;
 import edu.wpi.first.wpilibj.command.CommandGroup;
 import org.usfirst.frc.team4001.robot.*;
 import org.usfirst.frc.team4001.robot.commands.GearHoldersFullOpen;
+import org.usfirst.frc.team4001.robot.commands.PusherCommand;
 
 /**
  *
@@ -13,11 +14,19 @@ public class GearPusher extends CommandGroup {
     	
     	//addSequential(new GetGearAutoAlign())
     	//addSequential(new PlaceGear())
-    	addSequential(new GearHoldersFullOpen());
+    	//if (!Robot.geardrop.get_HoldersOpened()){
+    	System.out.println("CurrentZone: ");
+    	System.out.println(Robot.geardrop.getCurrentZone());
     	
-    	if (Robot.geardrop.get_HoldersOpened() == true){
-    		addSequential(new PusherAutoCommand());
-    	}
+    	//if(Robot.geardrop.getCurrentZone() > 1 && Robot.geardrop.getCurrentZone() < 5){
+    	addSequential(new GearHoldersFullOpen());
+    	addSequential(new PusherCommand());
+    
+    	//}
+    	
+    	
+    	
+    	
     	
         // Add Commands here:
         // e.g. addSequential(new Command1());

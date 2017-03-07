@@ -30,7 +30,7 @@ public class Pusher extends Subsystem {
 	
 	public boolean pusherIsBack(){
 		// boolean return for calibrationSwitch
-		return pusher_switch.get();
+		return !pusher_switch.get();
 	}
 
     public void initDefaultCommand() {

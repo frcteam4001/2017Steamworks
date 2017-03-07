@@ -9,6 +9,8 @@ import edu.wpi.first.wpilibj.command.Command;
  *
  */
 public class PusherAutoCommand extends Command {
+	
+	private double timeOut;
 
     public PusherAutoCommand() {
         // Use requires() here to declare subsystem dependencies
@@ -19,16 +21,20 @@ public class PusherAutoCommand extends Command {
     // Called just before this Command runs the first time
     protected void initialize() {
     	System.out.println("PusherOut Init");
+    	this.timeOut = 1.5;
+    	setTimeout(timeOut);
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Robot.pusher.pusherOut();
+    	if(Robot.geardrop.getCurrentZone() != 1 && Robot.geardrop.getCurrentZone() != 5){
+    		Robot.pusher.pusherOut();
+    	}
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-    	return !Robot.oi.game_controller.getRightAxisButton().get();
+    	return isTimedOut();
         
     }
 

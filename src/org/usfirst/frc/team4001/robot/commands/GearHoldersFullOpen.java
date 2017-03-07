@@ -76,6 +76,7 @@ public class GearHoldersFullOpen extends Command {
     		Robot.geardrop.resetEncoders();
  
     	}
+    	System.out.println("GearsFullOpen end");
     	Robot.geardrop.set_closed(false);
     	Robot.geardrop.stopLeftHolder();
     	Robot.geardrop.stopRightHolder();

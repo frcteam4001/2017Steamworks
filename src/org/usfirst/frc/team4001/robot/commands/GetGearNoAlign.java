@@ -4,6 +4,7 @@ import org.usfirst.frc.team4001.commands.auto.CurtainDown;
 import org.usfirst.frc.team4001.commands.auto.CurtainUp;
 import org.usfirst.frc.team4001.commands.auto.DriveToGearLoadingDistance;
 import org.usfirst.frc.team4001.commands.auto.TurnRoller;
+import org.usfirst.frc.team4001.robot.Robot;
 
 import edu.wpi.first.wpilibj.command.CommandGroup;
 
@@ -29,11 +30,15 @@ public class GetGearNoAlign extends CommandGroup {
         // e.g. if Command1 requires chassis, and Command2 requires arm,
         // a CommandGroup containing them would require both the chassis and the
         // arm.
-    	addSequential(new GearHoldersFullOpen(false));
-        addParallel(new CurtainUp());
-        addSequential(new TurnRoller());
-        addSequential(new GearCloseHolders());
-        addSequential(new CurtainDown());
+    	//if (Robot.pusher.pusherIsBack()){
+    		addParallel(new CurtainUp());
+        	addSequential(new GearHoldersFullOpen(false));
+            
+            addSequential(new TurnRoller());
+            addSequential(new GearCloseHolders());
+            addSequential(new CurtainDown());
+    	//}
+    	
         
     	
     }

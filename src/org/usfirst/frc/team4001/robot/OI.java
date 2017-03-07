@@ -85,7 +85,7 @@ public class OI {
         drive_slow_button = game_controller.getLeftShoulder();
         
         pusher_trigger = game_controller.getRightAxisButton();
-        pusher_trigger.whileHeld(new GearPusher());
+        pusher_trigger.whenPressed(new GearPusher());
         
         
         

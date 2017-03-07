@@ -91,7 +91,7 @@ public class Robot extends IterativeRobot {
 		autoChooser.addObject("Red Right w/ Gear", new DriveAndGear("Ret",-1));
 		SmartDashboard.putData("Autonomous Mode Chooser", autoChooser);
 
-		
+		SmartDashboard.putData("Push", new GearPusher());
 
 		//SmartDashboard.putData("Open Left Gear Holder", new GearHolderLeftFullOpen());
 		//SmartDashboard.putData("Open Right Gear Holder", new GearHolderRightFullOpen());
@@ -117,10 +117,10 @@ public class Robot extends IterativeRobot {
 
 	    
 	    // Get the UsbCamera from CameraServer
-		UsbCamera camera = CameraServer.getInstance().startAutomaticCapture("cam1",0);
+		//UsbCamera camera = CameraServer.getInstance().startAutomaticCapture("cam1",0);
 		
 		// Set the resolution
-		camera.setResolution(320, 240);
+		//camera.setResolution(320, 240);
 		
 		
 
@@ -240,6 +240,11 @@ public class Robot extends IterativeRobot {
 		SmartDashboard.putBoolean("Curtain Up", curtain.getIfCurtainUp());
 		SmartDashboard.putNumber("Gearzone", gearZone);
 		*/
+		
+		SmartDashboard.putBoolean("Pusher is home", pusher.pusherIsBack());
+		SmartDashboard.putBoolean("Gear Open", geardrop.get_HoldersOpened());
+		SmartDashboard.putNumber("CurrentZone", geardrop.getCurrentZone());
+		SmartDashboard.putBoolean("HoldersPaired", geardrop.get_HoldersPaired());
 
 		networkTableCom.putNumber(Subsystem.DriveTrain, Key.RightDriveEncoder, drive.getRightEncoderDist());
 		networkTableCom.putNumber(Subsystem.DriveTrain, Key.LeftDriveEncoder, drive.getLeftEncoderDist());

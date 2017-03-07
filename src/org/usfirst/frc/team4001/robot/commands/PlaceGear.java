@@ -4,6 +4,7 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 import org.usfirst.frc.team4001.robot.Robot;
 import org.usfirst.frc.team4001.commands.auto.DriveCommand;
 import org.usfirst.frc.team4001.commands.auto.DriveToCamCaptureDistance;
+import org.usfirst.frc.team4001.commands.auto.PusherAutoCommand;
 import org.usfirst.frc.team4001.robot.NumberConstants;
 
 /**
@@ -49,6 +50,7 @@ public class PlaceGear extends CommandGroup {
     		addSequential(new GearSlidetoVisionZone());
  
     		addSequential(new DriveCommand(NumberConstants.camera_capture_distance - 8, 0.35, 0, 1.5, 0.3));
+    		addSequential(new PusherAutoCommand());
     	} else if (Robot.gearZone == -1) {
     		addSequential(new DriveCommand(12, 0.5, 0, 1.5, 0.3));
     	}

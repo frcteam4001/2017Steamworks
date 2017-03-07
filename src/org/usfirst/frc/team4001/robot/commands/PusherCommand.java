@@ -13,20 +13,26 @@ public class PusherCommand extends Command {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     	requires(Robot.pusher);
+    	
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	System.out.println("PusherOut Init");
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Robot.pusher.pusherOut();
+
+    	if(Robot.geardrop.getCurrentZone() != 1 && Robot.geardrop.getCurrentZone() != 5){
+    		Robot.pusher.pusherOut();
+    	}
+    	
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
+    	System.out.print("Trigger State:");
+    	System.out.println(Robot.oi.game_controller.getRightAxisButton().get());
         return !Robot.oi.game_controller.getRightAxisButton().get();
     }
 
