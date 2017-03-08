@@ -232,20 +232,20 @@ public class Robot extends IterativeRobot {
 		SmartDashboard.putBoolean("Right Switch pressed", geardrop.rightswitchpressed());
 		SmartDashboard.putBoolean("left switch pressed", geardrop.leftswitchpressed());
 		SmartDashboard.putNumber("IR READING", geardrop.getIR());
-		SmartDashboard.putNumber("Left IR", drive.getLeftUltrasonicDist());
-		SmartDashboard.putNumber("Right IR", drive.getRightUltrasonicDist());
+		
 		SmartDashboard.putNumber("raw left IR", drive.getRawIRLeft());
 		SmartDashboard.putNumber("raw IR right", drive.getRawIRRight());
 		SmartDashboard.putNumber("Curtain Pot", curtain.get_potValue());
 		SmartDashboard.putBoolean("Curtain Up", curtain.getIfCurtainUp());
 		SmartDashboard.putNumber("Gearzone", gearZone);
 		*/
-		
+		SmartDashboard.putNumber("Left IR", drive.getLeftUltrasonicDist());
+		SmartDashboard.putNumber("Right IR", drive.getRightUltrasonicDist());
 		SmartDashboard.putBoolean("Pusher is home", pusher.pusherIsBack());
 		SmartDashboard.putBoolean("Gear Open", geardrop.get_HoldersOpened());
 		SmartDashboard.putNumber("CurrentZone", geardrop.getCurrentZone());
 		SmartDashboard.putBoolean("HoldersPaired", geardrop.get_HoldersPaired());
-
+ 
 		networkTableCom.putNumber(Subsystem.DriveTrain, Key.RightDriveEncoder, drive.getRightEncoderDist());
 		networkTableCom.putNumber(Subsystem.DriveTrain, Key.LeftDriveEncoder, drive.getLeftEncoderDist());
 		networkTableCom.putNumber(Subsystem.DriveTrain, Key.GyroAngle, drive.getYaw());

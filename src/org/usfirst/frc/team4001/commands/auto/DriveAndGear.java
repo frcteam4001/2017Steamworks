@@ -28,13 +28,13 @@ public class DriveAndGear extends CommandGroup {
         	addSequential(new DriveCommand(31.64, 0.5, 0, 1.5, 0.2));
     	}
     	else if(ln=="Ret"){
-//    		addSequential(new DriveCommand(12.6, 0.5, 0, 1, 0.2));
-//        	addSequential(new DriveCommand(0, 0.5, (-20)*n, 1, 0.2));
-//        	addSequential(new DriveCommand(213.3, 0.5, 0, 3.5, 0.2));
-//        	addSequential(new DriveCommand(0, 0.5, 140*n, 1, 0.2));
-//        	addSequential(new DriveCommand(42.04, 0.5, 0, 1.5, 0.2));
+    		addSequential(new DriveCommand(12.6, 0.5, 0, 1, 0.2));
+        	addSequential(new DriveCommand(0, 0.5, (-20)*n, 1, 0.2));
+        	addSequential(new DriveCommand(213.3, 0.5, 0, 3.5, 0.2));
+        	addSequential(new DriveCommand(0, 0.5, 140*n, 1, 0.2));
+        	addSequential(new DriveCommand(42.04, 0.5, 0, 1.5, 0.2));
     	}
-//    	addSequential(new PlaceGear());
+    	addSequential(new PlaceGear());
     	
     	
     	

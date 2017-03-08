@@ -35,11 +35,11 @@ public class PlaceGear extends CommandGroup {
     	
 
     	
-    	addSequential(new Align());
+    	//addSequential(new Align());
     	
     	
     	addParallel(new GearSlideToHomeZone());
-    	addSequential(new DriveToCamCaptureDistance());
+    	//addSequential(new DriveToCamCaptureDistance());
     	
     	try {
 			Thread.sleep(400);
