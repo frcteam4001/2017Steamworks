@@ -79,14 +79,23 @@ public class OI {
          ********************************/
 		
 		//PRIMARY CONTROL - RIGHT SHOULDER
-		place_gear_button = game_controller.getRightShoulder();
-        place_gear_button.whenPressed(new PlaceGearNoForward());
+		//place_gear_button = game_controller.getRightShoulder();
+        //place_gear_button.whenPressed(new PlaceGearNoForward());
         
-        drive_slow_button = game_controller.getLeftShoulder();
+        //drive_slow_button = game_controller.getLeftShoulder();
         
         pusher_trigger = game_controller.getRightAxisButton();
         pusher_trigger.whenPressed(new GearPusher());
         
+        
+        //RIGHT SHOULDER - Manual Slide Right
+        gearslideRight_button = game_controller.getRightShoulder();
+		gearslideRight_button.whenPressed(new GearSlidetoZoneManualRight());
+		
+		
+		//LEFT SHOULDER - Manual Slide Left
+		gearslideLeft_button = game_controller.getLeftShoulder();
+        gearslideLeft_button.whenPressed(new GearSlidetoZoneManualLeft());
         
         
         
@@ -106,14 +115,7 @@ public class OI {
         get_gear_button = support_controller.getButtonX();
         get_gear_button.whenPressed(new GetGearNoAlign());
         
-        //SUPPORT CONTROL RIGHT SHOULDER
-        gearslideRight_button = support_controller.getRightShoulder();
-		gearslideRight_button.whenPressed(new GearSlidetoZoneManualRight());
-		
-		
-		//SUPPORT CONTROL LEFT SHOULDER
-		gearslideLeft_button = support_controller.getLeftShoulder();
-        gearslideLeft_button.whenPressed(new GearSlidetoZoneManualLeft());
+        
         
         
         //SUPPORT CONTROL - B

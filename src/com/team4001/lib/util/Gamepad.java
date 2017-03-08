@@ -201,6 +201,8 @@ public class Gamepad extends Joystick {
  public AxisButton getRightAxisButton(){
 	  return new AxisButton(this, AXIS_SHOULDER);
  }
+ 
+ 
   
 
   

@@ -117,10 +117,10 @@ public class Robot extends IterativeRobot {
 
 	    
 	    // Get the UsbCamera from CameraServer
-		//UsbCamera camera = CameraServer.getInstance().startAutomaticCapture("cam1",0);
+		UsbCamera camera = CameraServer.getInstance().startAutomaticCapture("cam1",0);
 		
 		// Set the resolution
-		//camera.setResolution(320, 240);
+		camera.setResolution(640, 480);
 		
 		
 
@@ -157,6 +157,21 @@ public class Robot extends IterativeRobot {
 		//autonomousCommand = chooser.getSelected();
 		//String autoSelected = SmartDashboard.getString("Auto Selector");
 		autonomousCommand = (Command) autoChooser.getSelected();
+		
+		/*
+		String autoSelected = SmartDashboard.getString("Auto Selector","Default"); 
+		switch(autoSelected) { 
+			case "My Auto": 
+				autonomousCommand  = new MyAutoCommand(); 
+				break; 
+			case "Default Auto": 
+			
+			default:
+				autonomousCommand = new ExampleCommand(); 
+				break;
+		}*/
+
+		
 		/*
 		 * String autoSelected = SmartDashboard.getString("Auto Selector",
 		 * "Default"); switch(autoSelected) { case "My Auto": autonomousCommand
