@@ -46,6 +46,7 @@ public class GearSlidetoVisionZone extends Command {
         	*/
         	
         	if(target_zone >= 1 && target_zone <=5){
+        		System.out.println("sliding");
         		Robot.geardrop.slideToZone((int)Robot.gearZone);
         	}
         	

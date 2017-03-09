@@ -28,10 +28,13 @@ public class GearSlidetoZoneManualRight extends Command {
     	//setTimeout(this.timeOut);
     	if (!Robot.geardrop.get_HoldersOpened()){
     		if (!Robot.geardrop.get_HoldersPaired()){
+    			System.out.println("pairing");
         		Robot.geardrop.pairHolders();
         	}
+    		
+    		System.out.println("pairing");
         	Robot.geardrop.pid_initRightPosition(NumberConstants.geardrop_holder_close_p, NumberConstants.geardrop_holder_close_i, NumberConstants.geardrop_holder_close_d, NumberConstants.geardrop_holder_close_f, NumberConstants.geardrop_holder_close_error, false, NumberConstants.geardrop_slide_peakvolage);       	
-        
+        	System.out.println("sliding");
         	Robot.geardrop.slideZoneRight();
     	}
     	

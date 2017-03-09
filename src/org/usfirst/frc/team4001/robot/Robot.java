@@ -45,6 +45,7 @@ public class Robot extends IterativeRobot {
 	public static OI oi;
 
 	Command autonomousCommand;
+	Command initCommand;
 	
 	SendableChooser<Command> autoChooser;
 	
@@ -121,6 +122,7 @@ public class Robot extends IterativeRobot {
 		
 		// Set the resolution
 		camera.setResolution(640, 480);
+		
 		
 		
 

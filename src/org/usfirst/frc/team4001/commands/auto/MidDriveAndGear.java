@@ -17,19 +17,20 @@ public class MidDriveAndGear extends CommandGroup {
     	
     	
     	// initial drive forward
-    	addSequential(new DriveCommand(54.36, 0.5, 0, 3, 0.2));
+    	//addSequential(new DriveCommand(54.36, 0.5, 0, 3, 0.2));
     	 
-    	//addSequential(new DriveCommand(36, 0.5, 0, 3, 0.2));
+    	addSequential(new DriveCommand(36, 0.6, 0, 3, 0.2));
     	
     	// place the gear starting at capture distance
-    	addSequential(new PlaceGear());
+    	//addSequential(new PlaceGear());
     	
     	//addSequential(new DriveCommand(-36, 0.5, 0, 2, 0.2));
     	
-    	addParallel(new DriveCommand(-74.75, 0.5, 0, 2, 0.2));
-    	addSequential(new DriveCommand(0, 0.5, 30*n, 1, 0.2));
-    	addSequential(new DriveCommand(182.9, 0.5, 5, 0.2));
     	
+    	addSequential(new DriveCommand(-32, 0.6, 0, 2, 0.2));
+    	addSequential(new DriveCommand(0, 0.6, 40*n, 1, 0.2));
+    	addSequential(new DriveCommand(140, 0.6, 0 , 5, 0.2));
+    	System.out.println("done");
     	
         // Add Commands here:
         // e.g. addSequential(new Command1());

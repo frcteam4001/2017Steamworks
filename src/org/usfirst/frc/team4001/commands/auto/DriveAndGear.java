@@ -19,12 +19,12 @@ public class DriveAndGear extends CommandGroup {
     	// check for bumper dimensions
     	if(ln=="Key"){
         	//addSequential(new DriveCommand(39.19, 0.5, 0, 1, 0.2));
-        	addSequential(new DriveCommand(47.5, 0.6, 0, 1.5, 0.2));
-        	addSequential(new DriveCommand(0, 0.3, 45, 1, 0.2));
+        	addSequential(new DriveCommand(47.5, 0.55, 0, 1.2, 0.2));
+        	addSequential(new DriveCommand(0, 0.3, 35*n, 1, 0.2));
         	//addSequential(new DriveCommand(72.12, 0.5, 0, 3.5, 0.2));
-        	addSequential(new DriveCommand(67, 0.6, 0, 2, 0.2));
-        	addSequential(new DriveCommand(0, 0.4, (-120), 2, 0.2));
-        	addSequential(new DriveCommand(14, 0.6, 0, 1.5, 0.2));
+        	addSequential(new DriveCommand(67, 0.65, 0, 1.7, 0.2));
+        	addSequential(new DriveCommand(0, 0.4, (-110)*n, 2, 0.2));
+        	addSequential(new DriveCommand(16, 0.6, 0, 1, 0.2));
     	}
     	else if(ln=="Ret"){
     		addSequential(new DriveCommand(39.19, 0.5, 0, 1, 0.2));

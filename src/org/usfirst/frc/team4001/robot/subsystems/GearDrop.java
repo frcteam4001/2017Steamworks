@@ -2,6 +2,7 @@ package org.usfirst.frc.team4001.robot.subsystems;
 
 import org.usfirst.frc.team4001.robot.ElectricalConstants;
 import org.usfirst.frc.team4001.robot.NumberConstants;
+import org.usfirst.frc.team4001.robot.Robot;
 
 import com.ctre.CANTalon;
 import com.ctre.CANTalon.FeedbackDevice;
@@ -50,8 +51,10 @@ public class GearDrop extends Subsystem {
    		gear_drop_motor_right.configNominalOutputVoltage(+0f, -0f);
    		gear_drop_motor_right.configPeakOutputVoltage(+3f, -3f);    	
    		
-   		this.closed = false;
-   		
+   		this.closed = true;
+   		gear_drop_motor_left.changeControlMode(CANTalon.TalonControlMode.Follower);
+    	gear_drop_motor_left.set(this.gear_drop_motor_right.getDeviceID());
+    	this.pid_initRightPosition(NumberConstants.geardrop_holder_close_p, NumberConstants.geardrop_holder_close_i, NumberConstants.geardrop_holder_close_d, NumberConstants.geardrop_holder_close_f, NumberConstants.geardrop_holder_close_error, false, NumberConstants.geardrop_slide_peakvolage);
    		this.currentZone = 1;
    		
    	}
