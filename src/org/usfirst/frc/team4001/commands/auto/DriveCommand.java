@@ -68,7 +68,7 @@ public class DriveCommand extends Command {
 
 	// Called repeatedly when this Command is scheduled to run
 	protected void execute() {
-		if(Robot.drive.getLeftEncoderDist()>=distance && angle==0){
+		if(Robot.drive.getLeftEncoderDist()>=Math.abs(distance) && angle==0){
 			Robot.drive.driveStraight(distance, 0, angle, epsilon);
 		}
 		else {
