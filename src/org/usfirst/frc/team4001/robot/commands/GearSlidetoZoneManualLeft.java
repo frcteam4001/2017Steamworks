@@ -26,15 +26,15 @@ public class GearSlidetoZoneManualLeft extends Command {
     {
     	//this.timeOut = 2;
     	//setTimeout(this.timeOut);
-
-    	if (!Robot.geardrop.get_HoldersPaired()){
-    		Robot.geardrop.pairHolders();
+    	if (!Robot.geardrop.get_HoldersOpened()){
+	    	if (!Robot.geardrop.get_HoldersPaired()){
+	    		Robot.geardrop.pairHolders();
+	    	}
+	    	
+	    	Robot.geardrop.pid_initRightPosition(NumberConstants.geardrop_holder_close_p, NumberConstants.geardrop_holder_close_i, NumberConstants.geardrop_holder_close_d, NumberConstants.geardrop_holder_close_f, NumberConstants.geardrop_holder_close_error, false, NumberConstants.geardrop_slide_peakvolage);       	
+	    	Robot.geardrop.slideZoneLeft();
+    		}
     	}
-    	Robot.geardrop.pid_initRightPosition(NumberConstants.geardrop_holder_close_p, NumberConstants.geardrop_holder_close_i, NumberConstants.geardrop_holder_close_d, NumberConstants.geardrop_holder_close_f, NumberConstants.geardrop_holder_close_error, false, NumberConstants.geardrop_slide_peakvolage);       	
-    	
-    	
-    	Robot.geardrop.slideZoneLeft();
-    }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute()
