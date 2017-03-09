@@ -9,8 +9,8 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
  */
 public class DriveAndGear extends CommandGroup {
 	
-	public static String ln;
-	public static int n;
+	public String ln;
+	public int n;
 
     public DriveAndGear(String ln, int n) {
     	
@@ -18,14 +18,13 @@ public class DriveAndGear extends CommandGroup {
     	this.n = n;
     	// check for bumper dimensions
     	if(ln=="Key"){
-        	addSequential(new DriveCommand(39.19, 0.5, 0, 1, 0.2));
-        	addSequential(new DriveCommand(0, 0.5, 45*n, 1, 0.2));
-//orig        	addSequential(new DriveCommand(213.3, 0.5, 0, 3.5, 0.2));
- //       	addSequential(new DriveCommand(182.3, 0.5, 0, 3.5, 0.2));
-        	addSequential(new DriveCommand(72.12, 0.5, 0, 3.5, 0.2));
-//orig        	addSequential(new DriveCommand(0, 0.5, (-140)*n, 1, 0.2));
-        	addSequential(new DriveCommand(0, 0.5, (-72)*n, 1, 0.2));
-        	addSequential(new DriveCommand(31.94, 0.5, 0, 1.5, 0.2));
+        	//addSequential(new DriveCommand(39.19, 0.5, 0, 1, 0.2));
+        	addSequential(new DriveCommand(47.5, 0.6, 0, 1.5, 0.2));
+        	addSequential(new DriveCommand(0, 0.3, 45, 1, 0.2));
+        	//addSequential(new DriveCommand(72.12, 0.5, 0, 3.5, 0.2));
+        	addSequential(new DriveCommand(67, 0.6, 0, 2, 0.2));
+        	addSequential(new DriveCommand(0, 0.4, (-120), 2, 0.2));
+        	addSequential(new DriveCommand(14, 0.6, 0, 1.5, 0.2));
     	}
     	else if(ln=="Ret"){
     		addSequential(new DriveCommand(39.19, 0.5, 0, 1, 0.2));
