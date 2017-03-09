@@ -82,20 +82,13 @@ public class OI {
 		//place_gear_button = game_controller.getRightShoulder();
         //place_gear_button.whenPressed(new PlaceGearNoForward());
         
-        //drive_slow_button = game_controller.getLeftShoulder();
+        drive_slow_button = game_controller.getLeftShoulder();
         
         pusher_trigger = game_controller.getRightAxisButton();
         pusher_trigger.whenPressed(new GearPusher());
         
         
-        //RIGHT SHOULDER - Manual Slide Right
-        gearslideRight_button = game_controller.getRightShoulder();
-		gearslideRight_button.whenPressed(new GearSlidetoZoneManualRight());
-		
-		
-		//LEFT SHOULDER - Manual Slide Left
-		gearslideLeft_button = game_controller.getLeftShoulder();
-        gearslideLeft_button.whenPressed(new GearSlidetoZoneManualLeft());
+       
         
         
         
@@ -125,6 +118,15 @@ public class OI {
         //SUPPORT CONTROL -A
         gear_close_button = support_controller.getButtonA();
         gear_close_button.whenPressed(new GearCloseHolders());
+        
+        //RIGHT SHOULDER - Manual Slide Right
+        gearslideRight_button = support_controller.getRightShoulder();
+		gearslideRight_button.whenPressed(new GearSlidetoZoneManualRight());
+		
+		
+		//LEFT SHOULDER - Manual Slide Left
+		gearslideLeft_button = support_controller.getLeftShoulder();
+        gearslideLeft_button.whenPressed(new GearSlidetoZoneManualLeft());
         
         
         //climb_up.cancelWhenPressed(up_command);

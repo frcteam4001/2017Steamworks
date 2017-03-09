@@ -241,11 +241,12 @@ public class Robot extends IterativeRobot {
 	 */
 	@Override
 	public void autonomousPeriodic() {
-		/*
+		
 		SmartDashboard.putNumber("Left Drive Encoder", drive.getLeftEncoderDist());
 		SmartDashboard.putNumber("Right Drive Encoder", drive.getRightEncoderDist());
-		SmartDashboard.putNumber("Vision Zone", gearZone);
-		*/
+		SmartDashboard.putNumber("Gyro Angle", drive.getYaw());
+		//SmartDashboard.putNumber("Vision Zone", gearZone);
+		
 		
 		gearZone = networkTableCom.getNumber(Subsystem.GearZone, Key.TargetZone);
 		
@@ -276,7 +277,7 @@ public class Robot extends IterativeRobot {
 		SmartDashboard.putBoolean("Holders Paired", geardrop.get_HoldersPaired());
 		SmartDashboard.putNumber("Left Drive Encoder", drive.getLeftEncoderDist());
 		SmartDashboard.putNumber("Right Drive Encoder", drive.getRightEncoderDist());
-		SmartDashboard.putNumber("Gyro Angle", drive.getYaw());
+		
 		SmartDashboard.putBoolean("Right Switch pressed", geardrop.rightswitchpressed());
 		SmartDashboard.putBoolean("left switch pressed", geardrop.leftswitchpressed());
 		SmartDashboard.putNumber("IR READING", geardrop.getIR());
