@@ -42,7 +42,7 @@ public class PlaceGear extends CommandGroup {
     	//addSequential(new DriveToCamCaptureDistance());
     	
     	try {
-			Thread.sleep(400);
+			Thread.sleep(150);
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -54,7 +54,7 @@ public class PlaceGear extends CommandGroup {
     		addSequential(new GearPusherAuto());
     		System.out.print("gear placed!!");
     	//} else if (Robot.gearZone == -1) {
-    		addSequential(new DriveCommand(-12, 0.5, 0, 1.5, 0.3));
+    		
     	//}
     	
     	

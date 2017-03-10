@@ -20,7 +20,7 @@ public class PusherAutoCommand extends Command {
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	System.out.println("PusherOut Init");
+    	
     	this.timeOut = 1.5;
     	setTimeout(timeOut);
     }

@@ -31,8 +31,7 @@ public class PusherCommand extends Command {
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-    	System.out.print("Trigger State:");
-    	System.out.println(Robot.oi.game_controller.getRightAxisButton().get());
+
         return !Robot.oi.game_controller.getRightAxisButton().get();
     }
 

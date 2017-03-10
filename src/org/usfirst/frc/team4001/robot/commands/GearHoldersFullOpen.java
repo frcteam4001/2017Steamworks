@@ -43,20 +43,15 @@ public class GearHoldersFullOpen extends Command {
     	System.out.println("Gears full open execute");
     	
     	if(!Robot.geardrop.leftswitchpressed()){
-    		System.out.println("Gears full open left");
     		Robot.geardrop.openLeftHolder(NumberConstants.geardrop_openpower);
-    	}
-    	else{
-    		System.out.println("Gears full open stop left");
+    	}else{
     		Robot.geardrop.stopLeftHolder();	
     	}
     	
     	if(!Robot.geardrop.rightswitchpressed()){
-    		System.out.println("Gears full open right");
     		Robot.geardrop.openRightHolder(NumberConstants.geardrop_openpower);
     	}
     	else{
-    		System.out.println("Gears full open stop right");
     		Robot.geardrop.stopRightHolder();
     	}
     }
@@ -76,7 +71,6 @@ public class GearHoldersFullOpen extends Command {
     		Robot.geardrop.resetEncoders();
  
     	}
-    	System.out.println("GearsFullOpen end");
     	Robot.geardrop.set_closed(false);
     	Robot.geardrop.stopLeftHolder();
     	Robot.geardrop.stopRightHolder();
