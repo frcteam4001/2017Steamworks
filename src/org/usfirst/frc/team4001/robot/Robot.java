@@ -8,6 +8,7 @@ import edu.wpi.cscore.UsbCamera;
 import edu.wpi.first.wpilibj.CameraServer;
 
 import edu.wpi.first.wpilibj.IterativeRobot;
+import edu.wpi.first.wpilibj.Sendable;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
@@ -93,7 +94,18 @@ public class Robot extends IterativeRobot {
 		SmartDashboard.putData("Autonomous Mode Chooser", autoChooser);
 
 		SmartDashboard.putData("Push", new GearPusher());
-
+		
+		//Three potential ways to send auto options to labview, not sure how to work out the last potential method
+		
+		//labview dashboard auto selector test
+//		SmartDashboard.putString("Auto List", "[\"test\",\"test2\"]");
+		//labview dashboard auto selector test2
+//		SendableChooser<Command> labviewChoose=new SendableChooser<Command>();
+//		labviewChoose.addDefault("test", new DriveCommand(-12, 0.5, 0, 8, 0.2));
+//		labviewChoose.addObject("test2", new MidDriveAndGear(-1));
+		//labview dashboard auto selector test3
+		//String[] options =new String[]{"test","test2"};//any way to send a string array to network table?
+		
 		//SmartDashboard.putData("Open Left Gear Holder", new GearHolderLeftFullOpen());
 		//SmartDashboard.putData("Open Right Gear Holder", new GearHolderRightFullOpen());
 		/*
@@ -121,7 +133,9 @@ public class Robot extends IterativeRobot {
 		UsbCamera camera = CameraServer.getInstance().startAutomaticCapture("cam1",0);
 		
 		// Set the resolution
+
 		camera.setResolution(640, 480);
+
 		
 		
 		
@@ -160,6 +174,23 @@ public class Robot extends IterativeRobot {
 		//String autoSelected = SmartDashboard.getString("Auto Selector");
 		autonomousCommand = (Command) autoChooser.getSelected();
 		
+		
+
+		
+		//probably will work for getting the selected auto from Labview
+		
+		//labview auto test1
+//		String autoSelected = SmartDashboard.getString("Auto Selector", "Default");
+//		switch(autoSelected){
+//		case "Drive Straight and Stop":
+//			autonomousCommand = new DriveCommand(58.36, 0.5, 0, 8, 0.2);
+//			break;//insert rest of commands here
+//		default: 
+//			autonomousCommand = new DriveCommand(58.36, 0.5, 0, 1.5, 0.2);
+//			break;
+//		}
+		 
+
 		/*
 		String autoSelected = SmartDashboard.getString("Auto Selector","Default"); 
 		switch(autoSelected) { 
@@ -174,6 +205,7 @@ public class Robot extends IterativeRobot {
 		}*/
 
 		
+
 		/*
 		 * String autoSelected = SmartDashboard.getString("Auto Selector",
 		 * "Default"); switch(autoSelected) { case "My Auto": autonomousCommand
@@ -199,6 +231,7 @@ public class Robot extends IterativeRobot {
 		*/
 		//autonomousCommand = new DriveCommand(58.36, 0.5, 0, 1.5, 0.2);
 //		autonomousCommand = new Test90DegPlace();
+		
 
 		// schedule the autonomous command (example)
 		if (autonomousCommand != null)
