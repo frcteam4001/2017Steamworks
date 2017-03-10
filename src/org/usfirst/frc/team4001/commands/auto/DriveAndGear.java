@@ -20,20 +20,20 @@ public class DriveAndGear extends CommandGroup {
     	if(ln=="Key"){
         	//Ryerson measurements
     		//addSequential(new DriveCommand(39.19, 0.5, 0, 1, 0.2));
-        	addSequential(new DriveCommand(86.8, 0.55, 0, 1, 0.2)); 
+        	addSequential(new DriveCommand(86.8, 0.55, 0, 3.5, 0.2)); 
 //        	addSequential(new DriveCommand(0, 0.3, 35*n, 0.75, 0.2));
         	//addSequential(new DriveCommand(72.12, 0.5, 0, 3.5, 0.2));
 //        	addSequential(new DriveCommand(61, 0.65, 0, 1.7, 0.2));
-        	addSequential(new DriveCommand(0, 0.4, (-45)*n, 1.75, 0.2));
+        	addSequential(new DriveCommand(0, 0.4, (-60)*n, 1, 0.2));
         	addSequential(new DriveCommand(8.5, 0.6, 0, 1, 0.2));
     	}
     	else if(ln=="Ret"){
     		//Ryerson measurements
-    		addSequential(new DriveCommand(85.8, 0.5, 0, 1, 0.2));
+    		addSequential(new DriveCommand(85.8, 0.5, 0, 3.5, 0.2));
 //        	addSequential(new DriveCommand(0, 0.5, (-29)*n, 1, 0.2));
 //        	addSequential(new DriveCommand(72.12, 0.5, 0, 3.5, 0.2));
-        	addSequential(new DriveCommand(0, 0.5, 45*n, 1, 0.2));
-        	addSequential(new DriveCommand(8.5, 0.5, 0, 1.5, 0.2));
+        	addSequential(new DriveCommand(0, 0.5, 60*n, 1, 0.2));
+        	addSequential(new DriveCommand(8.5, 0.5, 0, 1, 0.2));
     	}
     	addSequential(new PlaceGear());
     	
