@@ -18,7 +18,7 @@ public class TurnRoller extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Robot.geardrop.turnRoller();
+    	//Robot.geardrop.turnRoller();
     }
 
     // Make this return true when this Command no longer needs to run execute()
@@ -28,7 +28,7 @@ public class TurnRoller extends Command {
 
     // Called once after isFinished returns true
     protected void end() {
-    	Robot.geardrop.stopRoller();
+    	//Robot.geardrop.stopRoller();
     	try {
 			Thread.sleep(200);
 		} catch (InterruptedException e) {
@@ -40,6 +40,6 @@ public class TurnRoller extends Command {
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run
     protected void interrupted() {
-    	Robot.geardrop.stopRoller();
+    	//Robot.geardrop.stopRoller();
     }
 }
