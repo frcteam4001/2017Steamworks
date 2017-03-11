@@ -19,7 +19,7 @@ public class MidDriveAndGear extends CommandGroup {
     	// initial drive forward
     	//addSequential(new DriveCommand(54.36, 0.5, 0, 3, 0.2));
     	 
-    	addSequential(new DriveCommand(65, 0.6, 0, 3.5, 0.2));
+    	addSequential(new DriveCommand(66, 0.6, 0, 3.5, 0.2));
     	addSequential(new GearHoldersFullOpen());
     	
     	

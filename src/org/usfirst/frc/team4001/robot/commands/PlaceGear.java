@@ -41,17 +41,17 @@ public class PlaceGear extends CommandGroup {
     	//addParallel(new GearSlideToHomeZone());
     	//addSequential(new DriveToCamCaptureDistance());
     	
-    	try {
-			Thread.sleep(150);
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+//    	try {
+//			Thread.sleep(150);
+//		} catch (InterruptedException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
     	//if (Robot.gearZone != -1 && Robot.gearZone != -20000 && Robot.gearZone != -30000){
-    		addSequential(new GearSlidetoVisionZone());
+    		//addSequential(new GearSlidetoVisionZone());
  
-    		addSequential(new DriveCommand(NumberConstants.camera_capture_distance - 7, 0.35, 0, 1.25, 0.3));
-    		addSequential(new GearPusherAuto());
+    		addSequential(new DriveCommand(NumberConstants.camera_capture_distance - 5, 0.45, 0, 1.25, 0.3));
+    		//addSequential(new GearPusherAuto());
     		System.out.print("gear placed!!");
     	//} else if (Robot.gearZone == -1) {
     		
