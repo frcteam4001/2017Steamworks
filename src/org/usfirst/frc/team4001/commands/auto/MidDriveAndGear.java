@@ -21,7 +21,8 @@ public class MidDriveAndGear extends CommandGroup {
     	 
     	addSequential(new DriveCommand(66, 0.6, 0, 3.5, 0.2));
     	addSequential(new GearHoldersFullOpen());
-    	
+    	addSequential(new GearPusherAuto());
+    	addSequential(new DriveCommand(-12, 0.3, 0, 1, 0.2));
     	
     	// place the gear starting at capture distance
     	//addSequential(new PlaceGear());

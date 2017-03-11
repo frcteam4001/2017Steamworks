@@ -36,7 +36,8 @@ public class DriveAndGear extends CommandGroup {
         	addSequential(new DriveCommand(39.5, 0.5, 0, 2.25, 0.2));
     	}
     	//addSequential(new PlaceGear());
-    	
+    	addSequential(new GearPusherAuto());
+    	addSequential(new DriveCommand(-12, 0.3, 0, 1, 0.2));
     	
     	
     	
