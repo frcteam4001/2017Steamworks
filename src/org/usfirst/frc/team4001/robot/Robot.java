@@ -84,9 +84,7 @@ public class Robot extends IterativeRobot {
 		//AUTONOMOUS CHOOSER COMMANDS
 		// chooser.addObject("My Auto", new MyAutoCommand());
 		autoChooser = new SendableChooser<Command>();
-		autoChooser.addDefault("Drive 12 inches backward", new DriveCommand(-12, 0.5, 0, 8, 0.2));
-		autoChooser.addDefault("StraightGearLeft", new MidDriveAndGear(-1));
-		autoChooser.addDefault("StraightGearRight", new MidDriveAndGear(1));
+		autoChooser.addDefault("StraightGear", new MidDriveAndGear());
 		autoChooser.addObject("Blue Right w/ Gear", new DriveAndGear("Key",1));
 		autoChooser.addObject("Red Left w/ Gear", new DriveAndGear("Key",-1));
 		autoChooser.addObject("Blue Left w/ Gear", new DriveAndGear("Ret",1));
