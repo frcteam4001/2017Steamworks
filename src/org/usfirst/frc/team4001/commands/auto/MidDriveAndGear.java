@@ -19,10 +19,17 @@ public class MidDriveAndGear extends CommandGroup {
     	// initial drive forward
     	//addSequential(new DriveCommand(54.36, 0.5, 0, 3, 0.2));
     	 
-    	addSequential(new DriveCommand(66, 0.6, 0, 3.5, 0.2));
+    	addSequential(new DriveCommand(67, 0.6, 0, 3.5, 0.2));
     	addSequential(new GearHoldersFullOpen());
-    	addSequential(new GearPusherAuto());
-    	addSequential(new DriveCommand(-12, 0.3, 0, 1, 0.2));
+    	
+    	addParallel(new GearPusherAuto());
+    	try {
+			Thread.sleep(500);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+    	addSequential(new DriveCommand(-24, 0.35, 0, 1.5, 0.2));
     	
     	// place the gear starting at capture distance
     	//addSequential(new PlaceGear());

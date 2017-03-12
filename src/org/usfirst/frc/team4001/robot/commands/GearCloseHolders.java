@@ -44,12 +44,16 @@ public class GearCloseHolders extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	if(!Robot.geardrop.leftswitchpressed()){
-    		Robot.geardrop.openLeftHolder(NumberConstants.geardrop_openpower);
-    		System.out.println("resetting left holder");
+    	if (Robot.pusher.pusherIsBack()){
+    		if(!Robot.geardrop.leftswitchpressed()){
+    			Robot.geardrop.openLeftHolder(NumberConstants.geardrop_openpower);
+    			System.out.println("resetting left holder");
     		
-    	}else{
-    		Robot.geardrop.pid_moveRightToPosition(NumberConstants.geardrop_holder_close_position);
+    		}else{
+    			Robot.geardrop.pid_moveRightToPosition(NumberConstants.geardrop_holder_close_position);
+    		}
+    	} else {
+    		Robot.pusher.pusherIn();
     	}
     }
 
