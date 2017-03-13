@@ -9,7 +9,7 @@ import edu.wpi.first.wpilibj.networktables.*;
 public class NTInterface {
 	
 	public enum Subsystem {
-		DriveTrain, GearDrop, GearZone, Curtain, Climber
+		DriveTrain, GearDrop, GearZone, Curtain, Climber, AutoTuner
 	}
 	
 	public enum Key {
@@ -37,9 +37,13 @@ public class NTInterface {
 		CurtainUp("Curtain Up"),
 		
 		//Climber keys
-		ClimberState("Climb Status")
-		;
+		ClimberState("Climb Status"),
 		
+		
+		//AutoTuner keys
+		Distance("Distance"),
+		TurnAngle("Turn Angle")
+		;
 		
 		private final String text;
 
@@ -66,6 +70,7 @@ public class NTInterface {
 	NetworkTable GearZone;
 	NetworkTable climber;
 	NetworkTable curtain;
+	NetworkTable autoTuner;
 	
 	public NTInterface() {
 		//Initialize the connection
@@ -87,6 +92,7 @@ public class NTInterface {
 		GearZone = NetworkTable.getTable("GearZone");
 		climber = NetworkTable.getTable("Climber");
 		curtain = NetworkTable.getTable("Curtain");
+		autoTuner = NetworkTable.getTable("AutoTuner");
 		
 	}
 	
@@ -111,8 +117,17 @@ public class NTInterface {
 				break;
 			case Climber:
 				climber.putNumber(key.toString(), value);
+				break;
 			case Curtain:
 				curtain.putNumber(key.toString(), value);
+				break;
+			case AutoTuner:
+				autoTuner.putNumber(key.toString(), value);
+				break;
+			case GearZone:
+				GearZone.putNumber(key.toString(), value);
+				break;
+				
 		}
 	}
 	
@@ -141,6 +156,12 @@ public class NTInterface {
 		case Curtain:
 			curtain.putBoolean(key.toString(), value);
 			break;
+		case AutoTuner:
+			autoTuner.putBoolean(key.toString(), value);
+			break;
+		case GearZone:
+			GearZone.putBoolean(key.toString(), value);
+			break;
 		}
 	}
 	
@@ -166,6 +187,8 @@ public class NTInterface {
 				return climber.getNumber(key.toString(), -20000);
 			case Curtain:
 				return curtain.getNumber(key.toString(), -20000);
+			case AutoTuner:
+				return autoTuner.getNumber(key.toString(), -20000);
 		}
 		return -30000;
 	}
@@ -192,6 +215,8 @@ public class NTInterface {
 				return climber.getBoolean(key.toString(), false);
 			case Curtain:
 				return curtain.getBoolean(key.toString(), false);
+			case AutoTuner:
+				return autoTuner.getBoolean(key.toString(), false);
 		}
 		return false;
 	}
