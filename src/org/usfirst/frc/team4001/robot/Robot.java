@@ -15,7 +15,8 @@ import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
-
+import org.usfirst.frc.team4001.auto.tuner.ReadDistance;
+import org.usfirst.frc.team4001.auto.tuner.ReadTurnAngle;
 
 //
 //
@@ -85,10 +86,10 @@ public class Robot extends IterativeRobot {
 		// chooser.addObject("My Auto", new MyAutoCommand());
 		autoChooser = new SendableChooser<Command>();
 		autoChooser.addDefault("StraightGear", new MidDriveAndGear());
-		autoChooser.addObject("Blue Right w/ Gear", new DriveAndGear("Key",1));
-		autoChooser.addObject("Red Left w/ Gear", new DriveAndGear("Key",-1));
-		autoChooser.addObject("Blue Left w/ Gear", new DriveAndGear("Ret",1));
-		autoChooser.addObject("Red Right w/ Gear", new DriveAndGear("Ret",-1));
+		autoChooser.addObject("Red Right w/ Gear", new DriveAndGear("Key",1));
+		autoChooser.addObject("Blue Left w/ Gear", new DriveAndGear("Key",-1));
+		autoChooser.addObject("Red Left w/ Gear", new DriveAndGear("Ret",1));
+		autoChooser.addObject("Blue Right w/ Gear", new DriveAndGear("Ret",-1));
 		SmartDashboard.putData("Autonomous Mode Chooser", autoChooser);
 
 		SmartDashboard.putData("Push", new GearPusher());
@@ -125,7 +126,8 @@ public class Robot extends IterativeRobot {
 		SmartDashboard.putData(Scheduler.getInstance());
 		SmartDashboard.putData("Slow Drive", new DriveCommand(44, 0.15, 0, 12, 0.2));
 		*/
-
+		SmartDashboard.putData("record distance", new ReadDistance());
+		SmartDashboard.putData("record turn", new ReadTurnAngle());
 	    
 	    // Get the UsbCamera from CameraServer
 		UsbCamera camera = CameraServer.getInstance().startAutomaticCapture("cam1",0);
