@@ -21,13 +21,13 @@ public class PusherAutoCommand extends Command {
     // Called just before this Command runs the first time
     protected void initialize() {
     	
-    	this.timeOut = 1.5;
+    	this.timeOut = 5;
     	setTimeout(timeOut);
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	if(Robot.geardrop.getCurrentZone() != 1 && Robot.geardrop.getCurrentZone() != 5){
+    	if((Robot.geardrop.getCurrentZone() != 1 && Robot.geardrop.getCurrentZone() != 5) || !Robot.geardrop.get_closed()){
     		Robot.pusher.pusherOut();
     	}
     }

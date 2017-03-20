@@ -22,6 +22,7 @@ public class Climber extends Subsystem
 	
 	public Climber() {
 		climbMotor = new Victor(ElectricalConstants.CLIMBER_MOTOR);
+		climbMotor.setInverted(true);
 
 	}
 	

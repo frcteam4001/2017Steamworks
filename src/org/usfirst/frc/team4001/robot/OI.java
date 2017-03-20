@@ -2,6 +2,7 @@ package org.usfirst.frc.team4001.robot;
 
 import edu.wpi.first.wpilibj.buttons.Button;
 
+import org.usfirst.frc.team4001.commands.auto.CurtainDown;
 import org.usfirst.frc.team4001.commands.auto.GearPusher;
 import org.usfirst.frc.team4001.robot.commands.*;
 
@@ -61,7 +62,7 @@ public class OI {
 	public JoystickButton gear_open_button;
 	public JoystickButton gear_close_button;
 	public AxisButton pusher_trigger;
-
+	public JoystickButton curtainDown;
 	//SUPPORT CONTROLLER	
 	public Gamepad support_controller;
 	JoystickButton climb_up;
@@ -101,7 +102,7 @@ public class OI {
         climb_up = support_controller.getButtonY();
         //climb_down = support_controller.getButtonX();
       		
-        climb_up.toggleWhenPressed(new ClimbUp());
+        climb_up.whileHeld(new ClimbUp());
         //climb_down.toggleWhenPressed(new ClimbDown());
         
         //SUPPORT CONTROL - X
@@ -128,7 +129,8 @@ public class OI {
 		gearslideLeft_button = support_controller.getLeftShoulder();
         gearslideLeft_button.whenPressed(new GearSlidetoZoneManualLeft());
         
-        
+        curtainDown = support_controller.getStartButton();
+        curtainDown.whenPressed(new CurtainDown());
         //climb_up.cancelWhenPressed(up_command);
         //climb_down.cancelWhenPressed(down_command);
 

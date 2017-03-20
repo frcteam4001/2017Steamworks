@@ -1,5 +1,6 @@
 package org.usfirst.frc.team4001.commands.auto;
 
+import org.usfirst.frc.team4001.robot.commands.GearHoldersFullOpen;
 import org.usfirst.frc.team4001.robot.commands.PlaceGear;
 
 import edu.wpi.first.wpilibj.command.CommandGroup;
@@ -24,19 +25,29 @@ public class DriveAndGear extends CommandGroup {
 //        	addSequential(new DriveCommand(0, 0.3, 35*n, 0.75, 0.2));
         	//addSequential(new DriveCommand(72.12, 0.5, 0, 3.5, 0.2));
 //        	addSequential(new DriveCommand(61, 0.65, 0, 1.7, 0.2));
-        	addSequential(new DriveCommand(0, 0.4, (-60)*n, 1, 0.2));
-        	addSequential(new DriveCommand(39.5, 0.5, 0, 2.25, 0.2));
+        	addSequential(new DriveCommand(0, 0.4, (-55)*n, 1, 0.2));
+        	addSequential(new DriveCommand(35, 0.5, 0, 2.25, 0.2));
     	}
     	else if(ln=="Ret"){
     		//Ryerson measurements
-    		addSequential(new DriveCommand(85.8, 0.5, 0, 3.5, 0.2));
+    		addSequential(new DriveCommand(85.8, 0.6, 0, 2.75, 0.2));
 //        	addSequential(new DriveCommand(0, 0.5, (-29)*n, 1, 0.2));
 //        	addSequential(new DriveCommand(72.12, 0.5, 0, 3.5, 0.2));
-        	addSequential(new DriveCommand(0, 0.5, 60*n, 1, 0.2));
-        	addSequential(new DriveCommand(39.5, 0.5, 0, 2.25, 0.2));
+        	addSequential(new DriveCommand(0, 0.5, 55*n, 1, 0.2));
+        	addSequential(new DriveCommand(20, 0.5, 0, 2.25, 0.2));
     	}
     	//addSequential(new PlaceGear());
-    	
+//    	try {
+//			Thread.sleep(250);
+//		} catch (InterruptedException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+//    	addSequential(new GearHoldersFullOpen());
+////    	
+//    	addParallel(new GearPusherAuto());
+////    	
+//       	addSequential(new DriveCommand(-24, 0.35, 0, 1.5, 0.2));
     	
     	
     	

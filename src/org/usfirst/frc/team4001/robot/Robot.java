@@ -94,7 +94,7 @@ public class Robot extends IterativeRobot {
 		SmartDashboard.putData("Autonomous Mode Chooser", autoChooser);
 
 		SmartDashboard.putData("Push", new GearPusher());
-		
+		SmartDashboard.putData("climb down", new ClimbDown());
 		//Three potential ways to send auto options to labview, not sure how to work out the last potential method
 		
 		//labview dashboard auto selector test
