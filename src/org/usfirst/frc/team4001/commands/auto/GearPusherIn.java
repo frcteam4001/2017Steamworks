@@ -1,51 +1,39 @@
 package org.usfirst.frc.team4001.commands.auto;
 
-import org.usfirst.frc.team4001.robot.*;
-
+import org.usfirst.frc.team4001.robot.Robot;
 
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
  *
  */
-public class PusherAutoCommand extends Command {
-	
-	private double timeOut;
+public class GearPusherIn extends Command {
 
-    public PusherAutoCommand() {
+    public GearPusherIn() {
         // Use requires() here to declare subsystem dependencies
-        // eg. requires(chassis);
-    	requires(Robot.pusher);
+        requires(Robot.pusher);
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	
-    	this.timeOut = 2.5;
-    	setTimeout(timeOut);
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	if((Robot.geardrop.getCurrentZone() != 1 && Robot.geardrop.getCurrentZone() != 5) || !Robot.geardrop.get_closed()){
-    		Robot.pusher.pusherOut();
-    	}
+    	Robot.pusher.pusherIn();
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-    	return isTimedOut();
-        
+        return Robot.pusher.pusherIsBack();
     }
 
     // Called once after isFinished returns true
     protected void end() {
-    	Robot.pusher.pusherIn();
     }
 
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run
     protected void interrupted() {
-    	Robot.pusher.pusherIn();
     }
 }

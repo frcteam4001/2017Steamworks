@@ -86,6 +86,7 @@ public class OI {
         drive_slow_button = game_controller.getLeftShoulder();
         
         pusher_trigger = game_controller.getRightAxisButton();
+       
         pusher_trigger.whenPressed(new GearPusher());
         
         
@@ -118,7 +119,7 @@ public class OI {
         
         //SUPPORT CONTROL -A
         gear_close_button = support_controller.getButtonA();
-        gear_close_button.whenPressed(new GearCloseHolders());
+        gear_close_button.whenPressed(new LockOnGear());
         
         //RIGHT SHOULDER - Manual Slide Right
         gearslideRight_button = support_controller.getRightShoulder();

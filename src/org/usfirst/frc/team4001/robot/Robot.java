@@ -291,8 +291,7 @@ public class Robot extends IterativeRobot {
 		SmartDashboard.putBoolean("Curtain Up", curtain.getIfCurtainUp());
 		SmartDashboard.putNumber("Gearzone", gearZone);
 		*/
-		SmartDashboard.putNumber("Left IR", drive.getLeftUltrasonicDist());
-		SmartDashboard.putNumber("Right IR", drive.getRightUltrasonicDist());
+		SmartDashboard.putNumber("GearIR", geardrop.getIR());
 		SmartDashboard.putBoolean("Pusher is home", pusher.pusherIsBack());
 		SmartDashboard.putBoolean("Gear Open", geardrop.get_HoldersOpened());
 		SmartDashboard.putNumber("CurrentZone", geardrop.getCurrentZone());

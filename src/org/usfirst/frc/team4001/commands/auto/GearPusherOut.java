@@ -13,31 +13,33 @@ public class GearPusherOut extends Command {
 	
     public GearPusherOut() {
         // Use requires() here to declare subsystem dependencies
-        requires(Robot.geardrop);
+        requires(Robot.pusher);
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
+    	timeOut = 1.5;
+    	setTimeout(timeOut);
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Robot.geardrop.pusherOut();
+    	Robot.pusher.pusherOut();
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return false;
+        return isTimedOut();
     }
 
     // Called once after isFinished returns true
     protected void end() {
-    	Robot.geardrop.pusherIn();
+    	//Robot.geardrop.pusherIn();
     }
 
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run
     protected void interrupted() {
-    	Robot.geardrop.pusherIn();
+    	//Robot.geardrop.pusherIn();
     }
 }

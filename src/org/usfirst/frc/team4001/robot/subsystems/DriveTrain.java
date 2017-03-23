@@ -108,7 +108,7 @@ public class DriveTrain extends Subsystem {
     
     
     public void arcadeDrive(double forward, double turn){
-    	drive.arcadeDrive(0.8 * forward, 0.8 * turn,false);
+    	drive.arcadeDrive(forward, 0.9* turn,false);
 
     } 
     
