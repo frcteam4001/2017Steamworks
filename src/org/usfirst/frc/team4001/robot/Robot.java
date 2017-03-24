@@ -86,11 +86,12 @@ public class Robot extends IterativeRobot {
 		//AUTONOMOUS CHOOSER COMMANDS
 		// chooser.addObject("My Auto", new MyAutoCommand());
 		autoChooser = new SendableChooser<Command>();
-		autoChooser.addDefault("StraightGear", new MidDriveAndGear());
-		autoChooser.addObject("Red Right w/ Gear", new DriveAndGear("Key",1));
-		autoChooser.addObject("Blue Left w/ Gear", new DriveAndGear("Key",-1));
-		autoChooser.addObject("Red Left w/ Gear", new DriveAndGear("Ret",1));
-		autoChooser.addObject("Blue Right w/ Gear", new DriveAndGear("Ret",-1));
+		autoChooser.addDefault("Red Mid", new DriveAndGear(1));
+		autoChooser.addDefault("Blue Mid", new DriveAndGear(2));
+		autoChooser.addObject("Red Boiler side w/ Gear", new DriveAndGear(3));
+		autoChooser.addObject("Blue Boiler side w/ Gear", new DriveAndGear(4));
+		autoChooser.addObject("Red Loading station side w/ Gear", new DriveAndGear(5));
+		autoChooser.addObject("Blue Loading station side w/ Gear", new DriveAndGear(6));
 		SmartDashboard.putData("Autonomous Mode Chooser", autoChooser);
 
 		SmartDashboard.putData("Push", new GearPusher());

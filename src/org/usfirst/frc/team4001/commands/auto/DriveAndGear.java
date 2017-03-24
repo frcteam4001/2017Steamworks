@@ -10,46 +10,47 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
  */
 public class DriveAndGear extends CommandGroup {
 	
-	public String ln;
 	public int n;
 
-    public DriveAndGear(String ln, int n) {
+    public DriveAndGear(int n) {
     	
-    	this.ln = ln;
+    	
     	this.n = n;
-    	// check for bumper dimensions
-    	if(ln=="Key"){
-        	//Ryerson measurements
-    		//addSequential(new DriveCommand(39.19, 0.5, 0, 1, 0.2));
-        	addSequential(new DriveCommand(86.8, 0.55, 0, 3.5, 0.2)); 
-//        	addSequential(new DriveCommand(0, 0.3, 35*n, 0.75, 0.2));
-        	//addSequential(new DriveCommand(72.12, 0.5, 0, 3.5, 0.2));
-//        	addSequential(new DriveCommand(61, 0.65, 0, 1.7, 0.2));
-        	addSequential(new DriveCommand(0, 0.4, (-55)*n, 1, 0.2));
-        	addSequential(new DriveCommand(35, 0.5, 0, 2.25, 0.2));
+
+    	if(n == 1){ //Red Mid
+
+        	addSequential(new DriveCommand(67.57 * 1.03, 0.4, 0, 3, 0.2)); 
     	}
-    	else if(ln=="Ret"){
-    		//Ryerson measurements
-    		addSequential(new DriveCommand(85.8, 0.6, 0, 2.75, 0.2));
-//        	addSequential(new DriveCommand(0, 0.5, (-29)*n, 1, 0.2));
-//        	addSequential(new DriveCommand(72.12, 0.5, 0, 3.5, 0.2));
-        	addSequential(new DriveCommand(0, 0.5, 55*n, 1, 0.2));
-        	addSequential(new DriveCommand(20, 0.5, 0, 2.25, 0.2));
+    	else if(n == 2){ //Blue Mid
+    		
+        	addSequential(new DriveCommand(60.65 * 1.03, 0.4, 0, 3, 0.2));
     	}
-    	//addSequential(new PlaceGear());
-//    	try {
-//			Thread.sleep(250);
-//		} catch (InterruptedException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
-//    	addSequential(new GearHoldersFullOpen());
-////    	
-//    	addParallel(new GearPusherAuto());
-////    	
-//       	addSequential(new DriveCommand(-24, 0.35, 0, 1.5, 0.2));
+    	else if (n == 3 ) { //Red Boiler
+    		addSequential(new DriveCommand(79.61 *1.03, 0.4, 0, 2.75, 0.2));
+    		addSequential(new DriveCommand(0, 0.3, -43.45 * 0.96, 1, 0.2));
+    		addSequential(new DriveCommand(20 * 1.03, 0.4, 0, 1, 0.2));
+    	}
+    	else if (n == 4) { //Blue Boiler
+    		addSequential(new DriveCommand(80.67 *1.03, 0.4, 0, 2.75, 0.2));
+    		addSequential(new DriveCommand(0, 0.3, 60.26 * 0.96, 1.25, 0.2));
+    		addSequential(new DriveCommand(24 * 1.03, 0.4, 0, 1, 0.2));
+    	}
+    	else if (n == 5) { //Red Loading station
+    		addSequential(new DriveCommand(75.12 *1.03, 0.4, 0, 2.75, 0.2));
+    		addSequential(new DriveCommand(0, 0.3, 55.57 * 0.96, 1.25, 0.2));
+    		addSequential(new DriveCommand(37.06 * 1.03, 0.4, 0, 1.5, 0.2));
+    	}
+    	else if (n == 6) { //Blue Loading station
+    		addSequential(new DriveCommand(73.17 *1.03, 0.4, 0, 2.75, 0.2));
+    		addSequential(new DriveCommand(0, 0.3, -52.91 * 0.96, 1.25, 0.2));
+    		addSequential(new DriveCommand(35.78 * 1.03, 0.4, 0, 1.5, 0.2));
+    	}
+    	addSequential(new GearHoldersFullOpen());
     	
+    	addSequential(new GearPusherOut());
     	
+    	addSequential(new DriveCommand(-24, 0.35,0, 1.5, 0.2));
+    	addSequential(new GearPusherIn());
     	
         // Add Commands here:
         // e.g. addSequential(new Command1());
