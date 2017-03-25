@@ -19,11 +19,27 @@ public class DriveAndGear extends CommandGroup {
 
     	if(n == 1){ //Red Mid
 
-        	addSequential(new DriveCommand(67.57 * 1.03, 0.4, 0, 3, 0.2)); 
+        	addSequential(new DriveCommand(68.57 * 1.03, 0.4, 0, 3, 0.2)); 
+
+        	addSequential(new GearHoldersFullOpen());
+        	
+        	addSequential(new GearPusherOut());
+        	
+        	addSequential(new DriveCommand(-24, 0.35,0, 1.5, 0.2));
+        	addSequential(new GearPusherIn());
+
     	}
     	else if(n == 2){ //Blue Mid
     		
-        	addSequential(new DriveCommand(60.65 * 1.03, 0.4, 0, 3, 0.2));
+        	addSequential(new DriveCommand(62.65 * 1.03, 0.4, 0, 3, 0.2));
+
+        	addSequential(new GearHoldersFullOpen());
+        	
+        	addSequential(new GearPusherOut());
+        	
+        	addSequential(new DriveCommand(-24, 0.35,0, 1.5, 0.2));
+        	addSequential(new GearPusherIn());
+
     	}
     	else if (n == 3 ) { //Red Boiler
     		addSequential(new DriveCommand(79.61 *1.03, 0.4, 0, 2.75, 0.2));
@@ -32,7 +48,7 @@ public class DriveAndGear extends CommandGroup {
     	}
     	else if (n == 4) { //Blue Boiler
     		addSequential(new DriveCommand(80.67 *1.03, 0.4, 0, 2.75, 0.2));
-    		addSequential(new DriveCommand(0, 0.3, 60.26 * 0.96, 1.25, 0.2));
+    		addSequential(new DriveCommand(0, 0.3, 63.26 * 0.96, 1.25, 0.2));
     		addSequential(new DriveCommand(24 * 1.03, 0.4, 0, 1, 0.2));
     	}
     	else if (n == 5) { //Red Loading station
@@ -45,13 +61,6 @@ public class DriveAndGear extends CommandGroup {
     		addSequential(new DriveCommand(0, 0.3, -52.91 * 0.96, 1.25, 0.2));
     		addSequential(new DriveCommand(35.78 * 1.03, 0.4, 0, 1.5, 0.2));
     	}
-    	addSequential(new GearHoldersFullOpen());
-    	
-    	addSequential(new GearPusherOut());
-    	
-    	addSequential(new DriveCommand(-24, 0.35,0, 1.5, 0.2));
-    	addSequential(new GearPusherIn());
-    	
         // Add Commands here:
         // e.g. addSequential(new Command1());
         //      addSequential(new Command2());
