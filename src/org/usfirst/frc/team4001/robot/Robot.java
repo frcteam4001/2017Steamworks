@@ -96,6 +96,8 @@ public class Robot extends IterativeRobot {
 
 		SmartDashboard.putData("Push", new GearPusher());
 		SmartDashboard.putData("climb down", new ClimbDown());
+		SmartDashboard.putData("curtain up", new CurtainUp());
+		SmartDashboard.putData("curtain down", new CurtainDown());
 		//Three potential ways to send auto options to labview, not sure how to work out the last potential method
 		
 		//labview dashboard auto selector test
@@ -297,6 +299,7 @@ public class Robot extends IterativeRobot {
 		SmartDashboard.putBoolean("Gear Open", geardrop.get_HoldersOpened());
 		SmartDashboard.putNumber("CurrentZone", geardrop.getCurrentZone());
 		SmartDashboard.putBoolean("HoldersPaired", geardrop.get_HoldersPaired());
+		SmartDashboard.putNumber("climb potentiameter" , curtain.get_potValue());
  
 		networkTableCom.putNumber(Subsystem.DriveTrain, Key.RightDriveEncoder, drive.getRightEncoderDist());
 		networkTableCom.putNumber(Subsystem.DriveTrain, Key.LeftDriveEncoder, drive.getLeftEncoderDist());

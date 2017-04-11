@@ -26,7 +26,8 @@ public class CurtainDown extends Command {
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
     	//return Robot.geardrop.gearIsInside();
-    	return Robot.curtain.get_potValue() < NumberConstants.curtain_min;
+    	return Robot.curtain.get_potValue() <= NumberConstants.curtain_min;
+    	
     }
 
     // Called once after isFinished returns true

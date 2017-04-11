@@ -30,7 +30,8 @@ public class CurtainUp extends Command {
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
     	//return Robot.geardrop.gearIsInside();
-    	return Robot.curtain.get_potValue() > NumberConstants.curtain_max;
+    	return Robot.curtain.get_potValue() >= NumberConstants.curtain_max;
+    	
     }
 
     // Called once after isFinished returns true

@@ -26,7 +26,8 @@ public class GearDrop extends Subsystem {
 	//private CANTalon gear_roller;
 	private Solenoid gearPusherOut;
 	private Solenoid gearPusherIn;
-	
+	private double leftPower;
+	private double rightPower;
 	private AnalogInput IRSensor;
 	
 	public double directionCalibration;
@@ -320,6 +321,12 @@ public class GearDrop extends Subsystem {
     public void pusherIn() {
     	gearPusherOut.set(false);
     	gearPusherIn.set(true);
+    }
+    
+    public void open(){
+    	leftPower = NumberConstants.geardrop_openpower;
+    	rightPower = NumberConstants.geardrop_openpower;
+    	
     }
     
 }

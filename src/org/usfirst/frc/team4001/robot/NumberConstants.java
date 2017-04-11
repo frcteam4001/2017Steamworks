@@ -13,7 +13,7 @@ public class NumberConstants {
     //***************************** GEARDROP/Intake *****************************
     //**************************************************************************
 	
-	public static final double geardrop_openpower 						= 0.8;
+	public static final double geardrop_openpower 						= 1;
 	public static final double geardrop_peakvoltage						= 0.3;
 	
 	public static final double geardrop_close_peakvoltage				= +5f;
@@ -72,8 +72,8 @@ public class NumberConstants {
     //******************************* CURTAIN **********************************
     //**************************************************************************
 	
-	public static final double curtain_max = 130;
-	public static final double curtain_min  = 16;
+	public static final double curtain_max = 240;
+	public static final double curtain_min  = 141;
 	public static final double curtain_speed = 1;
 	
 	//**************************************************************************

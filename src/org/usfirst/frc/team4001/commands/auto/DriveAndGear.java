@@ -31,7 +31,7 @@ public class DriveAndGear extends CommandGroup {
     	}
     	else if(n == 2){ //Blue Mid
     		
-        	addSequential(new DriveCommand(62.65 * 1.03, 0.4, 0, 3, 0.2));
+        	addSequential(new DriveCommand(68.5 * 1.03, 0.4, 0, 3, 0.2));
 
         	addSequential(new GearHoldersFullOpen());
         	
