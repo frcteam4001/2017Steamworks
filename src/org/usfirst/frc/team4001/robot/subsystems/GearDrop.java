@@ -23,7 +23,7 @@ public class GearDrop extends Subsystem {
 	private CANTalon gear_drop_motor_right;
 	private DigitalInput right_switch;
 	private DigitalInput left_switch;
-	//private CANTalon gear_roller;
+	private CANTalon gear_roller;
 	private Solenoid gearPusherOut;
 	private Solenoid gearPusherIn;
 	private double leftPower;
@@ -43,7 +43,7 @@ public class GearDrop extends Subsystem {
    		right_switch = new DigitalInput(ElectricalConstants.GEARDROP_SWITCH_RIGHT);
    		left_switch = new DigitalInput(ElectricalConstants.GEARDROP_SWITCH_LEFT);
 
-		//gear_roller = new CANTalon(ElectricalConstants.GEARDROP_ROLLER);
+		gear_roller = new CANTalon(ElectricalConstants.GEARDROP_ROLLER);
    		IRSensor = new AnalogInput(ElectricalConstants.GEARDROP_IR_SENSOR);
    		//gearPusherOut = new Solenoid(ElectricalConstants.GEARDROP_PUSHER_OUT);
    		//gearPusherIn = new Solenoid(ElectricalConstants.GEARDROP_PUSHER_IN);
@@ -206,17 +206,17 @@ public class GearDrop extends Subsystem {
 	/**
 	 * Move the gear feed roller
 	 */
-//	public void turnRoller() {
-//    		gear_roller.set(-0.8);
-//    	}
+	public void turnRoller() {
+    		gear_roller.set(-1);
+    	}
    
 	/**
 	 * Stop the gear feed roller
 	 */
-//   	public void stopRoller() {
-//    		gear_roller.set(0);
-//    	}
-//	
+   	public void stopRoller() {
+    		gear_roller.set(0);
+    	}
+	
     public void initDefaultCommand() {
         // Set the default command for a subsystem here.
         //setDefaultCommand(new MySpecialCommand());
@@ -326,7 +326,14 @@ public class GearDrop extends Subsystem {
     public void open(){
     	leftPower = NumberConstants.geardrop_openpower;
     	rightPower = NumberConstants.geardrop_openpower;
-    	
+    	if(this.rightswitchpressed()){
+    		rightPower = 0.0;
+    	}
+    	if(this.leftswitchpressed()){
+    		leftPower = 0.0;
+    	}
+    	this.openRightHolder(rightPower);
+    	this.openLeftHolder(leftPower);
     }
     
 }

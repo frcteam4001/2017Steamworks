@@ -59,6 +59,7 @@ public class OI {
 	public JoystickButton place_gear_button;
 	public JoystickButton get_gear_button;
 	
+
 	public JoystickButton gear_open_button;
 	public JoystickButton gear_close_button;
 	public AxisButton pusher_trigger;
@@ -101,10 +102,10 @@ public class OI {
         //SUPPORT CONTROL - Y
         //change button binding configuration later
         climb_up = support_controller.getButtonY();
-        //climb_down = support_controller.getButtonX();
+        climb_down = support_controller.getStartButton();
       		
         climb_up.whileHeld(new ClimbUp());
-        //climb_down.toggleWhenPressed(new ClimbDown());
+        climb_down.whileHeld(new ClimbDown());
         
         //SUPPORT CONTROL - X
         get_gear_button = support_controller.getButtonX();

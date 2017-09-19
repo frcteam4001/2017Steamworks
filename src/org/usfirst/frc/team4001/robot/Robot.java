@@ -86,17 +86,19 @@ public class Robot extends IterativeRobot {
 		//AUTONOMOUS CHOOSER COMMANDS
 		// chooser.addObject("My Auto", new MyAutoCommand());
 		autoChooser = new SendableChooser<Command>();
-		autoChooser.addDefault("Red Mid", new DriveAndGear(1));
-		autoChooser.addDefault("Blue Mid", new DriveAndGear(2));
+		autoChooser.addDefault("Mid + push", new DriveAndGear(1));
+		autoChooser.addDefault("static mid", new DriveAndGear(2));
 		autoChooser.addObject("Red Boiler side w/ Gear", new DriveAndGear(3));
 		autoChooser.addObject("Blue Boiler side w/ Gear", new DriveAndGear(4));
 		autoChooser.addObject("Red Loading station side w/ Gear", new DriveAndGear(5));
 		autoChooser.addObject("Blue Loading station side w/ Gear", new DriveAndGear(6));
 		SmartDashboard.putData("Autonomous Mode Chooser", autoChooser);
-
+		
+		SmartDashboard.putData("turn", new DriveCommand(0, 0.5, 60, 2, 0.2));
+		SmartDashboard.putData("turn slow", new DriveCommand(0, 0.3, 60, 2, 0.2));
 		SmartDashboard.putData("Push", new GearPusher());
 		SmartDashboard.putData("climb down", new ClimbDown());
-		SmartDashboard.putData("curtain up", new CurtainUp());
+		SmartDashboard.putData("curtain up", new TurnRoller());
 		SmartDashboard.putData("curtain down", new CurtainDown());
 		//Three potential ways to send auto options to labview, not sure how to work out the last potential method
 		
@@ -284,8 +286,7 @@ public class Robot extends IterativeRobot {
 		SmartDashboard.putNumber("Left Drive Encoder", drive.getLeftEncoderDist());
 		SmartDashboard.putNumber("Right Drive Encoder", drive.getRightEncoderDist());
 		
-		SmartDashboard.putBoolean("Right Switch pressed", geardrop.rightswitchpressed());
-		SmartDashboard.putBoolean("left switch pressed", geardrop.leftswitchpressed());
+		
 		SmartDashboard.putNumber("IR READING", geardrop.getIR());
 		
 		SmartDashboard.putNumber("raw left IR", drive.getRawIRLeft());
@@ -294,12 +295,16 @@ public class Robot extends IterativeRobot {
 		SmartDashboard.putBoolean("Curtain Up", curtain.getIfCurtainUp());
 		SmartDashboard.putNumber("Gearzone", gearZone);
 		*/
+		SmartDashboard.putBoolean("Right Switch pressed", geardrop.rightswitchpressed());
+		SmartDashboard.putBoolean("left switch pressed", geardrop.leftswitchpressed());
+		SmartDashboard.putNumber("Gyro Angle", drive.getYaw());
 		SmartDashboard.putNumber("GearIR", geardrop.getIR());
 		SmartDashboard.putBoolean("Pusher is home", pusher.pusherIsBack());
 		SmartDashboard.putBoolean("Gear Open", geardrop.get_HoldersOpened());
 		SmartDashboard.putNumber("CurrentZone", geardrop.getCurrentZone());
 		SmartDashboard.putBoolean("HoldersPaired", geardrop.get_HoldersPaired());
 		SmartDashboard.putNumber("climb potentiameter" , curtain.get_potValue());
+		
  
 		networkTableCom.putNumber(Subsystem.DriveTrain, Key.RightDriveEncoder, drive.getRightEncoderDist());
 		networkTableCom.putNumber(Subsystem.DriveTrain, Key.LeftDriveEncoder, drive.getLeftEncoderDist());

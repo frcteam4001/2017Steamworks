@@ -41,20 +41,21 @@ public class GearHoldersFullOpen extends Command {
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
     	if (Robot.pusher.pusherIsBack()){
-    		System.out.println("Gears full open execute");
-    	
-    		if(!Robot.geardrop.leftswitchpressed()){
-    			Robot.geardrop.openLeftHolder(NumberConstants.geardrop_openpower);
-    		}else{
-    			Robot.geardrop.stopLeftHolder();	
-    		}
-    	
-    		if(!Robot.geardrop.rightswitchpressed()){
-    			Robot.geardrop.openRightHolder(NumberConstants.geardrop_openpower);
-    		}
-    		else{
-    			Robot.geardrop.stopRightHolder();
-    		}
+//    		System.out.println("Gears full open execute");
+//    	
+//    		if(!Robot.geardrop.leftswitchpressed()){
+//    			Robot.geardrop.openLeftHolder(NumberConstants.geardrop_openpower);
+//    		}else{
+//    			Robot.geardrop.stopLeftHolder();	
+//    		}
+//    	
+//    		if(!Robot.geardrop.rightswitchpressed()){
+//    			Robot.geardrop.openRightHolder(NumberConstants.geardrop_openpower);
+//    		}
+//    		else{
+//    			Robot.geardrop.stopRightHolder();
+//    		}
+    		Robot.geardrop.open();
     	} else {
     		Robot.pusher.pusherIn();
     	}

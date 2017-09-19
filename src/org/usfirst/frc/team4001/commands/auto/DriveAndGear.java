@@ -17,49 +17,43 @@ public class DriveAndGear extends CommandGroup {
     	
     	this.n = n;
 
-    	if(n == 1){ //Red Mid
+    	if(n == 1){ // Mid + push
 
-        	addSequential(new DriveCommand(68.57 * 1.03, 0.4, 0, 3, 0.2)); 
+        	addSequential(new DriveCommand(68.57 * 1.03, 0.5, 0, 3, 0.2)); 
 
         	addSequential(new GearHoldersFullOpen());
         	
         	addSequential(new GearPusherOut());
         	
-        	addSequential(new DriveCommand(-24, 0.35,0, 1.5, 0.2));
+        	addSequential(new DriveCommand(-24, 0.4,0, 1.5, 0.2));
         	addSequential(new GearPusherIn());
 
     	}
-    	else if(n == 2){ //Blue Mid
+    	else if(n == 2){ //static Mid
     		
-        	addSequential(new DriveCommand(68.5 * 1.03, 0.4, 0, 3, 0.2));
-
-        	addSequential(new GearHoldersFullOpen());
-        	
-        	addSequential(new GearPusherOut());
-        	
-        	addSequential(new DriveCommand(-24, 0.35,0, 1.5, 0.2));
-        	addSequential(new GearPusherIn());
-
+        	addSequential(new DriveCommand(-73 * 1.03, 0.4, 0, 3, 0.2));
     	}
     	else if (n == 3 ) { //Red Boiler
-    		addSequential(new DriveCommand(79.61 *1.03, 0.4, 0, 2.75, 0.2));
-    		addSequential(new DriveCommand(0, 0.3, -43.45 * 0.96, 1, 0.2));
-    		addSequential(new DriveCommand(20 * 1.03, 0.4, 0, 1, 0.2));
+    		addSequential(new DriveCommand(-68 *1.03, 0.6, 0, 2.75, 0.2));
+    		
+    		addSequential(new DriveCommand(0, 0.6, -63.5, 1.5, 0.2));
+    		
+    		addSequential(new DriveCommand(-21 * 1.03, 0.5, 0, 2, 0.2));
     	}
     	else if (n == 4) { //Blue Boiler
-    		addSequential(new DriveCommand(80.67 *1.03, 0.4, 0, 2.75, 0.2));
-    		addSequential(new DriveCommand(0, 0.3, 63.26 * 0.96, 1.25, 0.2));
-    		addSequential(new DriveCommand(24 * 1.03, 0.4, 0, 1, 0.2));
+    		addSequential(new DriveCommand(-68 *1.03, 0.6, 0, 2.75, 0.2));
+    		addSequential(new DriveCommand(0, 0.6, 63.5 , 1.25, 0.2));
+    		addSequential(new DriveCommand(-22 * 1.03, 0.5, 0, 2, 0.2));
     	}
     	else if (n == 5) { //Red Loading station
-    		addSequential(new DriveCommand(75.12 *1.03, 0.4, 0, 2.75, 0.2));
-    		addSequential(new DriveCommand(0, 0.3, 55.57 * 0.96, 1.25, 0.2));
-    		addSequential(new DriveCommand(37.06 * 1.03, 0.4, 0, 1.5, 0.2));
+    		addSequential(new DriveCommand(-65, 0.4, 0, 2.75, 0.2));
+    		addSequential(new DriveCommand(0, 0.48, 62, 1.25, 0.2));
+    		addSequential(new DriveCommand(-16.5 * 1.03, 0.5, 0, 2, 0.2));
     	}
     	else if (n == 6) { //Blue Loading station
-    		addSequential(new DriveCommand(73.17 *1.03, 0.4, 0, 2.75, 0.2));
-    		addSequential(new DriveCommand(0, 0.3, -52.91 * 0.96, 1.25, 0.2));
-    		addSequential(new DriveCommand(35.78 * 1.03, 0.4, 0, 1.5, 0.2));
+    		addSequential(new DriveCommand(-65, 0.4, 0, 2.75, 0.2));
+    		addSequential(new DriveCommand(0, 0.48, -62 , 1.25, 0.2));
+    		addSequential(new DriveCommand(-18 * 1.03, 0.5, 0, 2, 0.2));
     	}
         // Add Commands here:
         // e.g. addSequential(new Command1());
