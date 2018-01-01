@@ -42,7 +42,6 @@ public class PlaceGearNoForward extends CommandGroup {
     	try {
 			Thread.sleep(400);
 		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
     	if (Robot.gearZone != -1 && Robot.gearZone != -20000 && Robot.gearZone != -30000){

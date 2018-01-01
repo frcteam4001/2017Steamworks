@@ -328,7 +328,7 @@ public class DriveTrain extends Subsystem {
 		try {
 			Thread.sleep(10);
 		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
+
 			e.printStackTrace();
 		}
 		for (int i = 0; i < 20; i++){
@@ -346,7 +346,7 @@ public class DriveTrain extends Subsystem {
 		try {
 			Thread.sleep(10);
 		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
+
 			e.printStackTrace();
 		}
 		for (int i = 0; i < 20; i++){
